@@ -7,3 +7,48 @@
     font-size: 24px;
     line-height: 27.61px;
 }
+
+.bannerHeaderText{
+    width: 743px;
+    height: 296px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 74px;
+    /* text-transform: lowercase; */
+    color: #FFFFFF;
+}
+.colorText{
+    color: #E041E7;
+}
+.bannerText{
+    width: 680px;
+    height: 144px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+    color: #FFFFFF;
+}
+.bannerButtons{
+    background-color:  #E041E7;
+    width:306px;
+    height: 64px;
+    padding: 18px,32px,18px,32px;
+    gap: 16px;
+    border-radius: 12px;
+    color:#FFFFFF;
+    line-height: 28px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.75px;
+    text-align: center;
+
+
+
+}
+
+.sellBannerText
+{
+    height: 148px;
+}
