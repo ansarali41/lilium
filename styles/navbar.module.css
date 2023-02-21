@@ -19,3 +19,8 @@
 .navLinks:hover {
     color: white;
 }
+
+.lightIconStyle {
+    margin-right: 15px;
+    cursor: pointer;
+}
