@@ -2,8 +2,20 @@
     padding: 48px 46px;
 }
 
+.navContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .navLinks {
     font-weight: 800;
     font-size: 24px;
     line-height: 27.61px;
+    color: white;
+    text-decoration: none;
+}
+
+.navLinks:hover {
+    color: white;
 }

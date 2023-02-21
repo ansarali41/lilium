@@ -2,6 +2,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import styles from '../styles/navbar.module.css';
 import logo from '../assest/images/logo-tranparent.png';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const MyNavbar = () => {
   return (
@@ -17,8 +18,15 @@ const MyNavbar = () => {
       <Navbar.Toggle aria-controls='basic-navbar-nav' />
       <Navbar.Collapse id='basic-navbar-nav' className='d-flex justify-content-end'>
         <Nav className='ml-auto'>
-          <Nav.Item>
-            <Nav.Link href='#home' className={styles.navLinks}>Home</Nav.Link>
+          <Nav.Item className={styles.navContainer}>
+            <Link href='/' className={styles.navLinks}>
+              
+            </Link>
+          </Nav.Item>
+          <Nav.Item className={styles.navContainer}>
+            <Link href='/' className={styles.navLinks}>
+              HOME
+            </Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link href='#link' className={styles.navLinks}>ABOUT</Nav.Link>
