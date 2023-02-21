@@ -5,7 +5,8 @@ import styles from '../styles/navbar.module.css';
 const MyComponent = () => {
   return (
     <div className={styles.navLinks}>
-      home
+      <h1>submit</h1>
+      <input type='text' />
     </div>
   );
 };
