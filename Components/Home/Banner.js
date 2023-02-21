@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
+import Image from 'next/image';
+import Circle from '../../assest/images/Ellipse 173.png';
 const Banner = () => {
   return (
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-md-6 m-5">
         <h1 className={styles.bannerHeaderText}>
           THE BEST
           <br /> COMMUNITY
@@ -17,7 +19,9 @@ const Banner = () => {
         </p>
         <button className={styles.bannerButtons}>Create Collection</button>
       </div>
-      <div className="col-md-4"></div>
+      <div className="col-md-4">
+        <Image src={Circle} alt="circle" />
+      </div>
     </div>
   );
 };

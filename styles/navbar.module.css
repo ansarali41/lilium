@@ -47,8 +47,77 @@
 
 
 }
-
-.sellBannerText
-{
+.sellBanner{
+    width: 1069px;
     height: 148px;
+    font-weight: 800;
+    line-height: 74px;
+    font-size: 64px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 50px;
+}
+.sellBannerHeading{
+    color:#FDD200;
+    letter-spacing: 0.2px;
+    font-weight: 700;
+}
+.sellBannerHeaderText
+{
+   
+    margin-top: 15px;
+    line-height: 60px;
+    font-size: 54px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+.sellText{
+    color:  #C2C3C5;
+    line-height: 22px;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+}
+.homeFooter
+{
+    height: 417px;
+    width: 1700px;
+    opacity: 50%;
+    background-color: #334958;
+    ;
+}
+.homeFooterText{
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 26px;
+    
+}
+.homeCollection{
+    width: 1700px;
+    height: 496px;
+    background: linear-gradient(153.13deg, #E041E7 -58.04%, rgba(224, 65, 231, 0) 115.41%);
+}
+.homeCollectionHeader{
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 55px;
+    text-align: center;
+    color: #FFFFFF;
+
+}
+.homeCollectionText{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.homeWorkText{
+    color:#FFFFFF;
+    font-size: 64px;
+    line-height: 74px;
+    font-weight: 800;
+    font-style: normal;
 }
