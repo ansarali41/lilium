@@ -37,6 +37,16 @@
     font-family: 'Inter', sans-serif;
     line-height: 24px;
 }
+.mintText{
+    font-size: 22px;
+    font-family: 'Inter', sans-serif;
+    line-height: 24px;
+    border: 1px solid;
+    margin-left: 28px;
+    border-radius: 8px;
+    padding: 16px 24px;
+    font-weight: 200;
+}
 
 .input{
 background: #334958;
