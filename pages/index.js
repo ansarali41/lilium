@@ -15,7 +15,7 @@ export default function Home() {
       <Banner />
       <SellBanner />
       <HomeWork />
-      <HomeLastPart />
+      {/*<HomeLastPart />*/}
       {/* <Carousel /> */}
       <HomeCarousel />
       <HomeCollection />
