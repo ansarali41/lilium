@@ -4,11 +4,16 @@ import uploadStyles from '../../styles/Upload.module.css';
 import submitStyles from '../../styles/Submit.module.css';
 import Image from 'next/image';
 // import ellipse from '../../assest/images/';
+import circle from '../../assest/images/circle.svg'
+import FontAwesomeIcon  from '@fortawesome/free-solid-svg-icons'
+import {FaRegDotCircle} from 'react-icons/fa';
+import ProgressBar from './ProgressBar';
 
 const Submit = () => {
   const inputStyle = submitStyles.input;
   const [socialDivs, setSocialDivs] = useState([])
   const [address, setAddress] = useState([])
+  const [progress, setProgress] = useState(0);
 
   // add more button code for social div
 
@@ -58,10 +63,9 @@ const handleAddress = () =>{
         <h2 className={submitStyles.subTitle}>
           <b>COLLECTIONS DETAILS</b>
         </h2>
-        <p>
-          Every time an NFT gets sold, the original owner receives a percentage
-          of the sale price. You can set the amount here, and the payments will
-          execute automatically
+        <p className={submitStyles.text}>
+        The ‘Collection name’ and ‘Description’ are written to the blockchain and can’t  be <br /> changed  after minting. They are always shown when the collection is displayed, <br /> for example when it’s  listed on the marketplace.
+
         </p>
         <input
           className={`${inputStyle} w-100`}
@@ -132,8 +136,9 @@ const handleAddress = () =>{
         </p>
         <div className="d-flex justify-content-between fs-3 mt-5">
           <p className="">Amount</p>
-          <p className="">0%</p>
+          <p className="">{progress} %</p>
         </div>
+        <ProgressBar progress={progress} setProgress={setProgress} />
 
         <input
           className={`${inputStyle} w-100`}
@@ -163,8 +168,12 @@ const handleAddress = () =>{
           </div>
         </div>
 
-        <div></div>
-
+      <div className='d-flex '>
+      <FaRegDotCircle className='fs-3 text-primary me-3'/>
+      <p className='d-flex align-items-center pt-1 fw-bold'> Never Expire</p>
+      </div>
+        
+            
         <div className="d-flex justify-content-between align-items-center">
           <h2 className={submitStyles.subTitle}>ON SALE END</h2>
           <div className="d-flex">
@@ -174,7 +183,7 @@ const handleAddress = () =>{
         </div>
       </div>
 
-      <div className="d-flex justify-content-center">
+      <div className={` ${uploadStyles.button} d-flex justify-content-center`}>
         <div className="py-2 px-5 btn btn-primary mt-5">NEXT</div>
       </div>
     </div>
