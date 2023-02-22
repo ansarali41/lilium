@@ -6,7 +6,13 @@ const HomeFooter = () => {
   return (
     <div className={styles.homeFooter}>
       <div className="text-center pt-5">
-        <Image src={Flower} alt="flower" width={187} height={138} />
+        <Image
+          className="img-fluid"
+          src={Flower}
+          alt="flower"
+          width={187}
+          height={138}
+        />
       </div>
       <div className="pt-5 mt-5 container">
         <p className={styles.homeFooterText}>

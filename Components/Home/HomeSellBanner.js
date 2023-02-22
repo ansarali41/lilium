@@ -29,7 +29,7 @@ const SellBanner = () => {
           </p>
         </div>
         <div className="col-md-6">
-          <Image src={laptop} alt="man" />
+          <Image className="img-fluid" src={laptop} alt="man" />
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ const HomeWork = () => {
   return (
     <div className="text-center mt-5 pt-5">
       <h2 className={styles.homeWorkText}>HOW IT WORKS</h2>
-      <div>
+      <div className="col-md-12">
         <Image className="img-fluid" src={Diagram} alt="working flow" />
       </div>
     </div>

@@ -19,8 +19,8 @@ const Banner = () => {
         </p>
         <button className={styles.bannerButtons}>Create Collection</button>
       </div>
-      <div className="col-md-4">
-        <Image src={Circle} alt="circle" />
+      <div className="col-md-5">
+        <Image className="img-fluid" src={Circle} alt="circle" />
       </div>
     </div>
   );

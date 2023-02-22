@@ -6,6 +6,8 @@ import HomeLastPart from '../Components/Home/HomeLastPart';
 import HomeFooter from '../Components/Home/HomeFooter';
 import HomeCollection from '../Components/Home/HomeCollection';
 import HomeWork from '../Components/Home/HomeWork';
+import HomeCarousel from '../Components/Home/HomeCarousel';
+//import Carousel from '../Components/Home/Carousel';
 export default function Home() {
   return (
     <div className={styles.body}>
@@ -14,6 +16,8 @@ export default function Home() {
       <SellBanner />
       <HomeWork />
       <HomeLastPart />
+      {/* <Carousel /> */}
+      <HomeCarousel />
       <HomeCollection />
       <HomeFooter />
     </div>
