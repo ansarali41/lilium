@@ -19,10 +19,10 @@ const Upload = () => {
                         <p className='text-center text-warning '>Drag and drop any files <br /> here, or click below to <br /> browse.</p>
                         <div className="btn fs-2 bg-white text-dark"> <DragAndDrop/></div>
                     </div>
-                    <div className='d-flex justify-content-center'>
-                    <div className="py-2 px-5 btn btn-primary mt-5">NEXT</div>
-                </div>
              </div>
+                    <div className={`${uploadStyles.button} d-flex justify-content-center`}>
+                    <div className={`${uploadStyles.button} py-2 px-5 btn btn-primary my-5`}>NEXT</div>
+                </div>
         </div>
     );
 };
