@@ -4,7 +4,7 @@ import Image from 'next/image';
 const HomeLastPart = () => {
   return (
     <div className="">
-      <Image className="img-fluid" src={Banner} alt="banner" width={1700} />
+      <Image className="img-fluid w-100" src={Banner} alt="banner"/>
     </div>
   );
 };
