@@ -14,30 +14,43 @@
     margin-bottom: 32px;
 }
 
+.nextButton {
+    margin-top: 20px;
+    background: #E041E7;
+    padding: 18px 32px;
+    width: 233px;
+    height: 64px;
+}
+
+.nextButton:hover {
+    background: #E041E7;
+    padding: 18px 32px;
+
+}
+
 .title {
-    font-size: 44px;
+    font-size: 40px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.subTitle {
+    font-size: 32px;
     font-weight: 800;
     line-height: 46px;
     letter-spacing: 0em;
     text-align: left;
     text-transform: uppercase;
+    margin: 32px 0;
 }
 
-.subTitle {
-        font-size: 32px;
-        font-weight: 800;
-        line-height: 46px;
-        letter-spacing: 0em;
-        text-align: left;
-        text-transform: uppercase;
-        margin: 32px 0;
-}
 .text {
-    font-size: 22px;
+    font-size: 18px;
     font-family: 'Inter', sans-serif;
     line-height: 32px;
 }
-.mintText{
+
+.mintText {
     font-size: 22px;
     font-family: 'Inter', sans-serif;
     line-height: 24px;
@@ -48,26 +61,27 @@
     font-weight: 200;
 }
 
-.input{
-background: #334958;
-border: 1px solid #FFFFFF;
-border-radius: 4px;
-color: #FFFFFF ;
-padding: 20px 25px;
-font-size: 20px;
-margin: 28px 0
+.input {
+    background: #334958;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    color: #FFFFFF;
+    padding: 20px 25px;
+    font-size: 20px;
+    margin: 28px 0
 }
+
 /* .image{
     width: 20px;
     color: blue;
 } */
 
-.button{
-background: #FFD363;
-border: 1px solid #FFFFFF;
-border-radius: 4px;
-padding: 18px 32px;
-width: 220px;
-font-weight: 600;
-font-size: 24px;
+.button {
+    background: #FFD363;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    padding: 18px 32px;
+    width: 220px;
+    font-weight: 600;
+    font-size: 24px;
 }

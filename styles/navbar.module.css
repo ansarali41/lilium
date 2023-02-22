@@ -6,22 +6,56 @@
     font-weight: 800;
     font-size: 24px;
     line-height: 27.61px;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
 }
 
-.bannerHeaderText{
+.sideBarLink {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 21px;
+    letter-spacing: 0.3px;
+    text-align: left;
+    margin-bottom: 32px;
+    text-decoration: none;
+    color: white;
+}
+
+.sideBarLink:hover {
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 21px;
+    letter-spacing: 0.3px;
+    text-align: left;
+    margin-bottom: 32px;
+    text-decoration: none;
+    color: white;
+}
+
+.walletButton {
+    cursor: pointer;
+}
+
+.navLinks:hover {
+    color: white;
+}
+
+.bannerHeaderText {
     width: 743px;
     height: 296px;
     font-style: normal;
     font-weight: 800;
     font-size: 64px;
     line-height: 74px;
-    /* text-transform: lowercase; */
     color: #FFFFFF;
 }
-.colorText{
+
+.colorText {
     color: #E041E7;
 }
-.bannerText{
+
+.bannerText {
     width: 680px;
     height: 144px;
     font-family: 'Inter';
@@ -30,14 +64,15 @@
     line-height: 150%;
     color: #FFFFFF;
 }
-.bannerButtons{
-    background-color:  #E041E7;
-    width:306px;
+
+.bannerButtons {
+    background-color: #E041E7;
+    width: 306px;
     height: 64px;
-    padding: 18px,32px,18px,32px;
+    padding: 18px 32px 18px 32px;
     gap: 16px;
     border-radius: 12px;
-    color:#FFFFFF;
+    color: #FFFFFF;
     line-height: 28px;
     font-weight: 800;
     font-size: 16px;
@@ -45,9 +80,9 @@
     text-align: center;
 
 
-
 }
-.sellBanner{
+
+.sellBanner {
     width: 1069px;
     height: 148px;
     font-weight: 800;
@@ -57,47 +92,52 @@
     color: #FFFFFF;
     margin-left: 50px;
 }
-.sellBannerHeading{
-    color:#FDD200;
+
+.sellBannerHeading {
+    color: #FDD200;
     letter-spacing: 0.2px;
     font-weight: 700;
 }
-.sellBannerHeaderText
-{
-   
+
+.sellBannerHeaderText {
+
     margin-top: 15px;
     line-height: 60px;
     font-size: 54px;
     font-weight: 700;
     color: #FFFFFF;
 }
-.sellText{
-    color:  #C2C3C5;
+
+.sellText {
+    color: #C2C3C5;
     line-height: 22px;
     font-size: 12px;
     font-weight: 400;
     font-style: normal;
 }
-.homeFooter
-{
+
+.homeFooter {
     height: 417px;
     width: 100%;
     opacity: 50%;
     background-color: #334958;
 }
-.homeFooterText{
+
+.homeFooterText {
     color: #FFFFFF;
     font-weight: 400;
     font-size: 12px;
     line-height: 26px;
-    
+
 }
-.homeCollection{
+
+.homeCollection {
     width: 100%;
     height: 496px;
     background: linear-gradient(153.13deg, #E041E7 -58.04%, rgba(224, 65, 231, 0) 115.41%);
 }
-.homeCollectionHeader{
+
+.homeCollectionHeader {
     font-weight: 800;
     font-size: 48px;
     line-height: 55px;
@@ -105,7 +145,8 @@
     color: #FFFFFF;
 
 }
-.homeCollectionText{
+
+.homeCollectionText {
     font-weight: 500;
     font-size: 24px;
     line-height: 36px;
@@ -113,8 +154,8 @@
     color: #FFFFFF;
 }
 
-.homeWorkText{
-    color:#FFFFFF;
+.homeWorkText {
+    color: #FFFFFF;
     font-size: 64px;
     line-height: 74px;
     font-weight: 800;
