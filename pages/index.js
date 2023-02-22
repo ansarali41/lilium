@@ -7,10 +7,12 @@ import HomeFooter from '../Components/Home/HomeFooter';
 import HomeCollection from '../Components/Home/HomeCollection';
 import HomeWork from '../Components/Home/HomeWork';
 import HomeCarousel from '../Components/Home/HomeCarousel';
-//import Carousel from '../Components/Home/Carousel';
+import NavContainer from '../Components/navContainer/NavContainer';
+//import Carousel from '../Components/NavContainer/Carousel';
 export default function Home() {
   return (
     <div className={styles.body}>
+      <NavContainer />
       <Header />
       <Banner />
       <SellBanner />
