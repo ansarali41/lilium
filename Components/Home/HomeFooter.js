@@ -2,6 +2,9 @@ import React from 'react';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
 import Flower from '../../assest/images/image 9.png';
+import git from '../../assest/images/Vector (1).png';
+import twitter from '../../assest/images/Vector.png';
+import discord from '../../assest/images/Layer_2.png';
 const HomeFooter = () => {
   return (
     <div className={styles.homeFooter}>
@@ -13,6 +16,12 @@ const HomeFooter = () => {
           width={187}
           height={138}
         />
+        <div className="pt-4">
+          <Image className="m-2 " src={git} alt="" />
+
+          <Image className="m-2" src={twitter} alt="" />
+          <Image src={discord} alt="" />
+        </div>
       </div>
       <div className="pt-5 mt-5 container">
         <p className={styles.homeFooterText}>

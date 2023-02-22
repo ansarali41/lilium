@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
-import laptop from '../../assest/images/laptop man.jpeg';
+import laptop from '../../assest/images/solid II.png';
 const SellBanner = () => {
   return (
     <div className="container">
