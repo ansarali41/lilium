@@ -48,7 +48,7 @@
 
 }
 .sellBanner{
-    
+    width: 1069px;
     height: 148px;
     font-weight: 800;
     line-height: 74px;
@@ -81,10 +81,9 @@
 .homeFooter
 {
     height: 417px;
-   
+    width: 100%;
     opacity: 50%;
     background-color: #334958;
-    ;
 }
 .homeFooterText{
     color: #FFFFFF;
@@ -94,7 +93,7 @@
     
 }
 .homeCollection{
-  
+    width: 100%;
     height: 496px;
     background: linear-gradient(153.13deg, #E041E7 -58.04%, rgba(224, 65, 231, 0) 115.41%);
 }
@@ -120,28 +119,4 @@
     line-height: 74px;
     font-weight: 800;
     font-style: normal;
-}
-
-.carousel_control_prev_icon,
-.carousel_control_next_icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  border: 1px solid black;
-  background-image: none;
-}
-
-.carousel_control_next_icon:after
-{
-  content: '>';
-  font-size: 55px;
-  color: red;
-}
-
-.carousel_control_prev_icon:after {
-  content: '<';
-  font-size: 55px;
-  color: red;
 }

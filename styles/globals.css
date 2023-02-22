@@ -6,6 +6,7 @@ body {
     margin: 0;
     font-family: 'Akira Expanded', serif;
     background: #0D0F19;
+    overflow-x: hidden;
 }
 
 a {

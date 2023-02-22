@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Head from 'next/head';
+<script src="https://kit.fontawesome.com/4c7217f3f6.js" crossorigin="anonymous"></script>
 
 function MyApp({ Component, pageProps }) {
   return (
