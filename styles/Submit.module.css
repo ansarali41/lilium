@@ -63,7 +63,8 @@
     padding: 16px 24px;
     font-weight: 200;
     background:rgba(26, 27, 34, 1);
-    color: white
+    color: white;
+    appearance: none;
 }
 
 .input {
