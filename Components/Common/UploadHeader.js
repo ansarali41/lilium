@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const UploadHeader = () => {
   return (
-    <div className='col-12 col-md-3'>
+    <div className='col-12 col-md-2'>
       <ul className={submitStyles.list}>
         <li className={submitStyles.listLinks}>
           <Link href='/submit' className={navStyle.sideBarLink}>
