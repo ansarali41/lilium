@@ -192,3 +192,12 @@
     
 
 }
+.carouselQ {
+    height: 48px;
+    width: 27px;
+    background: linear-gradient(to right, #3c1e46, #ae37b6, #634b6f, #c63cce);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+}
