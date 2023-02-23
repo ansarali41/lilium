@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className={styles.body}>
       <NavContainer />
-      <Header />
+      {/*<Header />*/}
       <Banner />
       <SellBanner />
       <HomeWork />
