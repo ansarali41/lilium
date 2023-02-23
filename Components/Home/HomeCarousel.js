@@ -4,8 +4,8 @@ import { Carousel } from 'react-responsive-carousel';
 import styles from '../../styles/navbar.module.css';
 import Man from '../../assest/images/image 15.png';
 import Image from 'next/image';
-import RightArro from '../../assest/images/rightarray (1).jpeg';
-import LeftArro from '../../assest/images/rightarray (2).jpeg';
+import RightArro from '../../assest/images/r3.png';
+import LeftArro from '../../assest/images/l1.png';
 import { FaQuoteRight, FaQuoteLeft, Faquo } from 'react-icons/fa';
 const HomeCarousel = () => {
   return (
@@ -42,7 +42,13 @@ const HomeCarousel = () => {
           }}
         >
           <span style={{ float: 'left' }}>
-            <Image src={LeftArro} alt="working flow" width={72} height={72} />
+            <Image
+              className={styles.carouselQ}
+              src={LeftArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
             {/* <FaQuoteLeft className={styles.carouselQ} /> */}
           </span>
           <br />
@@ -59,7 +65,13 @@ const HomeCarousel = () => {
             there to help.”
           </p>
           <span style={{ float: 'right' }}>
-            <Image src={RightArro} alt="working flow" width={72} height={72} />
+            <Image
+              className={styles.carouselQ}
+              src={RightArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
           </span>
 
           <div className="">
@@ -84,7 +96,13 @@ const HomeCarousel = () => {
         <div>
           <span style={{ float: 'left' }}>
             <i class="fa fa-quote-right" aria-hidden="true"></i>
-            <Image src={LeftArro} alt="working flow" width={72} height={72} />
+            <Image
+              className={styles.carouselQ}
+              src={LeftArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
           </span>
           <br />
           <p
@@ -101,7 +119,13 @@ const HomeCarousel = () => {
             style={{ height: '132px', width: '132px' }}
           />
           <span style={{ float: 'right' }}>
-            <Image src={RightArro} alt="working flow" width={72} height={72} />
+            <Image
+              className={styles.carouselQ}
+              src={RightArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
           </span>
           <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
             RJ Regenold, CTO @ BOOK.IO
@@ -110,7 +134,13 @@ const HomeCarousel = () => {
         <div>
           <span style={{ float: 'left' }}>
             {/* <FaQuoteLeft style={{ height: '48px', width: '27px' }} /> */}
-            <Image src={LeftArro} alt="working flow" width={72} height={72} />
+            <Image
+              className={styles.carouselQ}
+              src={LeftArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
           </span>
           <p
             style={{ fontSize: '36px', fontWeight: '700', lineHeight: '60px' }}
@@ -127,7 +157,13 @@ const HomeCarousel = () => {
           />
           <span style={{ float: 'right' }}>
             {/* <FaQuoteRight className={styles.carouselQ} /> */}
-            <Image src={RightArro} alt="working flow" width={72} height={72} />
+            <Image
+              className={styles.carouselQ}
+              src={RightArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
           </span>
           <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
             RJ Regenold, CTO @ BOOK.IO
