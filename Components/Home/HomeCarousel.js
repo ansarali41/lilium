@@ -8,7 +8,12 @@ const HomeCarousel = () => {
   return (
     <div
       className="container"
-      style={{ height: '594px', width: '1192px', borderRadius: '8px' }}
+      style={{
+        height: '594px',
+        width: '1192px',
+        borderRadius: '8px',
+        marginTop: '134px',
+      }}
     >
       <h2
         style={{
@@ -20,11 +25,19 @@ const HomeCarousel = () => {
         }}
         className="text-center"
       >
-        What others say
+        WHAT OTHERS SAY
       </h2>
 
       <Carousel>
-        <div style={{ width: '1139px', height: '36px' }}>
+        <div
+          style={{
+            width: '1192px',
+            height: '454px',
+            // marginTop: '124px',
+            borderRadius: '8px',
+            padding: '24px',
+          }}
+        >
           <span style={{ float: 'left' }}>
             <Image
               src={Arro}
@@ -71,6 +84,14 @@ const HomeCarousel = () => {
           </div>
         </div>
         <div>
+          <span style={{ float: 'left' }}>
+            <Image
+              src={Arro}
+              alt=""
+              style={{ width: '15px', height: '36px' }}
+            />
+          </span>
+          <br />
           <p
             style={{ fontSize: '36px', fontWeight: '700', lineHeight: '60px' }}
             className="text-center"
@@ -82,13 +103,27 @@ const HomeCarousel = () => {
           <Image
             src={Man}
             alt="image2"
-            style={{ height: '132px', width: '132px', marginBottom: '130px' }}
+            style={{ height: '132px', width: '132px' }}
           />
+          <span style={{ float: 'right' }}>
+            <Image
+              src={Arro}
+              alt=""
+              style={{ width: '15px', height: '36px' }}
+            />
+          </span>
           <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
             RJ Regenold, CTO @ BOOK.IO
           </p>
         </div>
         <div>
+          <span style={{ float: 'left' }}>
+            <Image
+              src={Arro}
+              alt=""
+              style={{ width: '15px', height: '36px' }}
+            />
+          </span>
           <p
             style={{ fontSize: '36px', fontWeight: '700', lineHeight: '60px' }}
             className="text-center"
@@ -102,6 +137,13 @@ const HomeCarousel = () => {
             alt="image3"
             style={{ height: '132px', width: '132px' }}
           />
+          <span style={{ float: 'right' }}>
+            <Image
+              src={Arro}
+              alt=""
+              style={{ width: '15px', height: '36px' }}
+            />
+          </span>
           <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
             RJ Regenold, CTO @ BOOK.IO
           </p>

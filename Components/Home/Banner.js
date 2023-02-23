@@ -27,7 +27,7 @@ const Banner = () => {
         </Button>
       </div>
       <div className="col-md-5">
-        <Image className="img-fluid" src={Circle} alt="circle" />
+        <Image className={styles.bannerImage} src={Circle} alt="circle" />
       </div>
     </div>
   );

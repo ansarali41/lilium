@@ -42,6 +42,7 @@
 }
 
 .bannerHeaderText {
+    margin-top: 203px;
     width: 743px;
     height: 296px;
     font-style: normal;
@@ -56,6 +57,7 @@
 }
 
 .bannerText {
+    margin-top: 32px;
     width: 680px;
     height: 144px;
     font-family: 'Inter';
@@ -63,9 +65,11 @@
     font-size: 24px;
     line-height: 150%;
     color: #FFFFFF;
+    padding-top: 328;
 }
 
 .bannerButtons {
+    margin-top: 32px;
     background-color: #E041E7;
     width: 306px;
     height: 64px;
@@ -81,8 +85,16 @@
 
 
 }
+.bannerImage{
+    margin-top: 221px;
+    margin-right: 180px;
+    
+    
+    
+}
 
 .sellBanner {
+    margin-top: 142px;
     width: 1069px;
     height: 148px;
     font-weight: 800;
@@ -94,17 +106,24 @@
 }
 
 .sellBannerHeading {
+    margin-top: 124px;
     color: #FDD200;
     letter-spacing: 0.2px;
     font-weight: 700;
+    font-size: 18px;
+    font-style: normal;
 }
 
 .sellBannerHeaderText {
 
     margin-top: 15px;
+    margin-bottom: 33px;
+    width: 616px;
+    height: 180px;
     line-height: 60px;
     font-size: 54px;
     font-weight: 700;
+    
     color: #FFFFFF;
 }
 
@@ -116,28 +135,17 @@
     font-style: normal;
 }
 
-.homeFooter {
-    height: 417px;
-    width: 100%;
-    opacity: 50%;
-    background-color: #334958;
-}
 
-.homeFooterText {
-    color: #FFFFFF;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 26px;
-
-}
 
 .homeCollection {
-    width: 100%;
+    margin-top: 180px;
+    width: 1512px;
     height: 496px;
     background: linear-gradient(153.13deg, #E041E7 -58.04%, rgba(224, 65, 231, 0) 115.41%);
 }
 
 .homeCollectionHeader {
+    margin-top: 97;
     font-weight: 800;
     font-size: 48px;
     line-height: 55px;
@@ -147,6 +155,8 @@
 }
 
 .homeCollectionText {
+    margin-top: 32px;
+    margin-bottom: 32px;
     font-weight: 500;
     font-size: 24px;
     line-height: 36px;
@@ -155,9 +165,30 @@
 }
 
 .homeWorkText {
+    margin-top: 145px;
+    margin-bottom: 124px;
     color: #FFFFFF;
     font-size: 64px;
     line-height: 74px;
     font-weight: 800;
     font-style: normal;
+}
+
+.homeFooter {
+    height: 417px;
+    width: 1512px;
+    opacity: 50%;
+    background-color: #334958;
+}
+
+.homeFooterText {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 26px;
+    
+    height: 26px;
+    margin-bottom:56px ;
+    
+
 }
