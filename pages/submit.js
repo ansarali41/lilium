@@ -1,19 +1,16 @@
 import React from 'react';
 import styles from '../styles/Home.module.css';
-import submitStyles from '../styles/Submit.module.css';
-import Header from '../Components/Header';
-import Upload from '../Components/Upload/Upload';
-import UploadHeader from '../Components/Common/UploadHeader';
 import Submit from '../Components/Submit/Submit';
-import HomeFooter from '../Components/Home/HomeFooter'
+import HomeFooter from '../Components/Home/HomeFooter';
+import NavContainer from '../Components/navContainer/NavContainer';
 
 
 const MyComponent = () => {
   return (
     <div className={styles.body}>
-      <Header />
-     <Submit/>
-     <HomeFooter/>
+      <NavContainer />
+      <Submit />
+      <HomeFooter />
     </div>
   );
 };

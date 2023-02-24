@@ -65,7 +65,7 @@
     font-size: 24px;
     line-height: 150%;
     color: #FFFFFF;
-    padding-top: 328;
+    /*padding-top: 328;*/
 }
 
 .bannerButtons {
@@ -82,20 +82,33 @@
     font-size: 16px;
     letter-spacing: 0.75px;
     text-align: center;
-
-
+    border: none;
 }
-.bannerImage{
+
+.bannerButtons:hover {
+    margin-top: 32px;
+    background-color: #E041E7;
+    width: 306px;
+    height: 64px;
+    padding: 18px 32px 18px 32px;
+    gap: 16px;
+    border-radius: 12px;
+    color: #FFFFFF;
+    line-height: 28px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.75px;
+    text-align: center;
+}
+
+.bannerImage {
     margin-top: 221px;
     margin-right: 180px;
-    
-    
-    
 }
 
 .sellBanner {
     margin-top: 142px;
-    width: 1069px;
+    /*width: 1069px;*/
     height: 148px;
     font-weight: 800;
     line-height: 74px;
@@ -123,7 +136,7 @@
     line-height: 60px;
     font-size: 54px;
     font-weight: 700;
-    
+
     color: #FFFFFF;
 }
 
@@ -134,7 +147,6 @@
     font-weight: 400;
     font-style: normal;
 }
-
 
 
 .homeCollection {
@@ -186,18 +198,18 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 26px;
-    
     height: 26px;
-    margin-bottom:56px ;
-    
+    margin-bottom: 56px;
+
 
 }
+
 .carouselQ {
     height: 48px;
     width: 27px;
     background: linear-gradient(to right, #3c1e46, #ae37b6, #634b6f, #c63cce);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+
 }
