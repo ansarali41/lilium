@@ -6,14 +6,12 @@ import Man from '../../assest/images/image 15.png';
 import Image from 'next/image';
 import RightArro from '../../assest/images/r3.png';
 import LeftArro from '../../assest/images/l1.png';
-import { FaQuoteRight, FaQuoteLeft, Faquo } from 'react-icons/fa';
+//import { FaQuoteRight, FaQuoteLeft, Faquo } from 'react-icons/fa';
 const HomeCarousel = () => {
   return (
     <div
       className="container"
       style={{
-        height: '594px',
-        width: '1192px',
         borderRadius: '8px',
         marginTop: '134px',
       }}
@@ -34,11 +32,11 @@ const HomeCarousel = () => {
       <Carousel>
         <div
           style={{
-            width: '1192px',
-            height: '454px',
+            height: '530px',
             // marginTop: '124px',
             borderRadius: '8px',
             padding: '24px',
+            backgroundColor: '#151720',
           }}
         >
           <span style={{ float: 'left' }}>
@@ -51,18 +49,19 @@ const HomeCarousel = () => {
             />
             {/* <FaQuoteLeft className={styles.carouselQ} /> */}
           </span>
-          <br />
+
           <p
             style={{
               fontSize: '36px',
               fontWeight: '700',
               lineHeight: '60px',
+              paddingTop: '54px',
             }}
             className="text-center"
           >
             Lilium is the foundation that builders can build on. [...] If you
             run into trouble at any point, their incredible support team is
-            there to help.”
+            there to <br /> help.”
           </p>
           <span style={{ float: 'right' }}>
             <Image
@@ -92,8 +91,140 @@ const HomeCarousel = () => {
             </p>
           </div>
         </div>
+        <div
+          style={{
+            height: '500px',
+            // marginTop: '124px',
+            borderRadius: '8px',
+            padding: '24px',
+            backgroundColor: '#151720',
+          }}
+        >
+          <span style={{ float: 'left' }}>
+            <Image
+              className={styles.carouselQ}
+              src={LeftArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
+            {/* <FaQuoteLeft className={styles.carouselQ} /> */}
+          </span>
 
-        <div>
+          <p
+            style={{
+              fontSize: '36px',
+              fontWeight: '700',
+              lineHeight: '60px',
+              paddingTop: '54px',
+            }}
+            className="text-center"
+          >
+            Lilium is the foundation that builders can build on. [...] If you
+            run into trouble at any point, their incredible support team is
+            there to <br />
+            help.”
+          </p>
+          <span style={{ float: 'right' }}>
+            <Image
+              className={styles.carouselQ}
+              src={RightArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
+          </span>
+
+          <div className="">
+            <Image
+              src={Man}
+              alt="image1"
+              style={{ height: '132px', width: '132px' }}
+            />
+            <br />
+            <p
+              style={{
+                fontWeight: '400',
+                fontSize: '24px',
+              }}
+              className="legend "
+            >
+              RJ Regenold, CTO @ BOOK.IO
+            </p>
+          </div>
+        </div>
+        <div
+          style={{
+            height: '500px',
+            // marginTop: '124px',
+            borderRadius: '8px',
+            padding: '24px',
+            backgroundColor: '#151720',
+          }}
+        >
+          <span style={{ float: 'left' }}>
+            <Image
+              className={styles.carouselQ}
+              src={LeftArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
+            {/* <FaQuoteLeft className={styles.carouselQ} /> */}
+          </span>
+
+          <p
+            style={{
+              fontSize: '36px',
+              fontWeight: '700',
+              lineHeight: '60px',
+              paddingTop: '54px',
+            }}
+            className="text-center"
+          >
+            Lilium is the foundation that builders can build on. [...] If you
+            run into trouble at any point, their incredible support team is
+            there to <br />
+            help.”
+          </p>
+          <span style={{ float: 'right' }}>
+            <Image
+              className={styles.carouselQ}
+              src={RightArro}
+              alt="working flow"
+              width={72}
+              height={72}
+            />
+          </span>
+
+          <div className="">
+            <Image
+              src={Man}
+              alt="image1"
+              style={{ height: '132px', width: '132px' }}
+            />
+            <br />
+            <p
+              style={{
+                fontWeight: '400',
+                fontSize: '24px',
+              }}
+              className="legend "
+            >
+              RJ Regenold, CTO @ BOOK.IO
+            </p>
+          </div>
+        </div>
+
+        {/* <div
+          style={{
+            height: '500px',
+            // marginTop: '124px',
+            borderRadius: '8px',
+            padding: '24px',
+            backgroundColor: '#151720',
+          }}
+        >
           <span style={{ float: 'left' }}>
             <i class="fa fa-quote-right" aria-hidden="true"></i>
             <Image
@@ -111,7 +242,8 @@ const HomeCarousel = () => {
           >
             Lilium is the foundation that builders can build on. [...] If you
             run into trouble at any point, their incredible support team is
-            there to help.”
+            there to <br />
+            help.”
           </p>
           <Image
             src={Man}
@@ -130,11 +262,11 @@ const HomeCarousel = () => {
           <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
             RJ Regenold, CTO @ BOOK.IO
           </p>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           <span style={{ float: 'left' }}>
             {/* <FaQuoteLeft style={{ height: '48px', width: '27px' }} /> */}
-            <Image
+        {/* <Image
               className={styles.carouselQ}
               src={LeftArro}
               alt="working flow"
@@ -157,7 +289,7 @@ const HomeCarousel = () => {
           />
           <span style={{ float: 'right' }}>
             {/* <FaQuoteRight className={styles.carouselQ} /> */}
-            <Image
+        {/* <Image
               className={styles.carouselQ}
               src={RightArro}
               alt="working flow"
@@ -167,8 +299,8 @@ const HomeCarousel = () => {
           </span>
           <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
             RJ Regenold, CTO @ BOOK.IO
-          </p>
-        </div>
+          </p> */}
+        {/* </div>  */}
       </Carousel>
     </div>
   );
