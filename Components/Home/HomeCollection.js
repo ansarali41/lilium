@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
-import navStyle from '../../styles/navbar.module.css';
 import Link from 'next/link';
 
 const HomeCollection = () => {
   return (
     <div className={styles.homeCollection}>
-      <div className="pt-5">
+      <div className='pt-5'>
         <h1 className={styles.homeCollectionHeader}>
-          Kickstart your NFT collection
-          <br /> with Lilium
+          KICKSTART YOUR NFT COLLECTION
+          <br /> WITH LILIUM
         </h1>
       </div>
 
@@ -18,12 +17,12 @@ const HomeCollection = () => {
         your audience by using our SaaS <br /> solutions to build your own
         custom white label NFT marketplace.
       </p>
-      <div className="text-center">
-        <button className={styles.bannerButtons}>
-          <Link href="/submit" className={navStyle.sideBarLink}>
-            Create collection
-          </Link>
-        </button>
+      <div className='text-center'>
+        <Link href='/submit' className={styles.sideBarLink}>
+          <button className={styles.bannerButtons}>
+            CREATE COLLECTION
+          </button>
+        </Link>
       </div>
     </div>
   );

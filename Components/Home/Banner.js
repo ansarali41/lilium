@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
-import Circle from '../../assest/images/1.jpeg';
+import Frame from '../../assest/images/Frame.svg';
 import Link from 'next/link';
 
 const Banner = () => {
   return (
     <div className={styles.banner}>
-      <div className="row">
-        <div className="col-md-6">
+      <div className='row'>
+        <div className='col-md-6'>
           <h1 className={styles.bannerHeaderText}>
             THE BEST
             <br /> COMMUNITY
@@ -20,15 +20,15 @@ const Banner = () => {
             each your audience by using our SaaS solutions to build your own
             custom white label NFT marketplace.
           </p>
-          <Link href="/submit" className={styles.navLinks}>
+          <Link href='/submit' className={styles.navLinks}>
             <button className={styles.bannerButtons}>
-              <span className={styles.navLinks}>Create Collection</span>
+              <span className={styles.navLinks}>CREATE COLLECTION</span>
             </button>
           </Link>
         </div>
-        <div className="col-md-6">
-          <div className="d-flex justify-content-center">
-            <Image className="img-fluid" src={Circle} alt="circle" />
+        <div className='col-md-6'>
+          <div className='d-flex justify-content-center'>
+            <Image className='img-fluid' src={Frame} alt='circle' />
           </div>
         </div>
       </div>

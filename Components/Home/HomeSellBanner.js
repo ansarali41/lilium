@@ -4,6 +4,7 @@ import Image from 'next/image';
 import shield from '../../assest/images/shield-blue (1).png';
 import bolt from '../../assest/images/bolt (1).png';
 import laptop from '../../assest/images/solid II.png';
+
 const SellBanner = () => {
   return (
     <div className={styles.sellBanner}>
@@ -13,34 +14,34 @@ const SellBanner = () => {
           <br /> YOU WANT
         </h1>
       </div>
-      <div className="row">
-        <div className="col-md-5">
-          <span className={styles.sellBannerHeading}>NFT Sale Platform</span>
+      <div className='row'>
+        <div className='col-md-5'>
+          <span className={styles.sellBannerHeading}>NFT SALE PLATFORM</span>
           <h2 className={styles.sellBannerHeaderText}>
             We do the tech, so you
             <br /> can focus on the <br /> quality of your content
           </h2>
-          <div className="d-flex justify-content-start">
+          <div className='d-flex justify-content-start'>
             <div style={{ marginRight: '29px' }}>
-              <Image src={shield} alt="" />
+              <Image src={shield} alt='' />
               <p style={{ paddingTop: '30px' }}>Protected by smart contracts</p>
               <p style={{ color: '#C2C3C5' }}>Powered by Ergo Blockchain</p>
             </div>
             <div>
-              <Image src={bolt} alt="" />
-              <p style={{ paddingTop: '30px' }} className="text-light">
+              <Image src={bolt} alt='' />
+              <p style={{ paddingTop: '30px' }} className='text-light'>
                 Hassle Free
               </p>
               <p style={{ color: '#C2C3C5' }}>Get setup in a few clicks</p>
             </div>
           </div>
         </div>
-        <div className="col-md-6">
+        <div className='col-md-6'>
           <Image
-            className="img-fluid"
+            className='img-fluid'
             style={{ paddingTop: '64px' }}
             src={laptop}
-            alt="man"
+            alt='man'
           />
         </div>
       </div>

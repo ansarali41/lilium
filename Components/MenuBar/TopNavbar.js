@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import "./MenuBar.css";
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { ErgoDappConnector } from '../Requirements';
 import Link from 'next/link';

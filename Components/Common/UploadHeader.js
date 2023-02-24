@@ -9,7 +9,7 @@ const UploadHeader = () => {
       <ul className={submitStyles.list}>
         <li className={submitStyles.listLinks}>
           <Link href='/submit' className={navStyle.sideBarLink}>
-            Create collection
+            CREATE COLLECTION
           </Link>
         </li>
         <li className={submitStyles.listLinks}>

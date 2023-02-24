@@ -4,7 +4,7 @@
 
 .navLinks {
     font-weight: 800;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 27.61px;
     color: white;
     text-decoration: none;
@@ -21,9 +21,10 @@
     text-decoration: none;
     color: white;
 }
-.banner{
+
+.banner {
     padding-left: 48px;
-    padding-top: 203px;
+    padding-top: 100px;
 }
 
 .sideBarLink:hover {
@@ -46,7 +47,7 @@
 }
 
 .bannerHeaderText {
-   
+
     width: 743px;
     height: 296px;
     font-style: normal;
@@ -62,7 +63,7 @@
 
 .bannerText {
     padding-top: 32px;
-    
+
     height: 144px;
     font-family: 'Inter';
     font-weight: 500;
@@ -75,7 +76,7 @@
 .bannerButtons {
     margin-top: 32px;
     background-color: #E041E7;
-    width: 306px;
+    width: 320px;
     height: 64px;
     padding: 18px 32px 18px 32px;
     gap: 16px;
@@ -92,7 +93,7 @@
 .bannerButtons:hover {
     margin-top: 32px;
     background-color: #E041E7;
-    width: 306px;
+    width: 320px;
     height: 64px;
     padding: 18px 32px 18px 32px;
     gap: 16px;
@@ -120,7 +121,8 @@
     color: #FFFFFF; */
     /* margin-left: 50px; */
 }
-.sellBannerHeader{
+
+.sellBannerHeader {
     /* font-weight: 800px;
     line-height: 74px;
     font-size: 64px;
@@ -128,10 +130,9 @@
     color: #FFFFFF;
     font-size: 64px;
     line-height: 74px;
-    font-weight:  800px ;
+    font-weight: 800;
     font-style: normal;
     text-align: center;
-    
 
 
 }
@@ -139,7 +140,6 @@
 .sellBannerHeading {
     padding-top: 124px;
     color: #FDD200;
-    letter-spacing: 0.2px;
     font-weight: 700;
     font-size: 18px;
     font-style: normal;
@@ -197,7 +197,7 @@
 
 .homeWorkText {
     margin-top: 145px;
-    margin-bottom: 124px;
+    margin-bottom: 60px;
     color: #FFFFFF;
     font-size: 64px;
     line-height: 74px;
@@ -205,12 +205,15 @@
     font-style: normal;
 }
 
+.lightIconStyle {
+    margin-right: 30px;
+}
+
 .homeFooter {
     padding-left: 74px;
     padding-right: 74px;
     padding-bottom: 56px;
-   
-    background-color: #334958;
+    background-color: #212C39;
 }
 
 .homeFooterText {

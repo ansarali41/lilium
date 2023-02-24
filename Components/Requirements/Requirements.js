@@ -375,7 +375,7 @@ export const ErgoDappConnector = props => {
                                 fontFamily: 'Akira Expanded',
                                 fontWeight: 800,
                                 fontSize: 16,
-                              }}>Connect Wallet</span>
+                              }}>CONNECT WALLET</span>
                             )}
                         </span>
           </div>

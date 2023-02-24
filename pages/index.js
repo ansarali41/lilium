@@ -11,12 +11,9 @@ export default function Home() {
   return (
     <div className={styles.body}>
       <NavContainer />
-      {/*<Header />*/}
       <Banner />
       <SellBanner />
       <HomeWork />
-      {/*<HomeLastPart />*/}
-      {/* <Carousel /> */}
       <HomeCarousel />
       <HomeCollection />
       <HomeFooter />

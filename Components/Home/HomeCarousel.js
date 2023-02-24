@@ -10,7 +10,7 @@ import LeftArro from '../../assest/images/l1.png';
 const HomeCarousel = () => {
   return (
     <div
-      className="container"
+      className='container'
       style={{
         borderRadius: '8px',
         marginTop: '134px',
@@ -23,17 +23,17 @@ const HomeCarousel = () => {
           lineHeight: '74px',
           fontWeight: '800',
           padding: '24px',
+          marginBottom: '60px',
         }}
-        className="text-center"
+        className='text-center'
       >
         WHAT OTHERS SAY
       </h2>
 
-      <Carousel>
+      <Carousel showThumbs={false}>
         <div
           style={{
             height: '530px',
-            // marginTop: '124px',
             borderRadius: '8px',
             padding: '24px',
             backgroundColor: '#151720',
@@ -43,7 +43,7 @@ const HomeCarousel = () => {
             <Image
               className={styles.carouselQ}
               src={LeftArro}
-              alt="working flow"
+              alt='working flow'
               width={72}
               height={72}
             />
@@ -57,26 +57,26 @@ const HomeCarousel = () => {
               lineHeight: '60px',
               paddingTop: '54px',
             }}
-            className="text-center"
+            className='text-center'
           >
             Lilium is the foundation that builders can build on. [...] If you
-            run into trouble at any point, their incredible support team is
+            run <br /> into trouble at any point, their incredible support team is
             there to <br /> help.”
           </p>
           <span style={{ float: 'right' }}>
             <Image
               className={styles.carouselQ}
               src={RightArro}
-              alt="working flow"
+              alt='working flow'
               width={72}
               height={72}
             />
           </span>
 
-          <div className="">
+          <div className=''>
             <Image
               src={Man}
-              alt="image1"
+              alt='image1'
               style={{ height: '132px', width: '132px' }}
             />
             <br />
@@ -85,7 +85,7 @@ const HomeCarousel = () => {
                 fontWeight: '400',
                 fontSize: '24px',
               }}
-              className="legend"
+              className='legend'
             >
               RJ Regenold, CTO @ BOOK.IO
             </p>
@@ -104,7 +104,7 @@ const HomeCarousel = () => {
             <Image
               className={styles.carouselQ}
               src={LeftArro}
-              alt="working flow"
+              alt='working flow'
               width={72}
               height={72}
             />
@@ -118,7 +118,7 @@ const HomeCarousel = () => {
               lineHeight: '60px',
               paddingTop: '54px',
             }}
-            className="text-center"
+            className='text-center'
           >
             Lilium is the foundation that builders can build on. [...] If you
             run into trouble at any point, their incredible support team is
@@ -129,16 +129,16 @@ const HomeCarousel = () => {
             <Image
               className={styles.carouselQ}
               src={RightArro}
-              alt="working flow"
+              alt='working flow'
               width={72}
               height={72}
             />
           </span>
 
-          <div className="">
+          <div className=''>
             <Image
               src={Man}
-              alt="image1"
+              alt='image1'
               style={{ height: '132px', width: '132px' }}
             />
             <br />
@@ -147,7 +147,7 @@ const HomeCarousel = () => {
                 fontWeight: '400',
                 fontSize: '24px',
               }}
-              className="legend "
+              className='legend '
             >
               RJ Regenold, CTO @ BOOK.IO
             </p>
@@ -166,7 +166,7 @@ const HomeCarousel = () => {
             <Image
               className={styles.carouselQ}
               src={LeftArro}
-              alt="working flow"
+              alt='working flow'
               width={72}
               height={72}
             />
@@ -180,7 +180,7 @@ const HomeCarousel = () => {
               lineHeight: '60px',
               paddingTop: '54px',
             }}
-            className="text-center"
+            className='text-center'
           >
             Lilium is the foundation that builders can build on. [...] If you
             run into trouble at any point, their incredible support team is
@@ -191,16 +191,16 @@ const HomeCarousel = () => {
             <Image
               className={styles.carouselQ}
               src={RightArro}
-              alt="working flow"
+              alt='working flow'
               width={72}
               height={72}
             />
           </span>
 
-          <div className="">
+          <div className=''>
             <Image
               src={Man}
-              alt="image1"
+              alt='image1'
               style={{ height: '132px', width: '132px' }}
             />
             <br />
@@ -209,7 +209,7 @@ const HomeCarousel = () => {
                 fontWeight: '400',
                 fontSize: '24px',
               }}
-              className="legend "
+              className='legend '
             >
               RJ Regenold, CTO @ BOOK.IO
             </p>
