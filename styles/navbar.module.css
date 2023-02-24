@@ -21,6 +21,10 @@
     text-decoration: none;
     color: white;
 }
+.banner{
+    padding-left: 48px;
+    padding-top: 203px;
+}
 
 .sideBarLink:hover {
     font-size: 20px;
@@ -42,7 +46,7 @@
 }
 
 .bannerHeaderText {
-    margin-top: 203px;
+   
     width: 743px;
     height: 296px;
     font-style: normal;
@@ -57,13 +61,13 @@
 }
 
 .bannerText {
-    margin-top: 32px;
-    width: 680px;
+    padding-top: 32px;
+    
     height: 144px;
     font-family: 'Inter';
     font-weight: 500;
     font-size: 24px;
-    line-height: 150%;
+    line-height: 36px;
     color: #FFFFFF;
     /*padding-top: 328;*/
 }
@@ -101,25 +105,39 @@
     text-align: center;
 }
 
-.bannerImage {
+/* .bannerImage {
     margin-top: 221px;
     margin-right: 180px;
-}
+} */
 
 .sellBanner {
-    margin-top: 142px;
+    margin-top: 140px;
+    padding-left: 80px;
     /*width: 1069px;*/
-    height: 148px;
-    font-weight: 800;
+    /* height: 148px; */
+    /* 
+   
+    color: #FFFFFF; */
+    /* margin-left: 50px; */
+}
+.sellBannerHeader{
+    /* font-weight: 800px;
     line-height: 74px;
     font-size: 64px;
-    text-align: center;
+    text-align: center; */
     color: #FFFFFF;
-    margin-left: 50px;
+    font-size: 64px;
+    line-height: 74px;
+    font-weight:  800px ;
+    font-style: normal;
+    text-align: center;
+    
+
+
 }
 
 .sellBannerHeading {
-    margin-top: 124px;
+    padding-top: 124px;
     color: #FDD200;
     letter-spacing: 0.2px;
     font-weight: 700;
@@ -129,12 +147,12 @@
 
 .sellBannerHeaderText {
 
-    margin-top: 15px;
+    margin-top: 32px;
     margin-bottom: 33px;
-    width: 616px;
-    height: 180px;
-    line-height: 60px;
-    font-size: 54px;
+    /* width: 616px;
+    height: 180px; */
+    line-height: 40px;
+    font-size: 30px;
     font-weight: 700;
 
     color: #FFFFFF;
@@ -151,8 +169,7 @@
 
 .homeCollection {
     margin-top: 180px;
-    width: 1512px;
-    height: 496px;
+    padding-bottom: 89px;
     background: linear-gradient(153.13deg, #E041E7 -58.04%, rgba(224, 65, 231, 0) 115.41%);
 }
 
@@ -167,10 +184,12 @@
 }
 
 .homeCollectionText {
-    margin-top: 32px;
-    margin-bottom: 32px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 126px;
+    padding-right: 126px;
     font-weight: 500;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 36px;
     text-align: center;
     color: #FFFFFF;
@@ -187,9 +206,10 @@
 }
 
 .homeFooter {
-    height: 417px;
-    width: 1512px;
-    opacity: 50%;
+    padding-left: 74px;
+    padding-right: 74px;
+    padding-bottom: 56px;
+   
     background-color: #334958;
 }
 
@@ -199,7 +219,7 @@
     font-size: 12px;
     line-height: 26px;
     height: 26px;
-    margin-bottom: 56px;
+    /* margin-bottom: 56px; */
 
 
 }
