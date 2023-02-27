@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import UploadHeader from '../Common/UploadHeader';
 import uploadStyles from '../../styles/Upload.module.css';
 import submitStyles from '../../styles/Submit.module.css';
-import { Button } from 'react-bootstrap';
 import { FaRegDotCircle } from 'react-icons/fa';
 import ProgressBar from './ProgressBar';
 import DatePicker from 'react-datepicker';
@@ -134,6 +133,8 @@ const Submit = () => {
             placeholder='Collection Category'
             required
           />
+
+
           <input
             name='collectionLogoUrl'
             className={`${inputStyle} w-100`}
@@ -288,7 +289,7 @@ const Submit = () => {
           </div>
         </div>
         <div className={` ${uploadStyles.button} d-flex justify-content-center`}>
-          <Button type='submit' className={submitStyles.nextButton}>NEXT</Button>
+          <button type='submit' className={submitStyles.nextButton}>NEXT</button>
         </div>
       </form>
     </section>
