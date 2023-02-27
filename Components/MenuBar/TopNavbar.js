@@ -50,17 +50,17 @@ export default function App({ ergopay }) {
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'></Nav>
             <Nav className={styles.navContainer}>
-              <Nav.Link href='#home' className='nav-button'>
-                <Link href='/' className={styles.navLinks}>
-                  <Image
-                    src={lightIcon}
-                    alt='Picture of the author'
-                    className={styles.lightIconStyle}
-                    width={32}
-                    height={32}
-                  />
-                </Link>
-              </Nav.Link>
+              {/*<Nav.Link href='#home' className='nav-button'>*/}
+              <Link href='/' className={styles.navLinks}>
+                <Image
+                  src={lightIcon}
+                  alt='Picture of the author'
+                  className={styles.lightIconStyle}
+                  width={32}
+                  height={32}
+                />
+              </Link>
+              {/*</Nav.Link>*/}
             </Nav>
             {walletButton}
           </Navbar.Collapse>
