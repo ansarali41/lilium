@@ -1,27 +1,27 @@
 .uploadContainer {
-  background-color: rgba(26, 27, 34, 1);
-  /* margin: 0 auto; */
-  padding: 48px 120px;
-  border-radius: 8px;
+    background-color: rgba(26, 27, 34, 1);
+    /* margin: 0 auto; */
+    padding: 48px 80px;
+    border-radius: 8px;
 }
 
 .addFileBox {
-  background: linear-gradient(
-    136.3deg,
-    #e041e7 2.17%,
-    rgba(224, 65, 231, 0) 100%
-  );
-  border: 1px dashed #a0a3a7;
-  height: 238px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
+    background: linear-gradient(
+            136.3deg,
+            #e041e7 2.17%,
+            rgba(224, 65, 231, 0) 100%
+    );
+    border: 1px dashed #a0a3a7;
+    height: 238px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
 }
 
-.button{
-  margin-bottom: 100px;
+.button {
+    margin-bottom: 100px;
 }
 
 

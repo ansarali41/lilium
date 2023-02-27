@@ -10,14 +10,16 @@ const HomeFooter = () => {
   return (
     <div className={styles.homeFooter}>
       <div className='text-center pt-5'>
-        <Image
-          className='img-fluid'
-          src={Flower}
-          alt='flower'
-          width={187}
-          height={138}
-        />
-        <div style={{ paddingTop: '59px', paddingBottom: '30px' }}>
+        <div className='d-flex justify-content-center'>
+          <Image
+            className='img-fluid'
+            src={Flower}
+            alt='flower'
+            width={187}
+            height={138}
+          />
+        </div>
+        <div style={{ paddingTop: '59px', paddingBottom: '30px' }} className='d-flex justify-content-center'>
           <Image
             style={{ marginRight: '18px', cursor: 'pointer' }}
             src={twitter}

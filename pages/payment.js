@@ -17,7 +17,7 @@ const Payment = () => {
     <div className={styles.body}>
       <NavContainer />
 
-      <div className='row px-5'>
+      <div className='row px-3'>
         <UploadHeader />
         <div className={`${uploadStyles.uploadContainer} col-12 col-md-8 mb-5`}>
           <h1>CHECKOUT</h1>

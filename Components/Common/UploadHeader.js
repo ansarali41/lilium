@@ -2,14 +2,12 @@ import React from 'react';
 import submitStyles from '../../styles/Submit.module.css';
 import navStyle from '../../styles/navbar.module.css';
 import Link from 'next/link';
-import { useLocation, useParams } from 'react-router-dom';
 import { useRouter } from 'next/router';
 
 const UploadHeader = () => {
   const { pathname } = useRouter();
-  console.log(pathname);
   return (
-    <div className='col-12 col-md-2'>
+    <div className='col-6 col-md-3'>
       <ul className={submitStyles.list}>
         <li className={submitStyles.listLinks}>
           {pathname === '/submit' ?

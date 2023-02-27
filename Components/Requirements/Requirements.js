@@ -4,12 +4,12 @@ import { Menu, Transition } from '@headlessui/react';
 import wallet_black from '../../public/wallet_logo_dark.png';
 import wallet_white from '../../public/wallet_logo_light.png';
 import WalletHover from '../WalletHover/WalletHover';
-// import '../../styles.css';
 import NautilusLogo from '../../public/NautilusLogo.png';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ergoPayLogo from '../../public/ergo-icon.png';
 import Image from 'next/image';
+import commonStyle from '../../styles/common.module.css';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -245,9 +245,9 @@ export const ErgoDappConnector = props => {
   };
 
   return (
-    <div className='package-container'>
+    <div className={commonStyle.packageContainer}>
       {showSelector && (
-        <Menu as='div' className='mainDiv'>
+        <Menu as='div' className={commonStyle.mainDiv}>
           <Transition
             show={open}
             as={Fragment}
@@ -258,13 +258,13 @@ export const ErgoDappConnector = props => {
             leaveFrom='transform opacity-100 scale-100'
             leaveTo='transform opacity-0 scale-95'
           >
-            <Menu.Items className='mainMenuItem'>
-              <div className='mainMenuDiv'>
+            <Menu.Items className={commonStyle.mainMenuItem}>
+              <div className={commonStyle.mainMenuDiv}>
                 <Menu.Item onClick={connectNautilus}>
                   {({ active }) => (
                     <a
                       href='#'
-                      className={classNames(active ? 'item1' : 'item2', 'item3')}
+                      className={classNames(active ? commonStyle.item1 : commonStyle.item2, commonStyle.item3)}
                       style={{
                         fontFamily: 'Oxanium',
                       }}
@@ -275,7 +275,7 @@ export const ErgoDappConnector = props => {
                                               }}
                                             ></span>
                       <Image alt='img' src={NautilusLogo} width='30' height='30' />
-                      <span className='NautilusLogoStyle'></span>
+                      <span className={commonStyle.NautilusLogoStyle}></span>
                       Nautilus
                     </a>
                   )}
@@ -284,7 +284,7 @@ export const ErgoDappConnector = props => {
                   {({ active }) => (
                     <a
                       href='#'
-                      className={classNames(active ? 'item1' : 'item2', 'item3')}
+                      className={classNames(active ? commonStyle.item1 : commonStyle.item2, commonStyle.item3)}
                       style={{
                         fontFamily: 'Oxanium',
                       }}
@@ -295,7 +295,7 @@ export const ErgoDappConnector = props => {
                                               }}
                                             ></span>
                       <Image alt='img' src={ergoPayLogo} width='30' height='30' />
-                      <span className='ergoPayLogo'></span>
+                      <span className={commonStyle.ergoPayLogo}></span>
                       ErgoPay
                     </a>
                   )}
@@ -306,9 +306,9 @@ export const ErgoDappConnector = props => {
         </Menu>
       )}
 
-      <div id='header-wallet-wrapper' onClick={handleWalletTrue}>
+      <div className={commonStyle.headerWalletWrapper} onClick={handleWalletTrue}>
         <div
-          id='header-wallet'
+          className={commonStyle.headerWallet}
           style={{
             backgroundColor: '#E041E7',
             display: 'flex',
@@ -322,9 +322,9 @@ export const ErgoDappConnector = props => {
           {!walletConnected && (
             <Image style={{ marginRight: 16 }} height='25' width='30' alt='wallet'
                    src={colorStylingArray[color][1] == 'white' ? wallet_white : wallet_black}
-                   id='header-wallet-image' />
+                   className={commonStyle.headerWalletImage} />
           )}
-          <div id='wallet-connect'>
+          <div className={commonStyle.walletConnect}>
                         <span
                           style={{
                             fontFamily: 'Oxanium',
@@ -353,7 +353,7 @@ export const ErgoDappConnector = props => {
                                           alt='img'
                                           height='20'
                                           width='20'
-                                          className='logosStyle'
+                                          className={commonStyle.logosStyle}
                                           src={localStorage.getItem('walletUsed') == 'nautilus' ? NautilusLogo : ergoPayLogo}
                                         />
                                         <span
