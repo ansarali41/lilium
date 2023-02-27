@@ -9,11 +9,12 @@ const DragAndDrop = () => {
     setFile(file);
   };
   return (
-    <FileUploader handleChange={handleChange} name='file'
-                  label='Add Files'
-                  onSelect={((file) => console.log(file.name))}
-                  children={<UploadInputBox />
-                  }
+    <FileUploader
+      handleChange={handleChange}
+      name='file'
+      label='Add Files'
+      onSelect={((file) => console.log(file.name))}
+      children={<UploadInputBox />}
     />
   );
 };

@@ -12,7 +12,9 @@ const Upload = () => {
   return (
     <div className='row px-3'>
       <UploadHeader />
-      <div className={`col-12 col-md-8`}><DragAndDrop /></div>
+      <div className={`col-12 col-md-8`}>
+        <DragAndDrop />
+      </div>
 
 
     </div>

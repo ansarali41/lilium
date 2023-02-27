@@ -30,14 +30,14 @@ const UploadInputBox = () => {
             Add files
           </button>
         </div>
+        <p className={submitStyles.fileType}>File type: Json</p>
       </div>
-      <div className={`d-flex justify-content-center`}>
 
+      <div className={`d-flex justify-content-center`}>
         <div className={` d-flex justify-content-center`}>
           <Link href='/payment' className={navStyle.navLinks}>
             <button type='submit' className={submitStyles.nextButton}>NEXT</button>
           </Link>
-
         </div>
       </div>
 
