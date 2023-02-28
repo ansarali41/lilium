@@ -1,0 +1,139 @@
+import React, { useEffect, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import uploadStyles from '../../styles/Upload.module.css';
+import submitStyles from '../../styles/Submit.module.css';
+import Image from 'next/image';
+import Link from 'next/link';
+import navStyle from '../../styles/navbar.module.css';
+
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 10,
+};
+
+const thumb = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  // border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: 350,
+  height: 220,
+  padding: 4,
+  boxSizing: 'border-box',
+  justifyContent: 'center',
+};
+
+const thumbInner = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden',
+  alignItems: 'center',
+};
+//
+// const img = {
+//   display: 'block',
+//   width: 'auto',
+//   height: '100%',
+// };
+
+
+const Previews = (props) => {
+  const [files, setFiles] = useState([]);
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      'image/*': [],
+    },
+    onDrop: acceptedFiles => {
+      setFiles(acceptedFiles.map(file => Object.assign(file, {
+        preview: URL.createObjectURL(file),
+      })));
+    },
+  });
+
+  const thumbs = files.map(file => (
+    <div style={thumb} key={file.name}>
+      <div style={thumbInner}>
+        <Image
+          src={file.preview}
+          alt='uploaded file'
+          width={300}
+          height={200}
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+        />
+      </div>
+    </div>
+  ));
+
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
+  }, []);
+  console.log('uploaded file:', thumbs);
+  return (
+    <div>
+      <section className={`${uploadStyles.uploadContainer}`}>
+        <h1 className={submitStyles.title}>UPLOAD FILE</h1>
+        <hr style={{
+          marginTop: 30, color: '#E0E0E0',
+        }} />
+        <p style={{
+          fontFamily: 'Inter',
+          fontWeight: 600,
+          fontSize: 16,
+          marginTop: 53,
+          marginBottom: 61,
+        }}>Upload the metadata file containing the standard specified <a href='#'>here</a>
+        </p>
+        <div {...getRootProps({ className: 'dropzone' })}>
+          <input {...getInputProps()} />
+
+          {thumbs.length ?
+            <div className={`${uploadStyles.previewFileBox}`}>
+              <aside style={thumbsContainer}>
+                {thumbs}
+              </aside>
+            </div>
+            :
+            <div className={`${uploadStyles.addFileBox}`}>
+
+
+              <div className='flex flex-col items-center justify-center  '>
+                <svg aria-hidden='true' className='w-10 h-10 mb-3 text-yellow-400' fill='none'
+                     stroke='currentColor'
+                     viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                        d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'></path>
+                </svg>
+              </div>
+              <p className='text-center text-warning '>Drag and drop any files <br /> here, or click below
+                to <br /> browse.
+              </p>
+              <button
+                className='bg-white hover:bg-white-700 text-black font-bold py-2 px-4 rounded-2xl'>
+                Add files
+              </button>
+
+            </div>}
+        </div>
+
+        <p className={submitStyles.fileType}>File type: Json</p>
+      </section>
+      <div className={`d-flex justify-content-center`}>
+        <div className={` d-flex justify-content-center`}>
+          <Link href='/payment' className={navStyle.navLinks}>
+            <button type='submit' className={submitStyles.nextButton}>NEXT</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+
+  );
+};
+export default Previews;
+

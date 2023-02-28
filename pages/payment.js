@@ -18,7 +18,7 @@ const Payment = () => {
       <NavContainer />
       <div className='row px-3'>
         <SideBar />
-        <div className={`${uploadStyles.uploadContainer} col-12 col-md-8 mb-5`}>
+        <div className={`${uploadStyles.uploadContainer} col-12 col-md-7 mb-5`}>
           <h1>CHECKOUT</h1>
           {/*1st item*/}
           <div className='d-flex align-items-center justify-content-between' style={{ marginTop: 40 }}>
