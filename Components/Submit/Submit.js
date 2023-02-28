@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import UploadHeader from '../Common/UploadHeader';
+import SideBar from '../Common/SideBar';
 import uploadStyles from '../../styles/Upload.module.css';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
@@ -112,7 +112,7 @@ const Submit = () => {
 
   return (
     <section className='row px-3 '>
-      <UploadHeader />
+      <SideBar />
       <form onSubmit={handleForm} id='myForm' className={`col-12 col-md-8`}>
 
         <div className={uploadStyles.uploadContainer}>

@@ -4,7 +4,7 @@ import navStyle from '../../styles/navbar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const UploadHeader = () => {
+const SideBar = () => {
   const { pathname } = useRouter();
   return (
     <div className='col-6 col-md-3'>
@@ -42,4 +42,4 @@ const UploadHeader = () => {
   );
 };
 
-export default UploadHeader;
+export default SideBar;
