@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from '../styles/Home.module.css';
-import Submit from '../Components/Submit/Submit';
 import HomeFooter from '../Components/Home/HomeFooter';
 import NavContainer from '../Components/navContainer/NavContainer';
+import CreateCollection from '../Components/Submit/CreateCollection';
 
 
 const MyComponent = () => {
   return (
     <div className={styles.body}>
       <NavContainer />
-      <Submit />
+      <CreateCollection />
       <HomeFooter />
     </div>
   );
