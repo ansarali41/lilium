@@ -2,7 +2,7 @@ import React from 'react';
 import NavContainer from '../Components/navContainer/NavContainer';
 import HomeFooter from '../Components/Home/HomeFooter';
 import styles from '../styles/Home.module.css';
-import UploadHeader from '../Components/Common/UploadHeader';
+import SideBar from '../Components/Common/SideBar';
 import uploadStyles from '../styles/Upload.module.css';
 import Image from 'next/image';
 import liliumFee from '../assest/images/checkout/lilium-fee.svg';
@@ -16,9 +16,8 @@ const Payment = () => {
   return (
     <div className={styles.body}>
       <NavContainer />
-
       <div className='row px-3'>
-        <UploadHeader />
+        <SideBar />
         <div className={`${uploadStyles.uploadContainer} col-12 col-md-8 mb-5`}>
           <h1>CHECKOUT</h1>
           {/*1st item*/}
