@@ -38,7 +38,7 @@ const Submit = () => {
           placeholder="enter social name ex: Twitter'"
         />
       </div>
-      <div className='col-12 col-md-8 '>
+      <div className='col-12 col-md-7 '>
         <input
           name=''
           className={`${inputStyle} w-100`}
@@ -111,9 +111,9 @@ const Submit = () => {
   };
 
   return (
-    <section className='row px-3 '>
+    <section className='row px-3'>
       <SideBar />
-      <form onSubmit={handleForm} id='myForm' className={`col-12 col-md-8`}>
+      <form onSubmit={handleForm} id='myForm' className={`col-12 col-md-7`}>
 
         <div className={uploadStyles.uploadContainer}>
           <h1 className={submitStyles.title}>CREATE YOUR COLLECTIONS</h1>
@@ -187,7 +187,7 @@ const Submit = () => {
                 placeholder='enter social name ex: Twitter'
               />
             </div>
-            <div className='col-12 col-md-8'>
+            <div className='col-12 col-md-7'>
               <input
                 name='socialLink2'
                 className={`${inputStyle} w-100`}
