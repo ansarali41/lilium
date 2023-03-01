@@ -20,7 +20,7 @@ const Banner = () => {
             each your audience by using our SaaS solutions to build your own
             custom white label NFT marketplace.
           </p>
-          <Link href='/submit' className={styles.navLinks}>
+          <Link href='/create-collection' className={styles.navLinks}>
             <button className={styles.bannerButtons}>
               <span className={styles.navLinks}>CREATE COLLECTION</span>
             </button>

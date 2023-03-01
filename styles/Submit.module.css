@@ -32,7 +32,6 @@
 
 .fileType {
     margin-top: 9px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -40,31 +39,57 @@
     color: #8A8D90;
 }
 
+.createCollectionContainer {
+    background-color: rgba(26, 27, 34, 1);
+    padding: 48px 80px;
+    border-radius: 8px;
+}
+
 .title {
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 800;
     text-transform: uppercase;
 }
 
 .subTitle {
-    font-size: 32px;
     font-weight: 800;
-    line-height: 46px;
-    letter-spacing: 0em;
-    text-align: left;
+    font-size: 24px;
     text-transform: uppercase;
-    margin: 32px 0;
+    margin-top: 32px;
+    margin-bottom: 27px;
+}
+
+.mintTitle {
+    font-weight: 800;
+    font-size: 23px;
+    text-transform: uppercase;
 }
 
 .text {
-    font-size: 18px;
-    font-family: 'Inter', sans-serif;
-    line-height: 32px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin-top: 13px;
+    margin-bottom: 32px;
 }
 
 .mintText {
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid;
+    margin-left: 28px;
+    border-radius: 8px;
+    padding: 16px 10px;
+    font-weight: 200;
+    background: rgba(26, 27, 34, 1);
+    color: white;
+    appearance: none;
+    margin-right: 20px;
+    max-width: 150px;
+}
+
+.mintButton {
+    font-size: 16px;
     line-height: 24px;
     border: 1px solid;
     margin-left: 28px;
@@ -76,14 +101,13 @@
     appearance: none;
 }
 
+
 .timePicker {
-    font-size: 22px;
-    font-family: 'Inter', sans-serif;
+    font-size: 16px;
     line-height: 24px;
-    width: 250px;
     border: 1px solid;
     border-radius: 8px;
-    padding: 16px 24px;
+    padding: 10px 10px;
     font-weight: 200;
     background: rgba(26, 27, 34, 1);
     color: white;
@@ -107,10 +131,11 @@
 
 .button {
     background: #FFD363;
-    border: 1px solid #FFFFFF;
+    border: 1px solid black;
     border-radius: 4px;
-    padding: 18px 32px;
-    width: 220px;
+    padding: 14px 28px;
+    color: black;
+    margin-top: 32px;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 14px;
 }

@@ -18,7 +18,7 @@ const HomeCollection = () => {
         custom white label NFT marketplace.
       </p>
       <div className='text-center'>
-        <Link href='/submit' className={styles.sideBarLink}>
+        <Link href='/create-collection' className={styles.sideBarLink}>
           <button className={styles.bannerButtons}>
             CREATE COLLECTION
           </button>

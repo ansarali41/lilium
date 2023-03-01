@@ -10,11 +10,11 @@ const SideBar = () => {
     <div className='col-6 col-md-3'>
       <ul className={submitStyles.list}>
         <li className={submitStyles.listLinks}>
-          {pathname === '/submit' ?
-            <Link href='/submit' className={navStyle.sideBarLink} style={{ color: '#FFD363' }}>
+          {pathname === '/create-collection' ?
+            <Link href='/create-collection' className={navStyle.sideBarLink} style={{ color: '#FFD363' }}>
               CREATE COLLECTION
             </Link> :
-            <Link href='/submit' className={navStyle.sideBarLink}>
+            <Link href='/create-collection' className={navStyle.sideBarLink}>
               CREATE COLLECTION
             </Link>}
         </li>
