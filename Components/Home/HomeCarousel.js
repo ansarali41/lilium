@@ -2,7 +2,7 @@ import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import styles from '../../styles/navbar.module.css';
-import Man from '../../assest/images/image 15.png';
+import Man from '../../assest/images/image 15.svg';
 import Image from 'next/image';
 import RightArro from '../../assest/images/r3.png';
 import LeftArro from '../../assest/images/l1.png';
@@ -10,7 +10,7 @@ import LeftArro from '../../assest/images/l1.png';
 const HomeCarousel = () => {
   return (
     <div
-      className='container'
+      className="container"
       style={{
         borderRadius: '8px',
         marginTop: '134px',
@@ -25,13 +25,39 @@ const HomeCarousel = () => {
           padding: '24px',
           marginBottom: '60px',
         }}
-        className='text-center'
+        className="text-center"
       >
         WHAT OTHERS SAY
       </h2>
-
-      <Carousel showThumbs={false}>
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
         <div
+          class="carousel-inner"
           style={{
             height: '530px',
             borderRadius: '8px',
@@ -39,269 +65,172 @@ const HomeCarousel = () => {
             backgroundColor: '#151720',
           }}
         >
-          <span style={{ float: 'left' }}>
-            <Image
-              className={styles.carouselQ}
-              src={LeftArro}
-              alt='working flow'
-              width={72}
-              height={72}
-            />
-            {/* <FaQuoteLeft className={styles.carouselQ} /> */}
-          </span>
+          <div class="carousel-item active">
+            <span style={{ float: 'left' }}>
+              <Image
+                className={styles.carouselQ}
+                src={LeftArro}
+                alt="working flow"
+                width={72}
+                height={72}
+              />
+            </span>
 
-          <p
-            style={{
-              fontSize: '36px',
-              fontWeight: '700',
-              lineHeight: '60px',
-              paddingTop: '54px',
-            }}
-            className='text-center'
-          >
-            Lilium is the foundation that builders can build on. [...] If you
-            run <br /> into trouble at any point, their incredible support team is
-            there to <br /> help.”
-          </p>
-          <span style={{ float: 'right' }}>
-            <Image
-              className={styles.carouselQ}
-              src={RightArro}
-              alt='working flow'
-              width={72}
-              height={72}
-            />
-          </span>
-
-          <div className=''>
+            <p
+              style={{
+                fontSize: '36px',
+                fontWeight: '700',
+                lineHeight: '60px',
+                paddingTop: '54px',
+              }}
+              className="text-center"
+            >
+              Lilium is the foundation that builders can build on. [...] If you
+              run into trouble at any point, their incredible support team is
+              there to help.”
+            </p>
+            <span style={{ float: 'right' }}>
+              <Image
+                className={styles.carouselQ}
+                src={RightArro}
+                alt="working flow"
+                width={72}
+                height={72}
+              />
+            </span>
             <Image
               src={Man}
-              alt='image1'
-              style={{ height: '132px', width: '132px' }}
+              style={{ width: '132px', height: '132px' }}
+              class="d-block w-100"
+              alt="..."
             />
-            <br />
+
             <p
+              className="text-center pt-4"
               style={{
                 fontWeight: '400',
                 fontSize: '24px',
               }}
-              className='legend'
+            >
+              RJ Regenold, CTO @ BOOK.IO
+            </p>
+          </div>
+          <div class="carousel-item">
+            <span style={{ float: 'left' }}>
+              <Image
+                className={styles.carouselQ}
+                src={LeftArro}
+                alt="working flow"
+                width={72}
+                height={72}
+              />
+            </span>
+            <p
+              style={{
+                fontSize: '36px',
+                fontWeight: '700',
+                lineHeight: '60px',
+                paddingTop: '54px',
+              }}
+              className="text-center"
+            >
+              Lilium is the foundation that builders can build on. [...] If you
+              run into trouble at any point, their incredible support team is
+              there to help.”
+            </p>
+            <span style={{ float: 'right' }}>
+              <Image
+                className={styles.carouselQ}
+                src={RightArro}
+                alt="working flow"
+                width={72}
+                height={72}
+              />
+            </span>
+            <Image
+              style={{ width: '132px', height: '132px' }}
+              src={Man}
+              class="d-block w-100"
+              alt="..."
+            />
+            <p
+              className="text-center pt-4"
+              style={{
+                fontWeight: '400',
+                fontSize: '24px',
+              }}
+            >
+              RJ Regenold, CTO @ BOOK.IO
+            </p>
+          </div>
+          <div class="carousel-item">
+            <span style={{ float: 'left' }}>
+              <Image
+                className={styles.carouselQ}
+                src={LeftArro}
+                alt="working flow"
+                width={72}
+                height={72}
+              />
+            </span>
+            <p
+              style={{
+                fontSize: '36px',
+                fontWeight: '700',
+                lineHeight: '60px',
+                paddingTop: '54px',
+              }}
+              className="text-center"
+            >
+              Lilium is the foundation that builders can build on. [...] If you
+              run into trouble at any point, their incredible support team is
+              there to help.”
+            </p>
+            <span style={{ float: 'right' }}>
+              <Image
+                className={styles.carouselQ}
+                src={RightArro}
+                alt="working flow"
+                width={72}
+                height={72}
+              />
+            </span>
+            <Image
+              style={{ width: '132px', height: '132px' }}
+              src={Man}
+              class="d-block w-100"
+              alt="..."
+            />
+            <p
+              className="text-center pt-4"
+              style={{
+                fontWeight: '400',
+                fontSize: '24px',
+              }}
             >
               RJ Regenold, CTO @ BOOK.IO
             </p>
           </div>
         </div>
-        <div
-          style={{
-            height: '500px',
-            // marginTop: '124px',
-            borderRadius: '8px',
-            padding: '24px',
-            backgroundColor: '#151720',
-          }}
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
         >
-          <span style={{ float: 'left' }}>
-            <Image
-              className={styles.carouselQ}
-              src={LeftArro}
-              alt='working flow'
-              width={72}
-              height={72}
-            />
-            {/* <FaQuoteLeft className={styles.carouselQ} /> */}
-          </span>
-
-          <p
-            style={{
-              fontSize: '36px',
-              fontWeight: '700',
-              lineHeight: '60px',
-              paddingTop: '54px',
-            }}
-            className='text-center'
-          >
-            Lilium is the foundation that builders can build on. [...] If you
-            run into trouble at any point, their incredible support team is
-            there to <br />
-            help.”
-          </p>
-          <span style={{ float: 'right' }}>
-            <Image
-              className={styles.carouselQ}
-              src={RightArro}
-              alt='working flow'
-              width={72}
-              height={72}
-            />
-          </span>
-
-          <div className=''>
-            <Image
-              src={Man}
-              alt='image1'
-              style={{ height: '132px', width: '132px' }}
-            />
-            <br />
-            <p
-              style={{
-                fontWeight: '400',
-                fontSize: '24px',
-              }}
-              className='legend '
-            >
-              RJ Regenold, CTO @ BOOK.IO
-            </p>
-          </div>
-        </div>
-        <div
-          style={{
-            height: '500px',
-            // marginTop: '124px',
-            borderRadius: '8px',
-            padding: '24px',
-            backgroundColor: '#151720',
-          }}
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
         >
-          <span style={{ float: 'left' }}>
-            <Image
-              className={styles.carouselQ}
-              src={LeftArro}
-              alt='working flow'
-              width={72}
-              height={72}
-            />
-            {/* <FaQuoteLeft className={styles.carouselQ} /> */}
-          </span>
-
-          <p
-            style={{
-              fontSize: '36px',
-              fontWeight: '700',
-              lineHeight: '60px',
-              paddingTop: '54px',
-            }}
-            className='text-center'
-          >
-            Lilium is the foundation that builders can build on. [...] If you
-            run into trouble at any point, their incredible support team is
-            there to <br />
-            help.”
-          </p>
-          <span style={{ float: 'right' }}>
-            <Image
-              className={styles.carouselQ}
-              src={RightArro}
-              alt='working flow'
-              width={72}
-              height={72}
-            />
-          </span>
-
-          <div className=''>
-            <Image
-              src={Man}
-              alt='image1'
-              style={{ height: '132px', width: '132px' }}
-            />
-            <br />
-            <p
-              style={{
-                fontWeight: '400',
-                fontSize: '24px',
-              }}
-              className='legend '
-            >
-              RJ Regenold, CTO @ BOOK.IO
-            </p>
-          </div>
-        </div>
-
-        {/* <div
-          style={{
-            height: '500px',
-            // marginTop: '124px',
-            borderRadius: '8px',
-            padding: '24px',
-            backgroundColor: '#151720',
-          }}
-        >
-          <span style={{ float: 'left' }}>
-            <i class="fa fa-quote-right" aria-hidden="true"></i>
-            <Image
-              className={styles.carouselQ}
-              src={LeftArro}
-              alt="working flow"
-              width={72}
-              height={72}
-            />
-          </span>
-          <br />
-          <p
-            style={{ fontSize: '36px', fontWeight: '700', lineHeight: '60px' }}
-            className="text-center"
-          >
-            Lilium is the foundation that builders can build on. [...] If you
-            run into trouble at any point, their incredible support team is
-            there to <br />
-            help.”
-          </p>
-          <Image
-            src={Man}
-            alt="image2"
-            style={{ height: '132px', width: '132px' }}
-          />
-          <span style={{ float: 'right' }}>
-            <Image
-              className={styles.carouselQ}
-              src={RightArro}
-              alt="working flow"
-              width={72}
-              height={72}
-            />
-          </span>
-          <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
-            RJ Regenold, CTO @ BOOK.IO
-          </p>
-        </div> */}
-        {/* <div>
-          <span style={{ float: 'left' }}>
-            {/* <FaQuoteLeft style={{ height: '48px', width: '27px' }} /> */}
-        {/* <Image
-              className={styles.carouselQ}
-              src={LeftArro}
-              alt="working flow"
-              width={72}
-              height={72}
-            />
-          </span>
-          <p
-            style={{ fontSize: '36px', fontWeight: '700', lineHeight: '60px' }}
-            className="text-center"
-          >
-            Lilium is the foundation that builders can build on. [...] If you
-            run into trouble at any point, their incredible support team is
-            there to help.”
-          </p>
-          <Image
-            src={Man}
-            alt="image3"
-            style={{ height: '132px', width: '132px' }}
-          />
-          <span style={{ float: 'right' }}>
-            {/* <FaQuoteRight className={styles.carouselQ} /> */}
-        {/* <Image
-              className={styles.carouselQ}
-              src={RightArro}
-              alt="working flow"
-              width={72}
-              height={72}
-            />
-          </span>
-          <p style={{ fontWeight: '400', fontSize: '24px' }} className="legend">
-            RJ Regenold, CTO @ BOOK.IO
-          </p> */}
-        {/* </div>  */}
-      </Carousel>
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   );
 };

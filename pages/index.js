@@ -6,6 +6,7 @@ import HomeCollection from '../Components/Home/HomeCollection';
 import HomeWork from '../Components/Home/HomeWork';
 import HomeCarousel from '../Components/Home/HomeCarousel';
 import NavContainer from '../Components/navContainer/NavContainer';
+import HomeTeam from '../Components/Home/HomeTeam';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <SellBanner />
       <HomeWork />
       <HomeCarousel />
+      <HomeTeam />
       <HomeCollection />
       <HomeFooter />
     </div>
