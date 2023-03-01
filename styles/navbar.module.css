@@ -4,11 +4,9 @@
 
 .navLinks {
     font-weight: 800;
-    font-size: 20px;
-    line-height: 27.61px;
+    font-size: 18px;
     color: white;
     text-decoration: none;
-    margin-right: 10px;
 }
 
 .sideBarLink {
@@ -236,14 +234,16 @@
     background-clip: text;
 
 }
-.homeTeamHeader{
-    color:#FFFFFF;
+
+.homeTeamHeader {
+    color: #FFFFFF;
     margin-top: 91px;
     text-align: center;
     font-weight: 800;
     font-size: 64px;
     line-height: 74px;
 }
-.homeTeamImage{
+
+.homeTeamImage {
     margin-top: 56px;
 }

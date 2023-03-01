@@ -7,8 +7,8 @@ import Link from 'next/link';
 const Banner = () => {
   return (
     <div className={styles.banner}>
-      <div className="row">
-        <div className="col-md-6">
+      <div className='row'>
+        <div className='col-md-6'>
           <h1 className={styles.bannerHeaderText}>
             THE BEST
             <br /> COMMUNITY
@@ -21,15 +21,15 @@ const Banner = () => {
             each your audience by using our SaaS solutions to build your own
             custom white label NFT marketplace.
           </p>
-          <Link href="/submit" className={styles.navLinks}>
+          <Link href='/create-collection' className={styles.navLinks}>
             <button className={styles.bannerButtons}>
               <span className={styles.navLinks}>CREATE COLLECTION</span>
             </button>
           </Link>
         </div>
-        <div className="col-md-6">
-          <div className="d-flex justify-content-center">
-            <Image className="img-fluid" src={Frame} alt="circle" />
+        <div className='col-md-6'>
+          <div className='d-flex justify-content-center'>
+            <Image className='img-fluid' src={Frame} alt='circle' />
           </div>
         </div>
       </div>
