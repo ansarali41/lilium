@@ -21,3 +21,11 @@ a {
 * {
     box-sizing: border-box;
 }
+
+.react-datepicker-wrapper, .react-datepicker__input-container {
+    width: auto !important;
+}
+
+.react-datepicker__month-container {
+    /*background: #6b7280;*/
+}

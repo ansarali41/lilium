@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import SideBar from '../Common/SideBar';
 import uploadStyles from '../../styles/Upload.module.css';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
-import ProgressBar from './ProgressBar';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Slider from '@mui/material/Slider';
+import Image from 'next/image';
+import currencyLogo from '../../assest/images/Ergo_input_logo.svg';
+import Link from 'next/link';
+import navStyle from '../../styles/navbar.module.css';
+import MuiSlider from './MuiSlider';
 
 const CreateCollection = () => {
-  const inputStyle = submitStyles.input;
   const [socialDivs, setSocialDivs] = useState([]);
-  const [address, setAddress] = useState([]);
-  const [progress, setProgress] = useState(0);
   const [minDate, setMinDate] = useState(new Date('2023-02-14'));
   const [maxDate, setMaxDate] = useState(new Date('2023-02-14'));
   const [minTime, setMinTime] = useState('06:00');
   const [maxTime, setMaxTime] = useState('06:00');
+  const [price, setPrice] = useState(50);
+  const [isNeverEx, setIsNeverEx] = useState(false);
+  const [isButton, setIsButton] = useState(null);
+
+
   const [socialInput, setSocialInput] = useState([]);
   const [count, setCount] = useState(3);
 
-  console.log('socialInput', socialInput);
+  const [muiSlider, setMuiSlider] = useState([]);
+  const [muiSliderCount, setMuiSliderCount] = useState(2);
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -29,54 +37,13 @@ const CreateCollection = () => {
     setMaxTime(event.target.value);
   }
 
-
-  // add more button code for social div
-
-  const socialDiv = (
-    <div className='row'>
-      <div className='col-12 col-md-4'>
-        <div className='relative rounded border border-solid border-white mt-8'>
-          <input type='text' id='socialName_1'
-                 name='socialName1'
-                 className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                 placeholder=' ' />
-          <label htmlFor='socialName_1'
-                 className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-            Enter social name ex: Twitter</label>
-        </div>
-      </div>
-      <div className='col-12 col-md-8'>
-        <div className='relative rounded border border-solid border-white mt-8'>
-          <input type='text' id='socialLink_1'
-                 name='socialLink1'
-                 className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                 placeholder=' ' />
-          <label htmlFor='socialLink_1'
-                 className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-            Enter Corresponding Link</label>
-        </div>
-      </div>
-    </div>
-  );
-
   const handleSocialField = () => {
     setCount(count + 1);
     setSocialInput([...socialInput, count]);
   };
-
-  // add more button for address
-
-  const targetAddress = (
-    <input
-      name=''
-      className={`${inputStyle} w-100`}
-      type='text'
-      placeholder='Enter Address'
-    />
-  );
-
   const handleAddress = () => {
-    setAddress([...address, targetAddress]);
+    setMuiSliderCount(muiSliderCount + 1);
+    setMuiSlider([...muiSlider, muiSliderCount]);
   };
 
   // form submission handler
@@ -85,7 +52,7 @@ const CreateCollection = () => {
     e.preventDefault();
     const form = e.target;
 
-    const collectionCategory = form.collectionCategory.value;
+    /*const collectionCategory = form.collectionCategory.value;
     const collectionLogoUrl = form.collectionLogoUrl.value;
     const collectionFeaturedImageUrl = form.collectionFeaturedImageUrl.value;
     const collectionBannerImageUrl = form.collectionBannerImageUrl.value;
@@ -118,7 +85,7 @@ const CreateCollection = () => {
     };
     // const jsondata = JSON.stringify(collectionDetailsData)
     console.log(collectionDetailsData);
-    // document.getElementById('myForm').reset();
+    // document.getElementById('myForm').reset();*/
   };
 
   return (
@@ -229,7 +196,7 @@ const CreateCollection = () => {
             </div>
           </div>
           {socialInput.map((item) => (
-            <div className='row'>
+            <div className='row' key={item}>
               <div className='col-12 col-md-4'>
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialName_${item}`}
@@ -268,33 +235,45 @@ const CreateCollection = () => {
             percentage of the sale <br /> price. You can set the amount here,
             and the payments will execute automatically.
           </p>
-          <div className='d-flex justify-content-between fs-3 mt-5'>
-            <p className=''>Amount</p>
-            {/*<p className=''>{progress} %</p>*/}
-          </div>
-          {/*<ProgressBar progress={progress} setProgress={setProgress} />*/}
-          
-          <div className='relative rounded border border-solid border-white mt-8'>
-            <input type='text' id='EnterAddress1'
-                   name='enterAddress1'
-                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                   placeholder=' ' />
-            <label htmlFor='EnterAddress1'
-                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-              Enter Address</label>
-          </div>
-          {address}
+          <MuiSlider />
+
+          {muiSlider.map((item) => (
+            <div key={item}>
+              <MuiSlider />
+            </div>
+          ))}
+
+
           <button onClick={handleAddress} className={submitStyles.button}>
             Add more
           </button>
           <hr className='my-5' />
-
           {/* MINT PRICE PART START */}
 
           <h2 className={submitStyles.subTitle}>set mint price</h2>
+          <div className='relative rounded border border-solid border-white mt-10 '>
+            <div className='absolute inset-y-0 right-4 flex items-center pl-3 pointer-events-none'>
+              <Image
+                src={currencyLogo}
+                alt='a'
+                width={24}
+                height={24}
+              />
+            </div>
+            <input type='number' id='mint_price'
+                   name='mintPrice'
+                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                   placeholder=' '
+                   value={price}
+                   onChange={(e) => setPrice(e.target.value)} />
 
-          <div className='d-flex justify-content-between align-items-center'>
-            <h2 className={submitStyles.subTitle}>MINT START</h2>
+            <label htmlFor='mint_price'
+                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
+              Price</label>
+          </div>
+
+          <div className='d-flex justify-content-between align-items-center mt-8'>
+            <h2 className={submitStyles.mintTitle}>MINT START</h2>
             <div className='d-flex'>
               <DatePicker name='minStarDate' className={submitStyles.mintText}
                           selected={minDate}
@@ -307,13 +286,13 @@ const CreateCollection = () => {
                 type='time'
                 value={minTime}
                 onChange={handleMinTimeChange}
-                step='600' // this sets the step to 10 minutes (600 seconds)
+                step='600'
               />
 
             </div>
           </div>
-          <div className='d-flex justify-content-between align-items-center'>
-            <h2 className={submitStyles.subTitle}>MINT EXPIRY</h2>
+          <div className='d-flex justify-content-between align-items-center mt-8'>
+            <h2 className={submitStyles.mintTitle}>MINT EXPIRY</h2>
             <div className='d-flex'>
 
               <DatePicker name='max_start_date' className={submitStyles.mintText}
@@ -327,28 +306,83 @@ const CreateCollection = () => {
                 type='time'
                 value={maxTime}
                 onChange={handleMaxTimeChange}
-                step='600' // this sets the step to 10 minutes (600 seconds)
+                step='600'
               />
             </div>
           </div>
 
-          <div className='d-flex '>
-            <FaRegDotCircle className='fs-3 text-primary me-3' />
-            <p className='d-flex align-items-center pt-1 fw-bold'>
-              Never Expire
-            </p>
+          <div>
+            {isNeverEx ?
+              <div className='d-flex' onClick={() => {
+                setIsNeverEx(!isNeverEx);
+                setIsButton(null);
+              }}>
+                <FaRegDotCircle className='fs-3 me-3' style={{ color: '#E041E7' }} />
+                <p className='d-flex align-items-center pt-1 fw-bold'>
+                  Never Expire
+                </p>
+              </div> : <div className='d-flex' onClick={() => setIsNeverEx(!isNeverEx)}>
+                <FaRegDotCircle className='fs-3 text-white me-3' />
+                <p className='d-flex align-items-center pt-1 fw-bold'>
+                  Never Expire
+                </p>
+              </div>}
           </div>
 
+          {/*ON SALE END buttons section */}
           <div className='d-flex justify-content-between align-items-center'>
             <h2 className={submitStyles.subTitle}>ON SALE END</h2>
-            <div className='d-flex'>
-              <p className={submitStyles.mintText}>Collection token Burn</p>
-              <p className={submitStyles.mintText}>Collection token Return</p>
-            </div>
+
+            {isNeverEx ?
+              <div className='d-flex'>
+                <button disabled type='button'
+                        className='cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  Collection token Burn
+                </button>
+                <button disabled type='button'
+                        className=' cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center  mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  Collection token Return
+                </button>
+              </div>
+              :
+
+              <div className='d-flex'>
+                {isButton === 1 ?
+                  <button onClick={() => {
+                    setIsButton(1);
+                  }} type='button'
+                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                    Collection token Burn
+                  </button> :
+                  <button onClick={() => {
+                    setIsButton(1);
+                  }} type='button'
+                          className='text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                    Collection token Burn
+                  </button>}
+
+                {isButton === 2 ?
+                  <button onClick={() => {
+                    setIsButton(2);
+                  }} type='button'
+                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                    Collection token Return
+                  </button> :
+                  <button onClick={() => {
+                    setIsButton(2);
+                  }} type='button'
+                          className=' text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                    Collection token Return
+                  </button>}
+              </div>}
           </div>
         </div>
-        <div className={` ${uploadStyles.button} d-flex justify-content-center`}>
-          <button type='submit' className={submitStyles.nextButton}>NEXT</button>
+        <div className={`d-flex justify-content-center`}>
+          <div className={` d-flex justify-content-center`}>
+            <Link href='/uploads' className={navStyle.navLinks}>
+              <button type='submit' className={submitStyles.nextButton}>NEXT</button>
+            </Link>
+          </div>
         </div>
       </form>
     </section>
