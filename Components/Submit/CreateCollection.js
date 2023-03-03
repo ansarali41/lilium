@@ -9,6 +9,7 @@ import currencyLogo from '../../assest/images/Ergo_input_logo.svg';
 import Link from 'next/link';
 import navStyle from '../../styles/navbar.module.css';
 import MuiSlider from './MuiSlider';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const CreateCollection = () => {
   const [socialDivs, setSocialDivs] = useState([]);
@@ -42,6 +43,13 @@ const CreateCollection = () => {
   const handleAddress = () => {
     setMuiSliderCount(muiSliderCount + 1);
     setMuiSlider([...muiSlider, muiSliderCount]);
+  };
+  const handleDeleteSocialInput = (item) => {
+    const index = socialInput.indexOf(item);
+    if (index > -1) {
+      socialInput.splice(index, 1);
+    }
+    setSocialInput([...socialInput]);
   };
 
   // form submission handler
@@ -197,9 +205,15 @@ const CreateCollection = () => {
             <div className='row' key={item} style={{ position: 'relative' }}>
               <div className='d-flex justify-content-end' style={{
                 top: '20px',
+                left: '10px',
                 position: 'absolute',
+                zIndex: 100,
               }}>
-                <span style={{ marginBottom: '-20px' }}>x</span>
+                <span style={{
+                  background: '#1A1B22',
+                  borderRadius: '50%',
+                  cursor: 'pointer',
+                }}><HighlightOffIcon onClick={() => handleDeleteSocialInput(item)} /></span>
               </div>
               <div className='col-12 col-md-4'>
                 <div className='relative rounded border border-solid border-white mt-8'>
@@ -240,14 +254,13 @@ const CreateCollection = () => {
             percentage of the sale <br /> price. You can set the amount here,
             and the payments will execute automatically.
           </p>
-          <MuiSlider />
+          <MuiSlider showClose={false} />
 
           {muiSlider.map((item) => (
             <div key={item}>
-              <MuiSlider />
+              <MuiSlider showClose={true} muiSliderArray={muiSlider} muiSliderSet={setMuiSlider} id={item} />
             </div>
           ))}
-
 
           <button onClick={handleAddress} className={submitStyles.button}>
             Add more

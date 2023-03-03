@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
-import Frame from '../../assest/images/Frame.svg';
+import Frame from '../../assest/images/llium-assets/Header-SVG.svg';
 import Link from 'next/link';
 
 const Banner = () => {

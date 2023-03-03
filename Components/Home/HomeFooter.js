@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
-import Flower from '../../assest/images/image 9.svg';
+import Flower from '../../assest/images/llium-assets/lilium-simbolo.svg';
 import git from '../../assest/images/github.svg';
 import twitter from '../../assest/images/Twitter.svg';
 import discord from '../../assest/images/Discord.svg';

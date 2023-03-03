@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
-import shield from '../../assest/images/shield-blue (1).png';
-import bolt from '../../assest/images/bolt (1).png';
-import laptop from '../../assest/images/solid II.png';
+import shield from '../../assest/images/llium-assets/shield-blue.svg';
+import bolt from '../../assest/images/llium-assets/bolt.svg';
+import laptop from '../../assest/images/llium-assets/purpleDude.svg';
 
 const SellBanner = () => {
   return (

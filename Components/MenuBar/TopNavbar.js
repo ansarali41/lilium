@@ -4,9 +4,8 @@ import { ErgoDappConnector } from '../Requirements';
 import Link from 'next/link';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
-import logo from '../../assest/images/logo-tranparent.png';
-import lightIcon from '../../assest/images/light_mode.png';
-import { useRouter } from 'next/router';
+import logo from '../../assest/images/llium-assets/LiliumWhiteLogo.svg';
+import lightIcon from '../../assest/images/llium-assets/sun.svg';
 
 export default function App({ ergopay }) {
   const [visible, setVisible] = useState(true);
