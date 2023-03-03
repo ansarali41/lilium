@@ -110,50 +110,52 @@ const CreateCollection = () => {
             when it’s listed on the marketplace.
           </p>
 
-          <div className='relative rounded border border-solid border-white mt-8'>
-            <input type='text' id='Collection_Category'
-                   name='collectionCategory'
-                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                   placeholder=' ' />
-            <label htmlFor='Collection_Category'
-                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-              Collection Category</label>
-          </div>
+          <div style={{ fontFamily: `'Inter', sans-serif` }}>
+            <div className='relative rounded border border-solid border-white mt-8'>
+              <input type='text' id='Collection_Category'
+                     name='collectionCategory'
+                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                     placeholder=' ' />
+              <label htmlFor='Collection_Category'
+                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
+                Collection Category</label>
+            </div>
 
-          <div className='relative rounded border border-solid border-white mt-8'>
-            <input type='text' id='collection_LogoUrl'
-                   name='collectionLogoUrl'
-                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                   placeholder=' ' />
-            <label htmlFor='collection_LogoUrl'
-                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-              Collection Logo Url</label>
-          </div>
+            <div className='relative rounded border border-solid border-white mt-8'>
+              <input type='text' id='collection_LogoUrl'
+                     name='collectionLogoUrl'
+                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                     placeholder=' ' />
+              <label htmlFor='collection_LogoUrl'
+                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
+                Collection Logo Url</label>
+            </div>
 
-          <div className='relative rounded border border-solid border-white mt-8'>
-            <input type='text' id='collection_Featured_ImageUrl'
-                   name='collectionFeaturedImageUrl'
-                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                   placeholder=' ' />
-            <label htmlFor='collection_Featured_ImageUrl'
-                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-              Collection featured image url</label>
-          </div>
+            <div className='relative rounded border border-solid border-white mt-8'>
+              <input type='text' id='collection_Featured_ImageUrl'
+                     name='collectionFeaturedImageUrl'
+                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                     placeholder=' ' />
+              <label htmlFor='collection_Featured_ImageUrl'
+                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
+                Collection featured image url</label>
+            </div>
 
-          <div className='relative rounded border border-solid border-white mt-8'>
-            <input type='text' id='collection_Banner_ImageUrl'
-                   name='collectionBannerImageUrl'
-                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                   placeholder=' ' />
-            <label htmlFor='collection_Banner_ImageUrl'
-                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-              Collection banner image url</label>
+            <div className='relative rounded border border-solid border-white mt-8'>
+              <input type='text' id='collection_Banner_ImageUrl'
+                     name='collectionBannerImageUrl'
+                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                     placeholder=' ' />
+              <label htmlFor='collection_Banner_ImageUrl'
+                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
+                Collection banner image url</label>
+            </div>
           </div>
 
           {/* SOCIAL PART START */}
 
           <h2 className={submitStyles.subTitle}>Socials</h2>
-          <div className='row'>
+          <div className='row' style={{ fontFamily: `'Inter', sans-serif` }}>
             {/*1st*/}
             <div className='col-12 col-md-4'>
               <div className='relative rounded border border-solid border-white'>
@@ -202,7 +204,7 @@ const CreateCollection = () => {
             </div>
           </div>
           {socialInput.map((item) => (
-            <div className='row' key={item} style={{ position: 'relative' }}>
+            <div className='row' key={item} style={{ position: 'relative', fontFamily: `'Inter', sans-serif` }}>
               <div className='d-flex justify-content-end' style={{
                 top: '20px',
                 left: '10px',
@@ -241,7 +243,7 @@ const CreateCollection = () => {
             </div>
           ))}
           <button onClick={handleSocialField} className={submitStyles.button}>
-            Add more
+            Add More
           </button>
           <hr className='my-5' />
 
@@ -263,13 +265,14 @@ const CreateCollection = () => {
           ))}
 
           <button onClick={handleAddress} className={submitStyles.button}>
-            Add more
+            Add More
           </button>
           <hr className='my-5' />
           {/* MINT PRICE PART START */}
 
           <h2 className={submitStyles.subTitle}>set mint price</h2>
-          <div className='relative rounded border border-solid border-white mt-10 '>
+          <div className='relative rounded border border-solid border-white mt-10 '
+               style={{ fontFamily: `'Inter', sans-serif` }}>
             <div className='absolute inset-y-0 right-4 flex items-center pl-3 pointer-events-none'>
               <Image
                 src={currencyLogo}
@@ -290,7 +293,8 @@ const CreateCollection = () => {
               Price</label>
           </div>
 
-          <div className='d-flex justify-content-between align-items-center mt-8'>
+          <div className='d-flex justify-content-between align-items-center mt-8'
+               style={{ fontFamily: `'Inter', sans-serif` }}>
             <h2 className={submitStyles.mintTitle}>MINT START</h2>
             <div className='d-flex'>
               <DatePicker name='minStarDate' className={submitStyles.mintText}
@@ -309,7 +313,8 @@ const CreateCollection = () => {
 
             </div>
           </div>
-          <div className='d-flex justify-content-between align-items-center mt-8'>
+          <div className='d-flex justify-content-between align-items-center mt-8'
+               style={{ fontFamily: `'Inter', sans-serif` }}>
             <h2 className={submitStyles.mintTitle}>MINT EXPIRY</h2>
             <div className='d-flex'>
 
@@ -336,12 +341,12 @@ const CreateCollection = () => {
                 setIsButton(null);
               }}>
                 <FaRegDotCircle className='fs-3 me-3' style={{ color: '#E041E7' }} />
-                <p className='d-flex align-items-center pt-1 fw-bold'>
+                <p className='d-flex align-items-center pt-1 fw-bold' style={{ fontFamily: `'Inter', sans-serif` }}>
                   Never Expire
                 </p>
               </div> : <div className='d-flex' onClick={() => setIsNeverEx(!isNeverEx)}>
                 <FaRegDotCircle className='fs-3 text-white me-3' />
-                <p className='d-flex align-items-center pt-1 fw-bold'>
+                <p className='d-flex align-items-center pt-1 fw-bold' style={{ fontFamily: `'Inter', sans-serif` }}>
                   Never Expire
                 </p>
               </div>}
@@ -349,16 +354,16 @@ const CreateCollection = () => {
 
           {/*ON SALE END buttons section */}
           <div className='d-flex justify-content-between align-items-center'>
-            <h2 className={submitStyles.subTitle}>ON SALE END</h2>
+            <p className={submitStyles.subTitle}>ON SALE END</p>
 
             {isNeverEx ?
-              <div className='d-flex'>
+              <div className='d-flex' style={{ fontFamily: `'Inter', sans-serif` }}>
                 <button disabled type='button'
-                        className='cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                        className='cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
                   Collection token Burn
                 </button>
                 <button disabled type='button'
-                        className=' cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center  mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                        className=' cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
                   Collection token Return
                 </button>
               </div>
@@ -368,28 +373,28 @@ const CreateCollection = () => {
                 {isButton === 1 ?
                   <button onClick={() => {
                     setIsButton(1);
-                  }} type='button'
-                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
+                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
                     Collection token Burn
                   </button> :
                   <button onClick={() => {
                     setIsButton(1);
-                  }} type='button'
-                          className='text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
+                          className='text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
                     Collection token Burn
                   </button>}
 
                 {isButton === 2 ?
                   <button onClick={() => {
                     setIsButton(2);
-                  }} type='button'
-                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
+                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
                     Collection token Return
                   </button> :
                   <button onClick={() => {
                     setIsButton(2);
-                  }} type='button'
-                          className=' text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
+                          className=' text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
                     Collection token Return
                   </button>}
               </div>}

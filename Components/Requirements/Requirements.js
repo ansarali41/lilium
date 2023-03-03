@@ -312,7 +312,7 @@ export const ErgoDappConnector = props => {
           style={{
             backgroundColor: '#E041E7',
             display: 'flex',
-            padding: '14px 32px',
+            padding: '14px 22px',
             borderRadius: 12,
             color: colorStylingArray[color][1],
             flexDirection: walletConnected ? 'column' : 'row',

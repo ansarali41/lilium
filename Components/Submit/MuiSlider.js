@@ -19,6 +19,8 @@ const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id }) => {
       <div className='d-flex justify-content-between align-items-center mt-5' style={{
         fontWeight: 600,
         fontSize: 18,
+        fontFamily: `'Inter', sans-serif`,
+
       }}>
         <p>Amount</p>
         <p>
@@ -38,7 +40,7 @@ const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id }) => {
         <span className='ml-3 text-warning'>30%</span>
       </div>
 
-      <div style={{ position: 'relative' }}>
+      <div style={{ position: 'relative', fontFamily: `'Inter', sans-serif` }}>
         {showClose ?
           <div className='d-flex justify-content-end' style={{
             top: '-10px',

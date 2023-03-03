@@ -31,6 +31,7 @@
 }
 
 .fileType {
+    font-family: 'Inter', sans-serif;
     margin-top: 9px;
     font-style: normal;
     font-weight: 400;
@@ -86,7 +87,7 @@
     color: white;
     appearance: none;
     margin-right: 20px;
-    max-width: 150px;
+    max-width: 165px;
 }
 
 .mintButton {
@@ -131,11 +132,12 @@
 }
 
 .button {
+    font-family: 'Inter', sans-serif;
     background: #FFD363;
     border: 1px solid black;
     border-radius: 4px;
-    padding: 14px 28px;
-    color: black;
+    padding: 14px 34px;
+    color: #0D0F19;
     margin-top: 32px;
     font-weight: 600;
     font-size: 14px;

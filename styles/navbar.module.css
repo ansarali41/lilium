@@ -213,6 +213,7 @@
 }
 
 .homeFooter {
+    font-family: 'Inter', sans-serif;
     padding-left: 74px;
     padding-right: 74px;
     padding-bottom: 56px;
@@ -220,14 +221,13 @@
 }
 
 .homeFooterText {
+    font-family: 'Inter', sans-serif;
     color: #FFFFFF;
     font-weight: 400;
     font-size: 12px;
     line-height: 26px;
     height: 26px;
     /* margin-bottom: 56px; */
-
-
 }
 
 .carouselQ {
