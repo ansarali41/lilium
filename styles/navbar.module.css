@@ -136,6 +136,7 @@
 }
 
 .sellBannerHeading {
+    font-family: 'Inter', sans-serif;
     padding-top: 124px;
     color: #FDD200;
     font-weight: 700;
@@ -144,16 +145,22 @@
 }
 
 .sellBannerHeaderText {
-
+    font-family: 'Inter', sans-serif;
     margin-top: 32px;
     margin-bottom: 33px;
-    /* width: 616px;
-    height: 180px; */
     line-height: 40px;
     font-size: 30px;
     font-weight: 700;
-
     color: #FFFFFF;
+}
+
+.carouselTitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 60px;
+    padding-top: 54px;
+    text-align: center;
 }
 
 .sellText {
@@ -182,10 +189,8 @@
 }
 
 .homeCollectionText {
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 126px;
-    padding-right: 126px;
+    font-family: 'Inter', sans-serif;
+    padding: 32px 126px;
     font-weight: 500;
     font-size: 20px;
     line-height: 36px;

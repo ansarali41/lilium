@@ -7,7 +7,7 @@ const nextConfig = {
     domains: ['i.ibb.co'],
   },
   // added below code
-  future: { webpack5: true },
+  // future: { webpack5: true },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     const wasmExtensionRegExp = /\.wasm$/;
     config.experiments = {

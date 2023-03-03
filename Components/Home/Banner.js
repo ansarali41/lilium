@@ -22,8 +22,9 @@ const Banner = () => {
             custom white label NFT marketplace.
           </p>
           <Link href='/create-collection' className={styles.navLinks}>
-            <button className={styles.bannerButtons}>
-              <span className={styles.navLinks}>CREATE COLLECTION</span>
+            <button className='bg-createButton hover:bg-createButton text-white font-bold rounded-xl mt-5'
+                    style={{ background: '#E041E7', padding: '18px 32px' }}>
+              CREATE COLLECTION
             </button>
           </Link>
         </div>

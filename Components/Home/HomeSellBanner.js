@@ -21,7 +21,7 @@ const SellBanner = () => {
             We do the tech, so you
             <br /> can focus on the <br /> quality of your content
           </h2>
-          <div className='d-flex justify-content-start'>
+          <div className='d-flex justify-content-start' style={{ fontFamily: `'Inter', sans-serif` }}>
             <div style={{ marginRight: '29px' }}>
               <Image src={shield} alt='' />
               <p style={{ paddingTop: '30px' }}>Protected by smart contracts</p>

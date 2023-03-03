@@ -74,15 +74,7 @@ const HomeCarousel = () => {
               />
             </span>
 
-            <p
-              style={{
-                fontSize: '36px',
-                fontWeight: '700',
-                lineHeight: '60px',
-                paddingTop: '54px',
-              }}
-              className='text-center'
-            >
+            <p className={styles.carouselTitle}>
               Lilium is the foundation that builders can build on. [...] If you
               run into trouble at any point, their incredible support team is
               there to help.”
@@ -99,7 +91,7 @@ const HomeCarousel = () => {
             <Image
               src={Man}
               style={{ width: '132px', height: '132px' }}
-              class='d-block w-100'
+              className='d-block w-100'
               alt='...'
             />
 
@@ -108,6 +100,7 @@ const HomeCarousel = () => {
               style={{
                 fontWeight: '400',
                 fontSize: '24px',
+                fontFamily: `'Inter', sans-serif`,
               }}
             >
               RJ Regenold, CTO @ BOOK.IO
@@ -123,15 +116,7 @@ const HomeCarousel = () => {
                 height={72}
               />
             </span>
-            <p
-              style={{
-                fontSize: '36px',
-                fontWeight: '700',
-                lineHeight: '60px',
-                paddingTop: '54px',
-              }}
-              className='text-center'
-            >
+            <p className={styles.carouselTitle}>
               Lilium is the foundation that builders can build on. [...] If you
               run into trouble at any point, their incredible support team is
               there to help.”
@@ -148,7 +133,7 @@ const HomeCarousel = () => {
             <Image
               style={{ width: '132px', height: '132px' }}
               src={Man}
-              class='d-block w-100'
+              className='d-block w-100'
               alt='...'
             />
             <p
@@ -156,6 +141,7 @@ const HomeCarousel = () => {
               style={{
                 fontWeight: '400',
                 fontSize: '24px',
+                fontFamily: `'Inter', sans-serif`,
               }}
             >
               RJ Regenold, CTO @ BOOK.IO
@@ -171,15 +157,7 @@ const HomeCarousel = () => {
                 height={72}
               />
             </span>
-            <p
-              style={{
-                fontSize: '36px',
-                fontWeight: '700',
-                lineHeight: '60px',
-                paddingTop: '54px',
-              }}
-              className='text-center'
-            >
+            <p className={styles.carouselTitle}>
               Lilium is the foundation that builders can build on. [...] If you
               run into trouble at any point, their incredible support team is
               there to help.”
@@ -196,7 +174,7 @@ const HomeCarousel = () => {
             <Image
               style={{ width: '132px', height: '132px' }}
               src={Man}
-              class='d-block w-100'
+              className='d-block w-100'
               alt='...'
             />
             <p
@@ -204,6 +182,7 @@ const HomeCarousel = () => {
               style={{
                 fontWeight: '400',
                 fontSize: '24px',
+                fontFamily: `'Inter', sans-serif`,
               }}
             >
               RJ Regenold, CTO @ BOOK.IO

@@ -22,7 +22,8 @@ const HomeTeam = () => {
             }}>
               CRYPTO QUOKKA
             </h3>
-            <p style={{ color: ' #5D7789', fontWeight: 600 }} className='text-center'>
+            <p style={{ color: ' #5D7789', fontWeight: 600, fontFamily: `'Inter', sans-serif` }}
+               className='text-center'>
               Founder
               <br />
               <span className='text-center'>
@@ -42,7 +43,8 @@ const HomeTeam = () => {
             }}>
               GUY HAWKINS
             </h3>
-            <p style={{ color: ' #5D7789', fontWeight: 600 }}>Blockchain & Backend Dev</p>
+            <p style={{ color: ' #5D7789', fontWeight: 600, fontFamily: `'Inter', sans-serif` }}>Blockchain & Backend
+              Dev</p>
             <Image alt='a' className='m-auto' src={Twitter} />
           </div>
         </div>

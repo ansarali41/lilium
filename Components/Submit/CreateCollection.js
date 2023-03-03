@@ -1,11 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import SideBar from '../Common/SideBar';
-import uploadStyles from '../../styles/Upload.module.css';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import Slider from '@mui/material/Slider';
 import Image from 'next/image';
 import currencyLogo from '../../assest/images/Ergo_input_logo.svg';
 import Link from 'next/link';
@@ -196,7 +194,13 @@ const CreateCollection = () => {
             </div>
           </div>
           {socialInput.map((item) => (
-            <div className='row' key={item}>
+            <div className='row' key={item} style={{ position: 'relative' }}>
+              <div className='d-flex justify-content-end' style={{
+                top: '20px',
+                position: 'absolute',
+              }}>
+                <span style={{ marginBottom: '-20px' }}>x</span>
+              </div>
               <div className='col-12 col-md-4'>
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialName_${item}`}
@@ -209,6 +213,7 @@ const CreateCollection = () => {
                 </div>
               </div>
               <div className='col-12 col-md-8'>
+
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialLink_${item}`}
                          name={`socialLink${item}`}
