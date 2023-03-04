@@ -52,6 +52,12 @@ const CreateCollection = () => {
     setSocialInput([...socialInput]);
   };
 
+  const handleAllClear = () => {
+    setMuiSlider([]);
+    setSocialInput([]);
+  };
+
+
   // form submission handler
 
   const handleForm = (e) => {
@@ -401,9 +407,14 @@ const CreateCollection = () => {
           </div>
         </div>
         <div className={`d-flex justify-content-center`}>
-          <div className={` d-flex justify-content-center`}>
-            <Link href='/uploads' className={navStyle.navLinks}>
+          <div className={` d-flex justify-content-center me-2`}>
+            <Link href='#' className={navStyle.navLinks}>
               <button type='submit' className={submitStyles.nextButton}>NEXT</button>
+            </Link>
+          </div>
+          <div className={` d-flex justify-content-center me-2`}>
+            <Link href='#' className={navStyle.navLinks}>
+              <button type='submit' className={submitStyles.nextButton} onClick={handleAllClear}>Clear All</button>
             </Link>
           </div>
         </div>

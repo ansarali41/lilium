@@ -145,7 +145,7 @@ export default function WalletHover({
                       color: 'rgba(205, 10, 10, 0.8)',
                       margin: '0 auto',
                       fontSize: '0.95rem',
-                      fontFamily: 'Oxanium',
+                      fontFamily: `'Inter', sans-serif`,
                     }}
                   >
                     Clear Wallet

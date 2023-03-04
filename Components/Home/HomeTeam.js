@@ -8,7 +8,7 @@ import styles from '../../styles/navbar.module.css';
 const HomeTeam = () => {
   return (
     <div>
-      <h1 className={styles.homeTeamHeader}>TEAM</h1>
+      <h1 className={styles.homeTeamHeader}>LGD</h1>
       <div className='row' style={{ marginTop: 56 }}>
         <div className='col-md-5 m-auto'>
           <div className='d-flex justify-content-between'>
@@ -25,9 +25,7 @@ const HomeTeam = () => {
               </h3>
               <p style={{ color: ' #5D7789', fontWeight: 600, fontFamily: `'Inter', sans-serif` }}
                  className='text-center'>
-
                 Founder and Backend
-
               </p>
               <Image alt='a' className='m-auto' src={Twitter} style={{ cursor: 'pointer' }} />
             </div>

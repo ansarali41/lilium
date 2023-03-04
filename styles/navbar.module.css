@@ -216,8 +216,12 @@
     font-family: 'Inter', sans-serif;
     padding-left: 74px;
     padding-right: 74px;
-    padding-bottom: 56px;
+    padding-bottom: 10px;
     background-color: #212C39;
+}
+
+.paymentNumber {
+    font-family: 'Inter', sans-serif;
 }
 
 .homeFooterText {
