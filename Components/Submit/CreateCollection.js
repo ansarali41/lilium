@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import SideBar from '../Common/SideBar';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
@@ -13,17 +13,19 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const CreateCollection = () => {
   const [socialDivs, setSocialDivs] = useState([]);
-  const [minDate, setMinDate] = useState(new Date('2023-02-14'));
-  const [maxDate, setMaxDate] = useState(new Date('2023-02-14'));
+  const [minDate, setMinDate] = useState(new Date());
+  const [maxDate, setMaxDate] = useState(new Date());
   const [minTime, setMinTime] = useState('06:00');
   const [maxTime, setMaxTime] = useState('06:00');
   const [price, setPrice] = useState(50);
   const [isNeverEx, setIsNeverEx] = useState(false);
   const [isButton, setIsButton] = useState(null);
+  const [formValue, setFormValue] = useState({});
 
+  const clearForm = useRef(null);
 
   const [socialInput, setSocialInput] = useState([]);
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(2);
 
   const [muiSlider, setMuiSlider] = useState([]);
   const [muiSliderCount, setMuiSliderCount] = useState(2);
@@ -55,17 +57,28 @@ const CreateCollection = () => {
   const handleAllClear = () => {
     setMuiSlider([]);
     setSocialInput([]);
+    setIsButton(null);
+    setFormValue({});
+    setMinDate(new Date());
+    setMaxDate(new Date());
+    setMinTime('06:00');
+    setMaxTime('06:00');
+    clearForm.current.reset();
   };
 
 
   // form submission handler
 
+  const handleFormData = (e) => {
+    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+  };
+  console.log('formValue', formValue);
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
 
-    /*const collectionCategory = form.collectionCategory.value;
-    const collectionLogoUrl = form.collectionLogoUrl.value;
+    // const collectionCategory = form.collectionCategory.value;
+    /*const collectionLogoUrl = form.collectionLogoUrl.value;
     const collectionFeaturedImageUrl = form.collectionFeaturedImageUrl.value;
     const collectionBannerImageUrl = form.collectionBannerImageUrl.value;
 
@@ -95,15 +108,17 @@ const CreateCollection = () => {
       max_Expiry_Date,
       max_Expiry_Time,
     };
+    */
+
     // const jsondata = JSON.stringify(collectionDetailsData)
-    console.log(collectionDetailsData);
-    // document.getElementById('myForm').reset();*/
+    // console.log(collectionDetailsData);
+    // document.getElementById('myForm').reset();
   };
 
   return (
     <section className='row px-3'>
       <SideBar />
-      <form onSubmit={handleForm} id='myForm' className={`col-12 col-md-7`}>
+      <form ref={clearForm} onSubmit={handleForm} id='myForm' className={`col-12 col-md-7`}>
         <div className={submitStyles.createCollectionContainer}>
           <h1 className={submitStyles.title}>CREATE YOUR COLLECTIONS</h1>
           <h2 className={submitStyles.subTitle}>
@@ -119,7 +134,9 @@ const CreateCollection = () => {
           <div style={{ fontFamily: `'Inter', sans-serif` }}>
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='Collection_Category'
+                     onChange={(e) => handleFormData(e)}
                      name='collectionCategory'
+                     defaultValue={formValue?.collectionCategory}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='Collection_Category'
@@ -129,6 +146,7 @@ const CreateCollection = () => {
 
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_LogoUrl'
+                     onChange={(e) => handleFormData(e)}
                      name='collectionLogoUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -139,6 +157,7 @@ const CreateCollection = () => {
 
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_Featured_ImageUrl'
+                     onChange={(e) => handleFormData(e)}
                      name='collectionFeaturedImageUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -149,6 +168,7 @@ const CreateCollection = () => {
 
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_Banner_ImageUrl'
+                     onChange={(e) => handleFormData(e)}
                      name='collectionBannerImageUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -167,6 +187,7 @@ const CreateCollection = () => {
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialName_1'
                        name='socialName1'
+                       onChange={(e) => handleFormData(e)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
                 <label htmlFor='socialName_1'
@@ -178,6 +199,7 @@ const CreateCollection = () => {
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialLink_1'
                        name='socialLink1'
+                       onChange={(e) => handleFormData(e)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
                 <label htmlFor='socialLink_1'
@@ -185,29 +207,7 @@ const CreateCollection = () => {
                   Enter Corresponding Link</label>
               </div>
             </div>
-            {/*2nd*/}
-            <div className='col-12 col-md-4'>
-              <div className='relative rounded border border-solid border-white mt-8'>
-                <input type='text' id='socialName_2'
-                       name='socialName2'
-                       className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                       placeholder=' ' />
-                <label htmlFor='socialName_2'
-                       className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                  Enter social name ex: Twitter</label>
-              </div>
-            </div>
-            <div className='col-12 col-md-8'>
-              <div className='relative rounded border border-solid border-white mt-8'>
-                <input type='text' id='socialLink_2'
-                       name='socialLink2'
-                       className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                       placeholder=' ' />
-                <label htmlFor='socialLink_2'
-                       className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                  Enter Corresponding Link</label>
-              </div>
-            </div>
+
           </div>
           {socialInput.map((item) => (
             <div className='row' key={item} style={{ position: 'relative', fontFamily: `'Inter', sans-serif` }}>
@@ -227,6 +227,7 @@ const CreateCollection = () => {
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialName_${item}`}
                          name={`socialName${item}`}
+                         onChange={(e) => handleFormData(e)}
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                          placeholder=' ' />
                   <label htmlFor={`socialName_${item}`}
@@ -238,6 +239,7 @@ const CreateCollection = () => {
 
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialLink_${item}`}
+                         onChange={(e) => handleFormData(e)}
                          name={`socialLink${item}`}
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                          placeholder=' ' />
@@ -262,11 +264,12 @@ const CreateCollection = () => {
             percentage of the sale <br /> price. You can set the amount here,
             and the payments will execute automatically.
           </p>
-          <MuiSlider showClose={false} />
+          <MuiSlider showClose={false} handleFormData={handleFormData} />
 
           {muiSlider.map((item) => (
             <div key={item}>
-              <MuiSlider showClose={true} muiSliderArray={muiSlider} muiSliderSet={setMuiSlider} id={item} />
+              <MuiSlider showClose={true} muiSliderArray={muiSlider} muiSliderSet={setMuiSlider} id={item}
+                         handleFormData={handleFormData} />
             </div>
           ))}
 
@@ -408,7 +411,7 @@ const CreateCollection = () => {
         </div>
         <div className={`d-flex justify-content-center`}>
           <div className={` d-flex justify-content-center me-2`}>
-            <Link href='#' className={navStyle.navLinks}>
+            <Link href='/uploads' className={navStyle.navLinks}>
               <button type='submit' className={submitStyles.nextButton}>NEXT</button>
             </Link>
           </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Slider from '@mui/material/Slider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id }) => {
+const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id, handleFormData }) => {
   const [range, setRange] = useState(0);
 
   const handleDeleteAddressInputSlider = (item) => {
@@ -58,6 +58,7 @@ const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id }) => {
         <div className='relative rounded border border-solid border-white mt-10 '>
           <input type='text' id='EnterAddress1'
                  name='enterAddress1'
+                 onChange={(e) => handleFormData(e)}
                  className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                  placeholder=' ' />
           <label htmlFor='EnterAddress1'

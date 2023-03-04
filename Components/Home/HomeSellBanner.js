@@ -14,8 +14,8 @@ const SellBanner = () => {
           <br /> YOU WANT
         </h1>
       </div>
-      <div className='row'>
-        <div className='col-md-5'>
+      <div className='d-flex justify-content-center align-items-center'>
+        <div className=''>
           <span className={styles.sellBannerHeading}>NFT SALE PLATFORM</span>
           <h2 className={styles.sellBannerHeaderText}>
             We do the tech, so you
@@ -36,12 +36,13 @@ const SellBanner = () => {
             </div>
           </div>
         </div>
-        <div className='col-md-6'>
+        <div className='mx-12'>
           <Image
             className='img-fluid'
             style={{ paddingTop: '64px' }}
             src={laptop}
             alt='man'
+            width={653}
           />
         </div>
       </div>
