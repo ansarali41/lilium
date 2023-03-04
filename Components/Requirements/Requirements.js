@@ -266,7 +266,7 @@ export const ErgoDappConnector = props => {
                       href='#'
                       className={classNames(active ? commonStyle.item1 : commonStyle.item2, commonStyle.item3)}
                       style={{
-                        fontFamily: 'Oxanium',
+                        fontFamily: `'Inter', sans-serif`,
                       }}
                     >
                                             <span
@@ -286,7 +286,7 @@ export const ErgoDappConnector = props => {
                       href='#'
                       className={classNames(active ? commonStyle.item1 : commonStyle.item2, commonStyle.item3)}
                       style={{
-                        fontFamily: 'Oxanium',
+                        fontFamily: `'Inter', sans-serif`,
                       }}
                     >
                                             <span
@@ -327,7 +327,7 @@ export const ErgoDappConnector = props => {
           <div className={commonStyle.walletConnect}>
                         <span
                           style={{
-                            fontFamily: 'Oxanium',
+                            fontFamily: `'Inter', sans-serif`,
                           }}
                         >
                             {walletConnected ? (
@@ -372,10 +372,16 @@ export const ErgoDappConnector = props => {
                                 </span>
                             ) : (
                               <span style={{
-                                fontFamily: 'Akira Expanded',
+                                fontFamily: `'Inter', sans-serif`,
                                 fontWeight: 800,
                                 fontSize: 16,
-                              }}>CONNECT WALLET</span>
+                                width: 161,
+                              }}>
+                              <button className='text-white font-bold rounded-xl'
+                                      style={{ background: '#E041E7' }}>
+                                CONNECT WALLET
+                              </button>
+                              </span>
                             )}
                         </span>
           </div>

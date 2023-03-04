@@ -30,7 +30,7 @@ const Payment = () => {
               <div style={{ marginTop: '-9px', marginRight: 13 }}>
                 <Image src={ergoIcon} alt='ergoIcon' />
               </div>
-              <h3>8</h3>
+              <h3 className={navbarStyle.paymentNumber}>8</h3>
             </div>
           </div>
           {/*2nd item*/}
@@ -43,7 +43,7 @@ const Payment = () => {
               <div style={{ marginTop: '-9px', marginRight: 13 }}>
                 <Image src={ergoIcon} alt='ergoIcon' />
               </div>
-              <h3>1</h3>
+              <h3 className={navbarStyle.paymentNumber}>1</h3>
             </div>
           </div>
 
@@ -58,7 +58,7 @@ const Payment = () => {
               <div style={{ marginTop: '-9px', marginRight: 13 }}>
                 <Image src={ergoIcon} alt='ergoIcon' />
               </div>
-              <h3>1</h3>
+              <h3 className={navbarStyle.paymentNumber}>1</h3>
             </div>
           </div>
           <hr style={{ borderBottom: '1px solid #E0E0E0' }} />
@@ -72,7 +72,7 @@ const Payment = () => {
               <div style={{ marginTop: '-9px', marginRight: 13 }}>
                 <Image src={ergoIcon} alt='ergoIcon' />
               </div>
-              <h3>9</h3>
+              <h3 className={navbarStyle.paymentNumber}>9</h3>
             </div>
           </div>
 
