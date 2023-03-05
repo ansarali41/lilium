@@ -88,8 +88,23 @@
     border: none;
 }
 
-.bannerButtons:hover {
-    margin-top: 32px;
+.payButton {
+    background-color: #E041E7;
+    width: 320px;
+    height: 64px;
+    padding: 18px 32px 18px 32px;
+    gap: 16px;
+    border-radius: 12px;
+    color: #FFFFFF;
+    line-height: 28px;
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.75px;
+    text-align: center;
+    border: none;
+}
+
+.bannerButtons:hover, .payButton:hover {
     background-color: #E041E7;
     width: 320px;
     height: 64px;

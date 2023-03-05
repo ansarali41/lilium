@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import SideBar from '../Common/SideBar';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
@@ -10,18 +10,17 @@ import Link from 'next/link';
 import navStyle from '../../styles/navbar.module.css';
 import MuiSlider from './MuiSlider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { useRouter } from 'next/router';
 
 const CreateCollection = () => {
-  const [socialDivs, setSocialDivs] = useState([]);
+  const router = useRouter();
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
   const [minTime, setMinTime] = useState('06:00');
   const [maxTime, setMaxTime] = useState('06:00');
-  const [price, setPrice] = useState(50);
   const [isNeverEx, setIsNeverEx] = useState(false);
   const [isButton, setIsButton] = useState(null);
   const [formValue, setFormValue] = useState({});
-
   const clearForm = useRef(null);
 
   const [socialInput, setSocialInput] = useState([]);
@@ -29,6 +28,14 @@ const CreateCollection = () => {
 
   const [muiSlider, setMuiSlider] = useState([]);
   const [muiSliderCount, setMuiSliderCount] = useState(2);
+
+  // const [localStorageData, setLocalStorageData] = useState({});
+  //
+  // useEffect(() => {
+  //   const formData = localStorage.getItem('form_data');
+  //   const parsedFormData = JSON.parse(formData);
+  //   setLocalStorageData(parsedFormData);
+  // }, []);
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -75,8 +82,10 @@ const CreateCollection = () => {
   console.log('formValue', formValue);
   const handleForm = (e) => {
     e.preventDefault();
-    const form = e.target;
 
+    // localStorage.setItem('form_data', JSON.stringify(formValue));
+    // alert('success');
+    // router.push('/uploads');
     // const collectionCategory = form.collectionCategory.value;
     /*const collectionLogoUrl = form.collectionLogoUrl.value;
     const collectionFeaturedImageUrl = form.collectionFeaturedImageUrl.value;
@@ -114,11 +123,12 @@ const CreateCollection = () => {
     // console.log(collectionDetailsData);
     // document.getElementById('myForm').reset();
   };
+  // console.log('localStorageData', localStorageData);
 
   return (
     <section className='row px-3'>
       <SideBar />
-      <form ref={clearForm} onSubmit={handleForm} id='myForm' className={`col-12 col-md-7`}>
+      <form ref={clearForm} id='myForm' className={`col-12 col-md-7`} onSubmit={handleForm}>
         <div className={submitStyles.createCollectionContainer}>
           <h1 className={submitStyles.title}>CREATE YOUR COLLECTIONS</h1>
           <h2 className={submitStyles.subTitle}>
@@ -264,7 +274,7 @@ const CreateCollection = () => {
             percentage of the sale <br /> price. You can set the amount here,
             and the payments will execute automatically.
           </p>
-          <MuiSlider showClose={false} handleFormData={handleFormData} />
+          <MuiSlider showClose={false} handleFormData={handleFormData} id={1} />
 
           {muiSlider.map((item) => (
             <div key={item}>
@@ -294,8 +304,8 @@ const CreateCollection = () => {
                    name='mintPrice'
                    className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                    placeholder=' '
-                   value={price}
-                   onChange={(e) => setPrice(e.target.value)} />
+                   defaultValue={50}
+                   onChange={(e) => handleFormData(e)} />
 
             <label htmlFor='mint_price'
                    className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
@@ -415,7 +425,7 @@ const CreateCollection = () => {
               <button type='submit' className={submitStyles.nextButton}>NEXT</button>
             </Link>
           </div>
-          <div className={` d-flex justify-content-center me-2`}>
+          <div className={` d-flex justify-content-center me-2`} onClick={(e) => handleForm(e)}>
             <Link href='#' className={navStyle.navLinks}>
               <button type='submit' className={submitStyles.nextButton} onClick={handleAllClear}>Clear All</button>
             </Link>

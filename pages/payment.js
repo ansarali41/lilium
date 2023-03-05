@@ -21,12 +21,12 @@ const Payment = () => {
         <div className={`${uploadStyles.uploadContainer} col-12 col-md-7 mb-5`}>
           <h1>CHECKOUT</h1>
           {/*1st item*/}
-          <div className='d-flex align-items-center justify-content-between' style={{ marginTop: 40 }}>
+          <div className='d-flex align-items-center justify-content-between' style={{ marginTop: 20 }}>
             <div className='d-flex align-items-center'>
               <Image src={liliumFee} alt='l' className='me-4' />
               <h3>LILIUM FEE</h3>
             </div>
-            <div className='d-flex align-items-center' style={{ marginTop: 30 }}>
+            <div className='d-flex align-items-center' style={{ marginTop: 20 }}>
               <div style={{ marginTop: '-9px', marginRight: 13 }}>
                 <Image src={ergoIcon} alt='ergoIcon' />
               </div>
@@ -77,7 +77,7 @@ const Payment = () => {
           </div>
 
           <Link href='/payment' className={`${navbarStyle.navLinks} d-flex justify-content-center`}>
-            <button className={navbarStyle.bannerButtons}>
+            <button className={navbarStyle.payButton}>
               <span className={navbarStyle.navLinks}>PAY NOW</span>
             </button>
           </Link>
