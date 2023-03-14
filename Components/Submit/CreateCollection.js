@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import SideBar from '../Common/SideBar';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
@@ -21,6 +21,7 @@ const CreateCollection = () => {
   const [isNeverEx, setIsNeverEx] = useState(false);
   const [isButton, setIsButton] = useState(null);
   const [formValue, setFormValue] = useState({});
+
   const clearForm = useRef(null);
 
   const [socialInput, setSocialInput] = useState([]);
@@ -29,13 +30,7 @@ const CreateCollection = () => {
   const [muiSlider, setMuiSlider] = useState([]);
   const [muiSliderCount, setMuiSliderCount] = useState(2);
 
-  // const [localStorageData, setLocalStorageData] = useState({});
-  //
-  // useEffect(() => {
-  //   const formData = localStorage.getItem('form_data');
-  //   const parsedFormData = JSON.parse(formData);
-  //   setLocalStorageData(parsedFormData);
-  // }, []);
+  const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -48,6 +43,7 @@ const CreateCollection = () => {
   const handleSocialField = () => {
     setCount(count + 1);
     setSocialInput([...socialInput, count]);
+    setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
   };
   const handleAddress = () => {
     setMuiSliderCount(muiSliderCount + 1);
@@ -75,60 +71,36 @@ const CreateCollection = () => {
 
 
   // form submission handler
-
   const handleFormData = (e) => {
-    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormValue({ ...formValue, [name]: value });
   };
-  console.log('formValue', formValue);
+
+
+  const handleSocialsChange = (e, index) => {
+    const { name, value } = e.target;
+    const updatedSocials = socialValue.map((social, i) => {
+      if (index === i + 1) {
+        return { ...social, [name]: value };
+      }
+      return social;
+    });
+    setSocialValue(updatedSocials);
+  };
+
+
   const handleForm = (e) => {
+    console.log('submit form click');
+    setFormValue({ ...formValue, socialData: socialValue, minDate, maxDate, minTime, maxTime });
+    console.log('setFormValue:', formValue);
     e.preventDefault();
-
-    // localStorage.setItem('form_data', JSON.stringify(formValue));
-    // alert('success');
-    // router.push('/uploads');
-    // const collectionCategory = form.collectionCategory.value;
-    /*const collectionLogoUrl = form.collectionLogoUrl.value;
-    const collectionFeaturedImageUrl = form.collectionFeaturedImageUrl.value;
-    const collectionBannerImageUrl = form.collectionBannerImageUrl.value;
-
-    const socialName1 = form.socialName1.value;
-    const socialLink1 = form.socialLink1.value;
-    const socialName2 = form.socialName2.value;
-    const socialLink2 = form.socialLink2.value;
-
-    const address1 = form.address1.value;
-    const min_Star_Date = form.minStarDate.value;
-    const min_Start_Time = form.minStartime.value;
-    const max_Expiry_Date = form.maxStarDate.value;
-    const max_Expiry_Time = form.maxStarTime.value;
-
-    const collectionDetailsData = {
-      collectionCategory,
-      collectionLogoUrl,
-      collectionFeaturedImageUrl,
-      collectionBannerImageUrl,
-      socialName1,
-      socialLink1,
-      socialLink2,
-      socialName2,
-      address1,
-      min_Star_Date,
-      min_Start_Time,
-      max_Expiry_Date,
-      max_Expiry_Time,
-    };
-    */
-
-    // const jsondata = JSON.stringify(collectionDetailsData)
-    // console.log(collectionDetailsData);
-    // document.getElementById('myForm').reset();
   };
-  // console.log('localStorageData', localStorageData);
+
 
   return (
     <section className='row px-3'>
       <SideBar />
-      <form ref={clearForm} id='myForm' className={`col-12 col-md-7`} onSubmit={handleForm}>
+      <form ref={clearForm} id='myForm' className={`col-12 col-md-7`} onSubmit={(e) => e.preventDefault()}>
         <div className={submitStyles.createCollectionContainer}>
           <h1 className={submitStyles.title}>CREATE YOUR COLLECTIONS</h1>
           <h2 className={submitStyles.subTitle}>
@@ -196,8 +168,8 @@ const CreateCollection = () => {
             <div className='col-12 col-md-4'>
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialName_1'
-                       name='socialName1'
-                       onChange={(e) => handleFormData(e)}
+                       name='socialName'
+                       onChange={(e) => handleSocialsChange(e, 1)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
                 <label htmlFor='socialName_1'
@@ -208,8 +180,8 @@ const CreateCollection = () => {
             <div className='col-12 col-md-8'>
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialLink_1'
-                       name='socialLink1'
-                       onChange={(e) => handleFormData(e)}
+                       name='socialAddress'
+                       onChange={(e) => handleSocialsChange(e, 1)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
                 <label htmlFor='socialLink_1'
@@ -236,8 +208,8 @@ const CreateCollection = () => {
               <div className='col-12 col-md-4'>
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialName_${item}`}
-                         name={`socialName${item}`}
-                         onChange={(e) => handleFormData(e)}
+                         name='socialName'
+                         onChange={(e) => handleSocialsChange(e, item)}
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                          placeholder=' ' />
                   <label htmlFor={`socialName_${item}`}
@@ -249,8 +221,8 @@ const CreateCollection = () => {
 
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialLink_${item}`}
-                         onChange={(e) => handleFormData(e)}
-                         name={`socialLink${item}`}
+                         onChange={(e) => handleSocialsChange(e, item)}
+                         name='socialAddress'
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                          placeholder=' ' />
                   <label htmlFor={`socialLink_${item}`}
@@ -420,7 +392,7 @@ const CreateCollection = () => {
           </div>
         </div>
         <div className={`d-flex justify-content-center`}>
-          <div className={` d-flex justify-content-center me-2`}>
+          <div className={` d-flex justify-content-center me-2`} onClick={handleForm}>
             <Link href='/uploads' className={navStyle.navLinks}>
               <button type='submit' className={submitStyles.nextButton}>NEXT</button>
             </Link>
