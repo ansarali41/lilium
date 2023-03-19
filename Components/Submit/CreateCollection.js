@@ -12,23 +12,38 @@ import MuiSlider from './MuiSlider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const CreateCollection = () => {
-  // retrieve from local storage
-  const [storedData, setStoredData] = useState({});
-  const [isButton, setIsButton] = useState(null);
+  const [formValue, setFormValue] = useState({});
+  const [isNeverEx, setIsNeverEx] = useState(false);
+  const [isButton, setIsButton] = useState(formValue.neverExpButton);
+  const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
+
+
+  console.log('socialValueassss: 20', socialValue);
+  // Load the form data from local storage on component mount
   useEffect(() => {
-    setStoredData(JSON.parse(localStorage.getItem('myData')));
-    // setIsButton(storedData?.isButton);
+    const storedFormData = localStorage.getItem('myData');
+    if (storedFormData) {
+      setFormValue(JSON.parse(storedFormData));
+    }
   }, []);
-  console.log('storedData sss 24', storedData);
+
+
+  useEffect(() => {
+    setIsButton(formValue.neverExpButton);
+    setIsNeverEx(formValue.isNeverEx);
+    // setSocialValue(formValue.socialData);
+    // if (filteredSocialValue.length) {
+    //   setSocialValue(filteredSocialValue);
+    // }
+  }, [formValue]);
+
 
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
   const [minTime, setMinTime] = useState('12:00');
   const [maxTime, setMaxTime] = useState('06:00');
-  const [isNeverEx, setIsNeverEx] = useState(false);
 
 
-  const [formValue, setFormValue] = useState({});
   console.log('setFormValue:c411', formValue);
   const clearForm = useRef(null);
 
@@ -38,7 +53,6 @@ const CreateCollection = () => {
   const [muiSlider, setMuiSlider] = useState([]);
   const [muiSliderCount, setMuiSliderCount] = useState(2);
 
-  const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -48,10 +62,13 @@ const CreateCollection = () => {
     setMaxTime(event.target.value);
   }
 
+  // const filteredSocialValue = formValue?.socialData?.filter((item) => item.socialName !== '' || item.socialAddress !== '');
+
   const handleSocialField = () => {
     setCount(count + 1);
     setSocialInput([...socialInput, count]);
-    setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
+    setSocialValue([...formValue.socialData, { socialName: '', socialAddress: '' }]);
+
   };
   const handleAddress = () => {
     setMuiSliderCount(muiSliderCount + 1);
@@ -76,7 +93,6 @@ const CreateCollection = () => {
     setMinTime('06:00');
     setMaxTime('06:00');
     clearForm.current.reset();
-    setStoredData({});
   };
 
 
@@ -100,9 +116,16 @@ const CreateCollection = () => {
 
 
   const handleForm = (e) => {
-    console.log('submit form click');
-    setFormValue({ ...formValue, socialData: socialValue, minDate, maxDate, minTime, maxTime, isButton });
-    localStorage.setItem('myData', JSON.stringify(formValue));
+    localStorage.setItem('myData', JSON.stringify({
+      ...formValue,
+      socialData: socialValue,
+      minDate,
+      maxDate,
+      minTime,
+      maxTime,
+      neverExpButton: isButton,
+      isNeverEx,
+    }));
     e.preventDefault();
   };
 
@@ -128,7 +151,7 @@ const CreateCollection = () => {
               <input type='text' id='Collection_Category'
                      onChange={(e) => handleFormData(e)}
                      name='collectionCategory'
-                     defaultValue={storedData?.collectionCategory || ''}
+                     defaultValue={formValue?.collectionCategory || ''}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='Collection_Category'
@@ -139,7 +162,7 @@ const CreateCollection = () => {
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_LogoUrl'
                      onChange={(e) => handleFormData(e)}
-                     defaultValue={storedData?.collectionLogoUrl || ''}
+                     defaultValue={formValue?.collectionLogoUrl || ''}
                      name='collectionLogoUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -151,7 +174,7 @@ const CreateCollection = () => {
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_Featured_ImageUrl'
                      onChange={(e) => handleFormData(e)}
-                     defaultValue={storedData?.collectionFeaturedImageUrl || ''}
+                     defaultValue={formValue?.collectionFeaturedImageUrl || ''}
                      name='collectionFeaturedImageUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -164,7 +187,7 @@ const CreateCollection = () => {
               <input type='text' id='collection_Banner_ImageUrl'
                      onChange={(e) => handleFormData(e)}
                      name='collectionBannerImageUrl'
-                     defaultValue={storedData?.collectionBannerImageUrl || ''}
+                     defaultValue={formValue?.collectionBannerImageUrl || ''}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='collection_Banner_ImageUrl'
@@ -182,6 +205,7 @@ const CreateCollection = () => {
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialName_1'
                        name='socialName'
+                       defaultValue={formValue.socialData?.length ? formValue.socialData[0].socialName : ''}
                        onChange={(e) => handleSocialsChange(e, 1)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
@@ -194,6 +218,7 @@ const CreateCollection = () => {
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialLink_1'
                        name='socialAddress'
+                       defaultValue={formValue.socialData?.length ? formValue.socialData[0].socialAddress : ''}
                        onChange={(e) => handleSocialsChange(e, 1)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
@@ -222,6 +247,7 @@ const CreateCollection = () => {
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialName_${item}`}
                          name='socialName'
+                         defaultValue={formValue.socialData?.length ? formValue.socialData[item - 1]?.socialName : ''}
                          onChange={(e) => handleSocialsChange(e, item)}
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                          placeholder=' ' />
@@ -231,9 +257,9 @@ const CreateCollection = () => {
                 </div>
               </div>
               <div className='col-12 col-md-8'>
-
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialLink_${item}`}
+                         defaultValue={formValue.socialData?.length ? formValue.socialData[item - 1]?.socialAddress : ''}
                          onChange={(e) => handleSocialsChange(e, item)}
                          name='socialAddress'
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -289,7 +315,7 @@ const CreateCollection = () => {
                    name='mintPrice'
                    className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                    placeholder=' '
-                   defaultValue={storedData?.mintPrice}
+                   defaultValue={formValue?.mintPrice}
                    onChange={(e) => handleFormData(e)} />
 
             <label htmlFor='mint_price'
@@ -301,11 +327,11 @@ const CreateCollection = () => {
                style={{ fontFamily: `'Inter', sans-serif` }}>
             <h2 className={submitStyles.mintTitle}>MINT START</h2>
             <div className='d-flex'>
-              <DatePicker name='minStarDate' className={submitStyles.mintText}
-
-                          selected={minDate ? minDate : null}
-                          onChange={(date) => setMinDate(date)}
-                          dateFormat='MMMM d, yyyy'
+              <DatePicker
+                name='minStarDate' className={submitStyles.mintText}
+                selected={minDate ? minDate : null}
+                onChange={(date) => setMinDate(date)}
+                dateFormat='MMMM d, yyyy'
               />
               <input
                 name='mint_start_time'
