@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import SideBar from '../Common/SideBar';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
@@ -10,18 +10,26 @@ import Link from 'next/link';
 import navStyle from '../../styles/navbar.module.css';
 import MuiSlider from './MuiSlider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { useRouter } from 'next/router';
 
 const CreateCollection = () => {
-  const router = useRouter();
+  // retrieve from local storage
+  const [storedData, setStoredData] = useState({});
+  const [isButton, setIsButton] = useState(null);
+  useEffect(() => {
+    setStoredData(JSON.parse(localStorage.getItem('myData')));
+    // setIsButton(storedData?.isButton);
+  }, []);
+  console.log('storedData sss 24', storedData);
+
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
-  const [minTime, setMinTime] = useState('06:00');
+  const [minTime, setMinTime] = useState('12:00');
   const [maxTime, setMaxTime] = useState('06:00');
   const [isNeverEx, setIsNeverEx] = useState(false);
-  const [isButton, setIsButton] = useState(null);
-  const [formValue, setFormValue] = useState({});
 
+
+  const [formValue, setFormValue] = useState({});
+  console.log('setFormValue:c411', formValue);
   const clearForm = useRef(null);
 
   const [socialInput, setSocialInput] = useState([]);
@@ -58,6 +66,7 @@ const CreateCollection = () => {
   };
 
   const handleAllClear = () => {
+    localStorage.removeItem('myData');
     setMuiSlider([]);
     setSocialInput([]);
     setIsButton(null);
@@ -67,6 +76,7 @@ const CreateCollection = () => {
     setMinTime('06:00');
     setMaxTime('06:00');
     clearForm.current.reset();
+    setStoredData({});
   };
 
 
@@ -91,8 +101,8 @@ const CreateCollection = () => {
 
   const handleForm = (e) => {
     console.log('submit form click');
-    setFormValue({ ...formValue, socialData: socialValue, minDate, maxDate, minTime, maxTime });
-    console.log('setFormValue:', formValue);
+    setFormValue({ ...formValue, socialData: socialValue, minDate, maxDate, minTime, maxTime, isButton });
+    localStorage.setItem('myData', JSON.stringify(formValue));
     e.preventDefault();
   };
 
@@ -118,7 +128,7 @@ const CreateCollection = () => {
               <input type='text' id='Collection_Category'
                      onChange={(e) => handleFormData(e)}
                      name='collectionCategory'
-                     defaultValue={formValue?.collectionCategory}
+                     defaultValue={storedData?.collectionCategory || ''}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='Collection_Category'
@@ -129,6 +139,7 @@ const CreateCollection = () => {
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_LogoUrl'
                      onChange={(e) => handleFormData(e)}
+                     defaultValue={storedData?.collectionLogoUrl || ''}
                      name='collectionLogoUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -140,6 +151,7 @@ const CreateCollection = () => {
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_Featured_ImageUrl'
                      onChange={(e) => handleFormData(e)}
+                     defaultValue={storedData?.collectionFeaturedImageUrl || ''}
                      name='collectionFeaturedImageUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -152,6 +164,7 @@ const CreateCollection = () => {
               <input type='text' id='collection_Banner_ImageUrl'
                      onChange={(e) => handleFormData(e)}
                      name='collectionBannerImageUrl'
+                     defaultValue={storedData?.collectionBannerImageUrl || ''}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='collection_Banner_ImageUrl'
@@ -276,7 +289,7 @@ const CreateCollection = () => {
                    name='mintPrice'
                    className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                    placeholder=' '
-                   defaultValue={50}
+                   defaultValue={storedData?.mintPrice}
                    onChange={(e) => handleFormData(e)} />
 
             <label htmlFor='mint_price'
@@ -289,7 +302,8 @@ const CreateCollection = () => {
             <h2 className={submitStyles.mintTitle}>MINT START</h2>
             <div className='d-flex'>
               <DatePicker name='minStarDate' className={submitStyles.mintText}
-                          selected={minDate}
+
+                          selected={minDate ? minDate : null}
                           onChange={(date) => setMinDate(date)}
                           dateFormat='MMMM d, yyyy'
               />
