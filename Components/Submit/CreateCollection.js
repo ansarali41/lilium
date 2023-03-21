@@ -17,8 +17,12 @@ const CreateCollection = () => {
   const [isButton, setIsButton] = useState(formValue.neverExpButton);
   const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
 
+  const [minDate, setMinDate] = useState(new Date());
+  const [maxDate, setMaxDate] = useState(new Date());
+  const [minTime, setMinTime] = useState('07:00');
+  const [maxTime, setMaxTime] = useState('06:00');
 
-  console.log('socialValueassss: 20', socialValue);
+
   // Load the form data from local storage on component mount
   useEffect(() => {
     const storedFormData = localStorage.getItem('myData');
@@ -31,17 +35,22 @@ const CreateCollection = () => {
   useEffect(() => {
     setIsButton(formValue.neverExpButton);
     setIsNeverEx(formValue.isNeverEx);
-    // setSocialValue(formValue.socialData);
-    // if (filteredSocialValue.length) {
-    //   setSocialValue(filteredSocialValue);
-    // }
+    if (formValue.minDate) {
+      setMinDate(new Date(formValue.minDate));
+    }
+    if (formValue.maxDate) {
+      setMaxDate(new Date(formValue.maxDate));
+    }
+
+    // const [minTime, setMinTime] = useState('07:00');
+    // const [maxTime, setMaxTime] = useState('06:00');
+    if (formValue.minTime) {
+      setMaxTime(formValue.minTime);
+    }
+    if (formValue.maxTime) {
+      setMinTime(formValue.maxTime);
+    }
   }, [formValue]);
-
-
-  const [minDate, setMinDate] = useState(new Date());
-  const [maxDate, setMaxDate] = useState(new Date());
-  const [minTime, setMinTime] = useState('12:00');
-  const [maxTime, setMaxTime] = useState('06:00');
 
 
   console.log('setFormValue:c411', formValue);
@@ -67,7 +76,11 @@ const CreateCollection = () => {
   const handleSocialField = () => {
     setCount(count + 1);
     setSocialInput([...socialInput, count]);
-    setSocialValue([...formValue.socialData, { socialName: '', socialAddress: '' }]);
+    if (formValue.socialData) {
+      setSocialValue([...formValue?.socialData, { socialName: '', socialAddress: '' }]);
+    } else {
+      setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
+    }
 
   };
   const handleAddress = () => {
@@ -94,7 +107,6 @@ const CreateCollection = () => {
     setMaxTime('06:00');
     clearForm.current.reset();
   };
-
 
   // form submission handler
   const handleFormData = (e) => {
@@ -437,9 +449,9 @@ const CreateCollection = () => {
               <button type='submit' className={submitStyles.nextButton}>NEXT</button>
             </Link>
           </div>
-          <div className={` d-flex justify-content-center me-2`} onClick={(e) => handleForm(e)}>
+          <div className={` d-flex justify-content-center me-2`} onClick={handleAllClear}>
             <Link href='#' className={navStyle.navLinks}>
-              <button type='submit' className={submitStyles.nextButton} onClick={handleAllClear}>Clear All</button>
+              <button type='submit' className={submitStyles.nextButton}>Clear All</button>
             </Link>
           </div>
         </div>

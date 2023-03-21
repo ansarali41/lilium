@@ -3,7 +3,8 @@ import Slider from '@mui/material/Slider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id, handleFormData }) => {
-  const [range, setRange] = useState(0);
+  const [totalSlider, setTotalSlider] = useState([1]);
+  const [range, setRange] = useState({ range1: 0 });
   const [formValue, setFormValue] = useState({});
   // Load the form data from local storage on component mount
   useEffect(() => {
@@ -20,33 +21,40 @@ const MuiSlider = ({ showClose, muiSliderArray, muiSliderSet, id, handleFormData
     }
     muiSliderSet([...muiSliderArray]);
   };
-
-  console.log('mui form value', formValue);
+  const handleRanges = (e) => {
+    const { name, value } = e.target;
+    setRange({ ...range, [name]: value });
+  };
 
   return (
     <div>
       {/*range text*/}
-      <div className='d-flex justify-content-between align-items-center mt-5' style={{
-        fontWeight: 600,
-        fontSize: 18,
-        fontFamily: `'Inter', sans-serif`,
-      }}>
-        <p>Amount</p>
-        <p>
-          {range}%
-        </p>
-      </div>
-      {/*range slider*/}
-      <div className='d-flex align-items-center'>
-        <span className='mr-3 text-warning'>0%</span>
-        <Slider defaultValue={0}
-                aria-label='Default'
-                valueLabelDisplay='auto' min={0} max={30}
-                style={{ color: 'white' }}
-                onChange={(e) => setRange(e.target.value)}
-        />
-        <span className='ml-3 text-warning'>30%</span>
-      </div>
+      {totalSlider.map(sliderNo => (
+        <div key={sliderNo}>
+          <div className='d-flex justify-content-between align-items-center mt-5' style={{
+            fontWeight: 600,
+            fontSize: 18,
+            fontFamily: `'Inter', sans-serif`,
+          }}>
+            <p>Amount</p>
+            <p>
+              {range[`range${sliderNo}`]}%
+            </p>
+          </div>
+          {/*range slider*/}
+          <div className='d-flex align-items-center'>
+            <span className='mr-3 text-warning'>0%</span>
+            <Slider defaultValue={0}
+                    aria-label='Default'
+                    name={`range${sliderNo}`}
+                    valueLabelDisplay='auto' min={0} max={30}
+                    style={{ color: 'white' }}
+                    onChange={(e) => handleRanges(e)}
+            />
+            <span className='ml-3 text-warning'>30%</span>
+          </div>
+        </div>
+      ))}
 
       <div style={{ position: 'relative', fontFamily: `'Inter', sans-serif` }}>
         {showClose ?

@@ -30,6 +30,22 @@
     padding: 18px 32px;
 }
 
+.payButton {
+    margin-top: 34px;
+    margin-bottom: 50px;
+    background: #E041E7;
+    padding: 18px 32px;
+    width: 233px;
+    height: 64px;
+    border-radius: 12px;
+    border: none;
+}
+
+.payButton:hover {
+    background: #E041E7;
+    padding: 18px 32px;
+}
+
 .fileType {
     font-family: 'Inter', sans-serif;
     margin-top: 9px;
