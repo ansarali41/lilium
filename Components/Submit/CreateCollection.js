@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import SideBar from '../Common/SideBar';
 import submitStyles from '../../styles/Submit.module.css';
 import { FaRegDotCircle } from 'react-icons/fa';
@@ -10,18 +10,50 @@ import Link from 'next/link';
 import navStyle from '../../styles/navbar.module.css';
 import MuiSlider from './MuiSlider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { useRouter } from 'next/router';
 
 const CreateCollection = () => {
-  const router = useRouter();
+  const [formValue, setFormValue] = useState({});
+  const [isNeverEx, setIsNeverEx] = useState(false);
+  const [isButton, setIsButton] = useState(formValue.neverExpButton);
+  const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
+
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
-  const [minTime, setMinTime] = useState('06:00');
+  const [minTime, setMinTime] = useState('07:00');
   const [maxTime, setMaxTime] = useState('06:00');
-  const [isNeverEx, setIsNeverEx] = useState(false);
-  const [isButton, setIsButton] = useState(null);
-  const [formValue, setFormValue] = useState({});
 
+
+  // Load the form data from local storage on component mount
+  useEffect(() => {
+    const storedFormData = localStorage.getItem('myData');
+    if (storedFormData) {
+      setFormValue(JSON.parse(storedFormData));
+    }
+  }, []);
+
+
+  useEffect(() => {
+    setIsButton(formValue.neverExpButton);
+    setIsNeverEx(formValue.isNeverEx);
+    if (formValue.minDate) {
+      setMinDate(new Date(formValue.minDate));
+    }
+    if (formValue.maxDate) {
+      setMaxDate(new Date(formValue.maxDate));
+    }
+
+    // const [minTime, setMinTime] = useState('07:00');
+    // const [maxTime, setMaxTime] = useState('06:00');
+    if (formValue.minTime) {
+      setMaxTime(formValue.minTime);
+    }
+    if (formValue.maxTime) {
+      setMinTime(formValue.maxTime);
+    }
+  }, [formValue]);
+
+
+  console.log('setFormValue:c411', formValue);
   const clearForm = useRef(null);
 
   const [socialInput, setSocialInput] = useState([]);
@@ -30,7 +62,6 @@ const CreateCollection = () => {
   const [muiSlider, setMuiSlider] = useState([]);
   const [muiSliderCount, setMuiSliderCount] = useState(2);
 
-  const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -40,10 +71,17 @@ const CreateCollection = () => {
     setMaxTime(event.target.value);
   }
 
+  // const filteredSocialValue = formValue?.socialData?.filter((item) => item.socialName !== '' || item.socialAddress !== '');
+
   const handleSocialField = () => {
     setCount(count + 1);
     setSocialInput([...socialInput, count]);
-    setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
+    if (formValue.socialData) {
+      setSocialValue([...formValue?.socialData, { socialName: '', socialAddress: '' }]);
+    } else {
+      setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
+    }
+
   };
   const handleAddress = () => {
     setMuiSliderCount(muiSliderCount + 1);
@@ -58,6 +96,7 @@ const CreateCollection = () => {
   };
 
   const handleAllClear = () => {
+    localStorage.removeItem('myData');
     setMuiSlider([]);
     setSocialInput([]);
     setIsButton(null);
@@ -68,7 +107,6 @@ const CreateCollection = () => {
     setMaxTime('06:00');
     clearForm.current.reset();
   };
-
 
   // form submission handler
   const handleFormData = (e) => {
@@ -90,9 +128,16 @@ const CreateCollection = () => {
 
 
   const handleForm = (e) => {
-    console.log('submit form click');
-    setFormValue({ ...formValue, socialData: socialValue, minDate, maxDate, minTime, maxTime });
-    console.log('setFormValue:', formValue);
+    localStorage.setItem('myData', JSON.stringify({
+      ...formValue,
+      socialData: socialValue,
+      minDate,
+      maxDate,
+      minTime,
+      maxTime,
+      neverExpButton: isButton,
+      isNeverEx,
+    }));
     e.preventDefault();
   };
 
@@ -118,7 +163,7 @@ const CreateCollection = () => {
               <input type='text' id='Collection_Category'
                      onChange={(e) => handleFormData(e)}
                      name='collectionCategory'
-                     defaultValue={formValue?.collectionCategory}
+                     defaultValue={formValue?.collectionCategory || ''}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='Collection_Category'
@@ -129,6 +174,7 @@ const CreateCollection = () => {
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_LogoUrl'
                      onChange={(e) => handleFormData(e)}
+                     defaultValue={formValue?.collectionLogoUrl || ''}
                      name='collectionLogoUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -140,6 +186,7 @@ const CreateCollection = () => {
             <div className='relative rounded border border-solid border-white mt-8'>
               <input type='text' id='collection_Featured_ImageUrl'
                      onChange={(e) => handleFormData(e)}
+                     defaultValue={formValue?.collectionFeaturedImageUrl || ''}
                      name='collectionFeaturedImageUrl'
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
@@ -152,6 +199,7 @@ const CreateCollection = () => {
               <input type='text' id='collection_Banner_ImageUrl'
                      onChange={(e) => handleFormData(e)}
                      name='collectionBannerImageUrl'
+                     defaultValue={formValue?.collectionBannerImageUrl || ''}
                      className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                      placeholder=' ' />
               <label htmlFor='collection_Banner_ImageUrl'
@@ -169,6 +217,7 @@ const CreateCollection = () => {
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialName_1'
                        name='socialName'
+                       defaultValue={formValue.socialData?.length ? formValue.socialData[0].socialName : ''}
                        onChange={(e) => handleSocialsChange(e, 1)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
@@ -181,6 +230,7 @@ const CreateCollection = () => {
               <div className='relative rounded border border-solid border-white'>
                 <input type='text' id='socialLink_1'
                        name='socialAddress'
+                       defaultValue={formValue.socialData?.length ? formValue.socialData[0].socialAddress : ''}
                        onChange={(e) => handleSocialsChange(e, 1)}
                        className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                        placeholder=' ' />
@@ -209,6 +259,7 @@ const CreateCollection = () => {
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialName_${item}`}
                          name='socialName'
+                         defaultValue={formValue.socialData?.length ? formValue.socialData[item - 1]?.socialName : ''}
                          onChange={(e) => handleSocialsChange(e, item)}
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                          placeholder=' ' />
@@ -218,9 +269,9 @@ const CreateCollection = () => {
                 </div>
               </div>
               <div className='col-12 col-md-8'>
-
                 <div className='relative rounded border border-solid border-white mt-8'>
                   <input type='text' id={`socialLink_${item}`}
+                         defaultValue={formValue.socialData?.length ? formValue.socialData[item - 1]?.socialAddress : ''}
                          onChange={(e) => handleSocialsChange(e, item)}
                          name='socialAddress'
                          className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
@@ -276,7 +327,7 @@ const CreateCollection = () => {
                    name='mintPrice'
                    className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                    placeholder=' '
-                   defaultValue={50}
+                   defaultValue={formValue?.mintPrice}
                    onChange={(e) => handleFormData(e)} />
 
             <label htmlFor='mint_price'
@@ -288,10 +339,11 @@ const CreateCollection = () => {
                style={{ fontFamily: `'Inter', sans-serif` }}>
             <h2 className={submitStyles.mintTitle}>MINT START</h2>
             <div className='d-flex'>
-              <DatePicker name='minStarDate' className={submitStyles.mintText}
-                          selected={minDate}
-                          onChange={(date) => setMinDate(date)}
-                          dateFormat='MMMM d, yyyy'
+              <DatePicker
+                name='minStarDate' className={submitStyles.mintText}
+                selected={minDate ? minDate : null}
+                onChange={(date) => setMinDate(date)}
+                dateFormat='MMMM d, yyyy'
               />
               <input
                 name='mint_start_time'
@@ -397,9 +449,9 @@ const CreateCollection = () => {
               <button type='submit' className={submitStyles.nextButton}>NEXT</button>
             </Link>
           </div>
-          <div className={` d-flex justify-content-center me-2`} onClick={(e) => handleForm(e)}>
+          <div className={` d-flex justify-content-center me-2`} onClick={handleAllClear}>
             <Link href='#' className={navStyle.navLinks}>
-              <button type='submit' className={submitStyles.nextButton} onClick={handleAllClear}>Clear All</button>
+              <button type='submit' className={submitStyles.nextButton}>Clear All</button>
             </Link>
           </div>
         </div>
