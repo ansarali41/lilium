@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { ErgoDappConnector } from '../Requirements';
 import Link from 'next/link';
@@ -6,6 +6,8 @@ import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
 import logo from '../../assest/images/llium-assets/LiliumWhiteLogo.svg';
 import lightIcon from '../../assest/images/llium-assets/sun.svg';
+import navStyle from '../../styles/navbar.module.css';
+import submitStyles from '../../styles/Submit.module.css';
 
 export default function App({ ergopay }) {
   const [visible, setVisible] = useState(true);
@@ -49,17 +51,11 @@ export default function App({ ergopay }) {
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'></Nav>
-          {/*<Nav className={styles.navContainer}>*/}
-          {/*  <Link href='/' className={styles.navLinks}>*/}
-          {/*    <Image*/}
-          {/*      src={lightIcon}*/}
-          {/*      alt='Picture of the author'*/}
-          {/*      className={styles.lightIconStyle}*/}
-          {/*      width={32}*/}
-          {/*      height={32}*/}
-          {/*    />*/}
-          {/*  </Link>*/}
-          {/*</Nav>*/}
+          <Nav>
+            <Link href='/pay' className={styles.navLinks}>
+              <button type='submit' className={submitStyles.navButton}>PAY</button>
+            </Link>
+          </Nav>
           {walletButton}
         </Navbar.Collapse>
       </Container>
