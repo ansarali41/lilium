@@ -8,29 +8,36 @@ import Image from 'next/image';
 import currencyLogo from '../../assest/images/Ergo_input_logo.svg';
 import Link from 'next/link';
 import navStyle from '../../styles/navbar.module.css';
-import MuiSlider from './MuiSlider';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import Social from './Social';
+import Royality from './Royality';
+
+export const generateKey = (pre) => {
+  return `${pre}${new Date().getTime()}`;
+};
 
 const CreateCollection = () => {
-  const [formValue, setFormValue] = useState({});
+  const [formValue, setFormValue] = useState({
+    socialData: [
+      { socialName: '', socialAddress: '', _id: generateKey('social__') },
+    ],
+    royality: [{ address: '', amount: 0, _id: generateKey('slider__') }],
+  });
   const [isNeverEx, setIsNeverEx] = useState(false);
   const [isButton, setIsButton] = useState(formValue.neverExpButton);
-  const [socialValue, setSocialValue] = useState([{ socialName: '', socialAddress: '' }]);
 
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
   const [minTime, setMinTime] = useState('07:00');
   const [maxTime, setMaxTime] = useState('06:00');
 
-
   // Load the form data from local storage on component mount
   useEffect(() => {
     const storedFormData = localStorage.getItem('myData');
     if (storedFormData) {
-      setFormValue(JSON.parse(storedFormData));
+      const localData = JSON.parse(storedFormData);
+      setFormValue(localData);
     }
   }, []);
-
 
   useEffect(() => {
     setIsButton(formValue.neverExpButton);
@@ -41,9 +48,6 @@ const CreateCollection = () => {
     if (formValue.maxDate) {
       setMaxDate(new Date(formValue.maxDate));
     }
-
-    // const [minTime, setMinTime] = useState('07:00');
-    // const [maxTime, setMaxTime] = useState('06:00');
     if (formValue.minTime) {
       setMaxTime(formValue.minTime);
     }
@@ -52,16 +56,7 @@ const CreateCollection = () => {
     }
   }, [formValue]);
 
-
-  console.log('setFormValue:c411', formValue);
   const clearForm = useRef(null);
-
-  const [socialInput, setSocialInput] = useState([]);
-  const [count, setCount] = useState(2);
-
-  const [muiSlider, setMuiSlider] = useState([]);
-  const [muiSliderCount, setMuiSliderCount] = useState(2);
-
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -70,30 +65,6 @@ const CreateCollection = () => {
   function handleMaxTimeChange(event) {
     setMaxTime(event.target.value);
   }
-
-  // const filteredSocialValue = formValue?.socialData?.filter((item) => item.socialName !== '' || item.socialAddress !== '');
-
-  const handleSocialField = () => {
-    setCount(count + 1);
-    setSocialInput([...socialInput, count]);
-    if (formValue.socialData) {
-      setSocialValue([...formValue?.socialData, { socialName: '', socialAddress: '' }]);
-    } else {
-      setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
-    }
-
-  };
-  const handleAddress = () => {
-    setMuiSliderCount(muiSliderCount + 1);
-    setMuiSlider([...muiSlider, muiSliderCount]);
-  };
-  const handleDeleteSocialInput = (item) => {
-    const index = socialInput.indexOf(item);
-    if (index > -1) {
-      socialInput.splice(index, 1);
-    }
-    setSocialInput([...socialInput]);
-  };
 
   const handleAllClear = () => {
     localStorage.removeItem('myData');
@@ -114,38 +85,31 @@ const CreateCollection = () => {
     setFormValue({ ...formValue, [name]: value });
   };
 
-
-  const handleSocialsChange = (e, index) => {
-    const { name, value } = e.target;
-    const updatedSocials = socialValue.map((social, i) => {
-      if (index === i + 1) {
-        return { ...social, [name]: value };
-      }
-      return social;
-    });
-    setSocialValue(updatedSocials);
-  };
-
-
   const handleForm = (e) => {
-    localStorage.setItem('myData', JSON.stringify({
-      ...formValue,
-      socialData: socialValue,
-      minDate,
-      maxDate,
-      minTime,
-      maxTime,
-      neverExpButton: isButton,
-      isNeverEx,
-    }));
+    localStorage.setItem(
+      'myData',
+      JSON.stringify({
+        ...formValue,
+        minDate,
+        maxDate,
+        minTime,
+        maxTime,
+        neverExpButton: isButton,
+        isNeverEx,
+      }),
+    );
     e.preventDefault();
   };
-
 
   return (
     <section className='row px-3'>
       <SideBar />
-      <form ref={clearForm} id='myForm' className={`col-12 col-md-7`} onSubmit={(e) => e.preventDefault()}>
+      <form
+        ref={clearForm}
+        id='myForm'
+        className={`col-12 col-md-7`}
+        onSubmit={(e) => e.preventDefault()}
+      >
         <div className={submitStyles.createCollectionContainer}>
           <h1 className={submitStyles.title}>CREATE YOUR COLLECTIONS</h1>
           <h2 className={submitStyles.subTitle}>
@@ -153,194 +117,129 @@ const CreateCollection = () => {
           </h2>
           <p className={submitStyles.text}>
             The ‘Collection name’ and ‘Description’ are written to the
-            blockchain and can’t be changed after minting. They are
-            always shown when the collection is displayed, for example
-            when it’s listed on the marketplace.
+            blockchain and can’t be changed after minting. They are always shown
+            when the collection is displayed, for example when it’s listed on
+            the marketplace.
           </p>
 
           <div style={{ fontFamily: `'Inter', sans-serif` }}>
             <div className='relative rounded border border-solid border-white mt-8'>
-              <input type='text' id='Collection_Category'
-                     onChange={(e) => handleFormData(e)}
-                     name='collectionCategory'
-                     defaultValue={formValue?.collectionCategory || ''}
-                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                     placeholder=' ' />
-              <label htmlFor='Collection_Category'
-                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                Collection Category</label>
+              <input
+                type='text'
+                id='Collection_Category'
+                onChange={(e) => handleFormData(e)}
+                name='collectionCategory'
+                defaultValue={formValue?.collectionCategory || ''}
+                className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+              />
+              <label
+                htmlFor='Collection_Category'
+                className='absolute text-sm text-white-500 text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+              >
+                Collection Category
+              </label>
             </div>
 
             <div className='relative rounded border border-solid border-white mt-8'>
-              <input type='text' id='collection_LogoUrl'
-                     onChange={(e) => handleFormData(e)}
-                     defaultValue={formValue?.collectionLogoUrl || ''}
-                     name='collectionLogoUrl'
-                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                     placeholder=' ' />
-              <label htmlFor='collection_LogoUrl'
-                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                Collection Logo Url</label>
+              <input
+                type='text'
+                id='collection_LogoUrl'
+                onChange={(e) => handleFormData(e)}
+                defaultValue={formValue?.collectionLogoUrl || ''}
+                name='collectionLogoUrl'
+                className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+              />
+              <label
+                htmlFor='collection_LogoUrl'
+                className='absolute text-sm text-white-500 text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+              >
+                Collection Logo Url
+              </label>
             </div>
 
             <div className='relative rounded border border-solid border-white mt-8'>
-              <input type='text' id='collection_Featured_ImageUrl'
-                     onChange={(e) => handleFormData(e)}
-                     defaultValue={formValue?.collectionFeaturedImageUrl || ''}
-                     name='collectionFeaturedImageUrl'
-                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                     placeholder=' ' />
-              <label htmlFor='collection_Featured_ImageUrl'
-                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                Collection featured image url</label>
+              <input
+                type='text'
+                id='collection_Featured_ImageUrl'
+                onChange={(e) => handleFormData(e)}
+                defaultValue={formValue?.collectionFeaturedImageUrl || ''}
+                name='collectionFeaturedImageUrl'
+                className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+              />
+              <label
+                htmlFor='collection_Featured_ImageUrl'
+                className='absolute text-sm text-white-500 text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+              >
+                Collection featured image url
+              </label>
             </div>
 
             <div className='relative rounded border border-solid border-white mt-8'>
-              <input type='text' id='collection_Banner_ImageUrl'
-                     onChange={(e) => handleFormData(e)}
-                     name='collectionBannerImageUrl'
-                     defaultValue={formValue?.collectionBannerImageUrl || ''}
-                     className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                     placeholder=' ' />
-              <label htmlFor='collection_Banner_ImageUrl'
-                     className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                Collection banner image url</label>
+              <input
+                type='text'
+                id='collection_Banner_ImageUrl'
+                onChange={(e) => handleFormData(e)}
+                name='collectionBannerImageUrl'
+                defaultValue={formValue?.collectionBannerImageUrl || ''}
+                className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+              />
+              <label
+                htmlFor='collection_Banner_ImageUrl'
+                className='absolute text-sm text-white-500 text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+              >
+                Collection banner image url
+              </label>
             </div>
           </div>
 
           {/* SOCIAL PART START */}
-
-          <h2 className={submitStyles.subTitle}>Socials</h2>
-          <div className='row' style={{ fontFamily: `'Inter', sans-serif` }}>
-            {/*1st*/}
-            <div className='col-12 col-md-4'>
-              <div className='relative rounded border border-solid border-white'>
-                <input type='text' id='socialName_1'
-                       name='socialName'
-                       defaultValue={formValue.socialData?.length ? formValue.socialData[0].socialName : ''}
-                       onChange={(e) => handleSocialsChange(e, 1)}
-                       className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                       placeholder=' ' />
-                <label htmlFor='socialName_1'
-                       className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                  Enter social name ex: Twitter</label>
-              </div>
-            </div>
-            <div className='col-12 col-md-8'>
-              <div className='relative rounded border border-solid border-white'>
-                <input type='text' id='socialLink_1'
-                       name='socialAddress'
-                       defaultValue={formValue.socialData?.length ? formValue.socialData[0].socialAddress : ''}
-                       onChange={(e) => handleSocialsChange(e, 1)}
-                       className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                       placeholder=' ' />
-                <label htmlFor='socialLink_1'
-                       className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                  Enter Corresponding Link</label>
-              </div>
-            </div>
-
-          </div>
-          {socialInput.map((item) => (
-            <div className='row' key={item} style={{ position: 'relative', fontFamily: `'Inter', sans-serif` }}>
-              <div className='d-flex justify-content-end' style={{
-                top: '20px',
-                left: '10px',
-                position: 'absolute',
-                zIndex: 100,
-              }}>
-                <span style={{
-                  background: '#1A1B22',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                }}><HighlightOffIcon onClick={() => handleDeleteSocialInput(item)} /></span>
-              </div>
-              <div className='col-12 col-md-4'>
-                <div className='relative rounded border border-solid border-white mt-8'>
-                  <input type='text' id={`socialName_${item}`}
-                         name='socialName'
-                         defaultValue={formValue.socialData?.length ? formValue.socialData[item - 1]?.socialName : ''}
-                         onChange={(e) => handleSocialsChange(e, item)}
-                         className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                         placeholder=' ' />
-                  <label htmlFor={`socialName_${item}`}
-                         className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                    Enter social name ex: Twitter</label>
-                </div>
-              </div>
-              <div className='col-12 col-md-8'>
-                <div className='relative rounded border border-solid border-white mt-8'>
-                  <input type='text' id={`socialLink_${item}`}
-                         defaultValue={formValue.socialData?.length ? formValue.socialData[item - 1]?.socialAddress : ''}
-                         onChange={(e) => handleSocialsChange(e, item)}
-                         name='socialAddress'
-                         className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                         placeholder=' ' />
-                  <label htmlFor={`socialLink_${item}`}
-                         className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-                    Enter Corresponding Link</label>
-                </div>
-              </div>
-            </div>
-          ))}
-          <button onClick={handleSocialField} className={submitStyles.button}>
-            Add More
-          </button>
-          <hr className='my-5' />
+          <Social formValue={formValue} />
 
           {/* ROYALITIES PART START */}
 
-          <h2 className={submitStyles.subTitle}>ROYALTIES</h2>
-
-          <p className={submitStyles.text}>
-            Every time an NFT gets sold, the original owner receives a
-            percentage of the sale <br /> price. You can set the amount here,
-            and the payments will execute automatically.
-          </p>
-          <MuiSlider showClose={false} handleFormData={handleFormData} id={1} />
-
-          {muiSlider.map((item) => (
-            <div key={item}>
-              <MuiSlider showClose={true} muiSliderArray={muiSlider} muiSliderSet={setMuiSlider} id={item}
-                         handleFormData={handleFormData} />
-            </div>
-          ))}
-
-          <button onClick={handleAddress} className={submitStyles.button}>
-            Add More
-          </button>
+          <Royality formValue={formValue} />
           <hr className='my-5' />
           {/* MINT PRICE PART START */}
 
           <h2 className={submitStyles.subTitle}>set mint price</h2>
-          <div className='relative rounded border border-solid border-white mt-10 '
-               style={{ fontFamily: `'Inter', sans-serif` }}>
+          <div
+            className='relative rounded border border-solid border-white mt-10 '
+            style={{ fontFamily: `'Inter', sans-serif` }}
+          >
             <div className='absolute inset-y-0 right-4 flex items-center pl-3 pointer-events-none'>
-              <Image
-                src={currencyLogo}
-                alt='a'
-                width={24}
-                height={24}
-              />
+              <Image src={currencyLogo} alt='a' width={24} height={24} />
             </div>
-            <input type='number' id='mint_price'
-                   name='mintPrice'
-                   className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-                   placeholder=' '
-                   defaultValue={formValue?.mintPrice}
-                   onChange={(e) => handleFormData(e)} />
+            <input
+              type='number'
+              id='mint_price'
+              name='mintPrice'
+              className='block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
+              defaultValue={formValue?.mintPrice}
+              onChange={(e) => handleFormData(e)}
+            />
 
-            <label htmlFor='mint_price'
-                   className='absolute text-sm text-white-500 dark:text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:dark:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'>
-              Price</label>
+            <label
+              htmlFor='mint_price'
+              className='absolute text-sm text-white-500 text-white-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-white-600 peer-focus:text-white-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+            >
+              Price
+            </label>
           </div>
 
-          <div className='d-flex justify-content-between align-items-center mt-8'
-               style={{ fontFamily: `'Inter', sans-serif` }}>
+          <div
+            className='d-flex justify-content-between align-items-center mt-8'
+            style={{ fontFamily: `'Inter', sans-serif` }}
+          >
             <h2 className={submitStyles.mintTitle}>MINT START</h2>
             <div className='d-flex'>
               <DatePicker
-                name='minStarDate' className={submitStyles.mintText}
+                name='minStarDate'
+                className={submitStyles.mintText}
                 selected={minDate ? minDate : null}
                 onChange={(date) => setMinDate(date)}
                 dateFormat='MMMM d, yyyy'
@@ -353,18 +252,20 @@ const CreateCollection = () => {
                 onChange={handleMinTimeChange}
                 step='600'
               />
-
             </div>
           </div>
-          <div className='d-flex justify-content-between align-items-center mt-8'
-               style={{ fontFamily: `'Inter', sans-serif` }}>
+          <div
+            className='d-flex justify-content-between align-items-center mt-8'
+            style={{ fontFamily: `'Inter', sans-serif` }}
+          >
             <h2 className={submitStyles.mintTitle}>MINT EXPIRY</h2>
             <div className='d-flex'>
-
-              <DatePicker name='max_start_date' className={submitStyles.mintText}
-                          selected={maxDate}
-                          onChange={(date) => setMaxDate(date)}
-                          dateFormat='MMMM d, yyyy'
+              <DatePicker
+                name='max_start_date'
+                className={submitStyles.mintText}
+                selected={maxDate}
+                onChange={(date) => setMaxDate(date)}
+                dateFormat='MMMM d, yyyy'
               />
               <input
                 name='max_start_time'
@@ -378,80 +279,134 @@ const CreateCollection = () => {
           </div>
 
           <div>
-            {isNeverEx ?
-              <div className='d-flex' onClick={() => {
-                setIsNeverEx(!isNeverEx);
-                setIsButton(null);
-              }}>
-                <FaRegDotCircle className='fs-3 me-3' style={{ color: '#E041E7' }} />
-                <p className='d-flex align-items-center pt-1 fw-bold' style={{ fontFamily: `'Inter', sans-serif` }}>
+            {isNeverEx ? (
+              <div
+                className='d-flex'
+                onClick={() => {
+                  setIsNeverEx(!isNeverEx);
+                  setIsButton(null);
+                }}
+              >
+                <FaRegDotCircle
+                  className='fs-3 me-3'
+                  style={{ color: '#E041E7' }}
+                />
+                <p
+                  className='d-flex align-items-center pt-1 fw-bold'
+                  style={{ fontFamily: `'Inter', sans-serif` }}
+                >
                   Never Expire
                 </p>
-              </div> : <div className='d-flex' onClick={() => setIsNeverEx(!isNeverEx)}>
+              </div>
+            ) : (
+              <div className='d-flex' onClick={() => setIsNeverEx(!isNeverEx)}>
                 <FaRegDotCircle className='fs-3 text-white me-3' />
-                <p className='d-flex align-items-center pt-1 fw-bold' style={{ fontFamily: `'Inter', sans-serif` }}>
+                <p
+                  className='d-flex align-items-center pt-1 fw-bold'
+                  style={{ fontFamily: `'Inter', sans-serif` }}
+                >
                   Never Expire
                 </p>
-              </div>}
+              </div>
+            )}
           </div>
 
           {/*ON SALE END buttons section */}
           <div className='d-flex justify-content-between align-items-center'>
             <p className={submitStyles.subTitle}>ON SALE END</p>
 
-            {isNeverEx ?
-              <div className='d-flex' style={{ fontFamily: `'Inter', sans-serif` }}>
-                <button disabled type='button'
-                        className='cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+            {isNeverEx ? (
+              <div
+                className='d-flex'
+                style={{ fontFamily: `'Inter', sans-serif` }}
+              >
+                <button
+                  disabled
+                  type='button'
+                  className='cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 border-gray-600 text-gray-400 hover:text-white hover:bg-gray-600 focus:ring-gray-800'
+                >
                   Collection token Burn
                 </button>
-                <button disabled type='button'
-                        className=' cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center  dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                <button
+                  disabled
+                  type='button'
+                  className=' cursor-not-allowed text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center  border-gray-600 text-gray-400 hover:text-white hover:bg-gray-600 focus:ring-gray-800'
+                >
                   Collection token Return
                 </button>
               </div>
-              :
-
+            ) : (
               <div className='d-flex'>
-                {isButton === 1 ?
-                  <button onClick={() => {
-                    setIsButton(1);
-                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
-                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                {isButton === 1 ? (
+                  <button
+                    onClick={() => {
+                      setIsButton(1);
+                    }}
+                    type='button'
+                    style={{ fontFamily: `'Inter', sans-serif` }}
+                    className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 border-gray-600 text-gray-400 hover:text-white hover:bg-gray-600 focus:ring-gray-800'
+                  >
                     Collection token Burn
-                  </button> :
-                  <button onClick={() => {
-                    setIsButton(1);
-                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
-                          className='text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setIsButton(1);
+                    }}
+                    type='button'
+                    style={{ fontFamily: `'Inter', sans-serif` }}
+                    className='text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center mr-3 border-gray-600 text-gray-400 hover:text-white hover:bg-gray-600 focus:ring-gray-800'
+                  >
                     Collection token Burn
-                  </button>}
+                  </button>
+                )}
 
-                {isButton === 2 ?
-                  <button onClick={() => {
-                    setIsButton(2);
-                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
-                          className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                {isButton === 2 ? (
+                  <button
+                    onClick={() => {
+                      setIsButton(2);
+                    }}
+                    type='button'
+                    style={{ fontFamily: `'Inter', sans-serif` }}
+                    className='text-warning hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center border-gray-600 text-gray-400 hover:text-white hover:bg-gray-600 focus:ring-gray-800'
+                  >
                     Collection token Return
-                  </button> :
-                  <button onClick={() => {
-                    setIsButton(2);
-                  }} type='button' style={{ fontFamily: `'Inter', sans-serif` }}
-                          className=' text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800'>
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setIsButton(2);
+                    }}
+                    type='button'
+                    style={{ fontFamily: `'Inter', sans-serif` }}
+                    className=' text-white hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center border-gray-600 text-gray-400 hover:text-white hover:bg-gray-600 focus:ring-gray-800'
+                  >
                     Collection token Return
-                  </button>}
-              </div>}
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
         <div className={`d-flex justify-content-center`}>
-          <div className={` d-flex justify-content-center me-2`} onClick={handleForm}>
+          <div
+            className={` d-flex justify-content-center me-2`}
+            onClick={handleForm}
+          >
             <Link href='/uploads' className={navStyle.navLinks}>
-              <button type='submit' className={submitStyles.nextButton}>NEXT</button>
+              <button type='submit' className={submitStyles.nextButton}>
+                NEXT
+              </button>
             </Link>
           </div>
-          <div className={` d-flex justify-content-center me-2`} onClick={handleAllClear}>
+          <div
+            className={` d-flex justify-content-center me-2`}
+            onClick={handleAllClear}
+          >
             <Link href='#' className={navStyle.navLinks}>
-              <button type='submit' className={submitStyles.nextButton}>Clear All</button>
+              <button type='submit' className={submitStyles.nextButton}>
+                Clear All
+              </button>
             </Link>
           </div>
         </div>
