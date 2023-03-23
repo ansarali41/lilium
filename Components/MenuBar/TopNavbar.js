@@ -5,11 +5,12 @@ import Link from 'next/link';
 import styles from '../../styles/navbar.module.css';
 import Image from 'next/image';
 import logo from '../../assest/images/llium-assets/LiliumWhiteLogo.svg';
-import lightIcon from '../../assest/images/llium-assets/sun.svg';
-import navStyle from '../../styles/navbar.module.css';
 import submitStyles from '../../styles/Submit.module.css';
+import { useRouter } from 'next/router';
 
 export default function App({ ergopay }) {
+  const router = useRouter();
+  console.log(router.pathname);
   const [visible, setVisible] = useState(true);
   const [ergoPay, setErgoPay] = ergopay;
   const [walletButton, setWalletButton] = useState(true);
@@ -51,11 +52,12 @@ export default function App({ ergopay }) {
         <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='me-auto'></Nav>
-          <Nav>
+          {router.pathname === '/' && <Nav>
             <Link href='/pay' className={styles.navLinks}>
-              <button type='submit' className={submitStyles.navButton}>PAY</button>
+              <button type='submit' className={submitStyles.navButton}>Mint NFT</button>
             </Link>
-          </Nav>
+          </Nav>}
+
           {walletButton}
         </Navbar.Collapse>
       </Container>
