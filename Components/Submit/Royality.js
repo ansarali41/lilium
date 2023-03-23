@@ -4,10 +4,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import RoyalitySlider from './RoyalitySlider';
 import { generateKey } from './CreateCollection';
 
-const Royality = ({ formValue, setFormValue }) => {
-  // const [royalty, setRoyalty] = React.useState(formValue.Royality)
+const Royality = ({ formValue }) => {
+  const [royalty, setRoyalty] = React.useState(formValue?.royality);
   const handleAddRoyalitiField = () => {
-    const royaliti = formValue?.royality;
+    const royaliti = [...royalty];
     let newRoyaliti;
     if (royaliti) {
       newRoyaliti = [
@@ -15,8 +15,13 @@ const Royality = ({ formValue, setFormValue }) => {
         { address: '', amount: 0, _id: generateKey('slider__') },
       ];
     }
-    setFormValue({ ...formValue, royality: newRoyaliti });
+    setRoyalty(newRoyaliti);
+    formValue.royality = newRoyaliti;
   };
+
+  React.useEffect(() => {
+    setRoyalty(formValue?.royality);
+  }, [formValue]);
   return (
     <div>
       <h2 className={submitStyles.subTitle}>ROYALTIES</h2>
@@ -27,14 +32,15 @@ const Royality = ({ formValue, setFormValue }) => {
         will execute automatically.
       </p>
 
-      {formValue?.royality?.map((item, index) => (
+      {royalty?.map((item, index) => (
         <div key={item._id}>
           <RoyalitySlider
             id={index}
             showClose={index < 1 ? false : true}
             item={item}
             formValue={formValue}
-            setFormValue={setFormValue}
+            royalty={royalty}
+            setRoyalty={setRoyalty}
           />
         </div>
       ))}

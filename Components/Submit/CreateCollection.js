@@ -8,8 +8,6 @@ import Image from 'next/image';
 import currencyLogo from '../../assest/images/Ergo_input_logo.svg';
 import Link from 'next/link';
 import navStyle from '../../styles/navbar.module.css';
-import MuiSlider from './RoyalitySlider';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Social from './Social';
 import Royality from './Royality';
 
@@ -26,22 +24,17 @@ const CreateCollection = () => {
   });
   const [isNeverEx, setIsNeverEx] = useState(false);
   const [isButton, setIsButton] = useState(formValue.neverExpButton);
-  const [socialValue, setSocialValue] = useState([
-    { socialName: '', socialAddress: '' },
-  ]);
 
   const [minDate, setMinDate] = useState(new Date());
   const [maxDate, setMaxDate] = useState(new Date());
   const [minTime, setMinTime] = useState('07:00');
   const [maxTime, setMaxTime] = useState('06:00');
-  const [socialInput, setSocialInput] = useState([]);
 
   // Load the form data from local storage on component mount
   useEffect(() => {
     const storedFormData = localStorage.getItem('myData');
     if (storedFormData) {
       const localData = JSON.parse(storedFormData);
-      console.log('local', localData);
       setFormValue(localData);
     }
   }, []);
@@ -55,9 +48,6 @@ const CreateCollection = () => {
     if (formValue.maxDate) {
       setMaxDate(new Date(formValue.maxDate));
     }
-
-    // const [minTime, setMinTime] = useState('07:00');
-    // const [maxTime, setMaxTime] = useState('06:00');
     if (formValue.minTime) {
       setMaxTime(formValue.minTime);
     }
@@ -66,11 +56,7 @@ const CreateCollection = () => {
     }
   }, [formValue]);
 
-  console.log('setFormValue:c411', formValue);
   const clearForm = useRef(null);
-
-  const [muiSlider, setMuiSlider] = useState([]);
-  const [muiSliderCount, setMuiSliderCount] = useState(2);
 
   function handleMinTimeChange(event) {
     setMinTime(event.target.value);
@@ -79,23 +65,6 @@ const CreateCollection = () => {
   function handleMaxTimeChange(event) {
     setMaxTime(event.target.value);
   }
-
-  // const filteredSocialValue = formValue?.socialData?.filter((item) => item.socialName !== '' || item.socialAddress !== '');
-
-  const handleAddress = () => {
-    setMuiSliderCount(muiSliderCount + 1);
-    setMuiSlider([...muiSlider, muiSliderCount]);
-  };
-
-  const handleSocialField = () => {
-    setCount(count + 1);
-    setSocialInput([...socialInput, count]);
-    if (socialValue) {
-      setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
-    } else {
-      setSocialValue([...socialValue, { socialName: '', socialAddress: '' }]);
-    }
-  };
 
   const handleAllClear = () => {
     localStorage.removeItem('myData');
@@ -228,11 +197,11 @@ const CreateCollection = () => {
           </div>
 
           {/* SOCIAL PART START */}
-          <Social formValue={formValue} setFormValue={setFormValue} />
+          <Social formValue={formValue} />
 
           {/* ROYALITIES PART START */}
 
-          <Royality formValue={formValue} setFormValue={setFormValue} />
+          <Royality formValue={formValue} />
           <hr className="my-5" />
           {/* MINT PRICE PART START */}
 

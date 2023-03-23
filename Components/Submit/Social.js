@@ -6,30 +6,33 @@ import { generateKey } from './CreateCollection';
 
 const id = 0;
 
-const Social = ({ formValue, setFormValue }) => {
+const Social = ({ formValue }) => {
+  const [social, setSocial] = React.useState(formValue?.socialData);
   const handleDeleteSocialInput = (index) => {
-    const socialInput = formValue?.socialData;
+    const socialInput = [...social];
     // const index = socialInput.indexOf(item);
     if (index > -1) {
       socialInput.splice(index, 1);
     }
-    setFormValue({ ...formValue, socialData: socialInput });
+    setSocial(socialInput);
+    formValue.socialData = socialInput;
   };
 
   const handleSocialsChange = (e, index) => {
     const { name, value } = e.target;
-    const socialValue = formValue?.socialData;
+    const socialValue = [...social];
     const updatedSocials = socialValue.map((social, i) => {
       if (index === i) {
         return { ...social, [name]: value };
       }
       return social;
     });
-    setFormValue({ ...formValue, socialData: updatedSocials });
+    setSocial(updatedSocials);
+    formValue.socialData = updatedSocials;
   };
 
   const handleAddSocialField = () => {
-    const socialInput = formValue?.socialData;
+    const socialInput = [...social];
     let newSocialInput;
     if (socialInput) {
       newSocialInput = [
@@ -37,8 +40,13 @@ const Social = ({ formValue, setFormValue }) => {
         { socialName: '', socialAddress: '', _id: generateKey('social__') },
       ];
     }
-    setFormValue({ ...formValue, socialData: newSocialInput });
+    setSocial(newSocialInput);
+    formValue.socialData = newSocialInput;
   };
+
+  React.useEffect(() => {
+    setSocial(formValue?.socialData);
+  }, [formValue]);
   return (
     <div>
       <h2 className={submitStyles.subTitle}>Socials</h2>
@@ -49,11 +57,7 @@ const Social = ({ formValue, setFormValue }) => {
               type="text"
               id="socialName_1"
               name="socialName"
-              defaultValue={
-                formValue?.socialData?.length
-                  ? formValue?.socialData[0].socialName
-                  : ''
-              }
+              defaultValue={social ? social[0].socialName : ''}
               onChange={(e) => handleSocialsChange(e, 0)}
               className="block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
@@ -72,11 +76,7 @@ const Social = ({ formValue, setFormValue }) => {
               type="text"
               id="socialLink_1"
               name="socialAddress"
-              defaultValue={
-                formValue?.socialData
-                  ? formValue?.socialData[0].socialAddress
-                  : ''
-              }
+              defaultValue={social ? social[0].socialAddress : ''}
               onChange={(e) => handleSocialsChange(e, 0)}
               className="block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
@@ -90,8 +90,8 @@ const Social = ({ formValue, setFormValue }) => {
           </div>
         </div>
       </div>
-      {formValue?.socialData?.length > 1 &&
-        formValue?.socialData?.map((item, index) => {
+      {social.length > 1 &&
+        social.map((item, index) => {
           if (index !== 0) {
             return (
               <div

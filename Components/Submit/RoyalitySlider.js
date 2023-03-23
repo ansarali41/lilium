@@ -2,30 +2,37 @@ import React, { useEffect, useState } from 'react';
 import Slider from '@mui/material/Slider';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
-const RoyalitySlider = ({ showClose, id, item, formValue, setFormValue }) => {
-  const [totalSlider, setTotalSlider] = useState([1]);
+const RoyalitySlider = ({
+  showClose,
+  id,
+  item,
+  formValue,
+  royalty,
+  setRoyalty,
+}) => {
   // Load the form data from local storage on component mount
 
   const handleDeleteAddressInputSlider = (index) => {
-    const royality = formValue?.royality;
+    const royality = [...royalty];
     // const index = royality.indexOf(item);
     if (index > -1) {
       royality.splice(index, 1);
     }
-    console.log('royal', royality);
-    setFormValue({ ...formValue, royality: royality });
+    setRoyalty(royality);
+    formValue.royality = royality;
   };
 
   const handleRoyalitiChange = (e, index) => {
     const { name, value } = e.target;
-    const royality = formValue?.royality;
+    const royality = [...royalty];
     const updatedRoyality = royality.map((royaliti, i) => {
       if (index === i) {
         return { ...royaliti, [name]: value };
       }
       return royaliti;
     });
-    setFormValue({ ...formValue, royality: updatedRoyality });
+    setRoyalty(updatedRoyality);
+    formValue.royality = updatedRoyality;
   };
 
   return (
