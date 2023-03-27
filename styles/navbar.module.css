@@ -1,5 +1,8 @@
 .container {
     padding: 48px 46px;
+    display: flex;
+    justify-content: space-around;
+    
 }
 
 .navLinks {

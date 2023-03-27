@@ -29,7 +29,7 @@ const Banner = () => {
           </Link>
         </div>
         <div className='col-md-6'>
-          <div className='d-flex justify-content-center'>
+          <div className='d-flex justify-content-end pr-12'>
             <Image className='img-fluid' src={Frame} alt='circle' />
           </div>
         </div>

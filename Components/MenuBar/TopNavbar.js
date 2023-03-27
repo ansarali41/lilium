@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 export default function App({ ergopay }) {
   const router = useRouter();
-  console.log(router.pathname);
+
   const [visible, setVisible] = useState(true);
   const [ergoPay, setErgoPay] = ergopay;
   const [walletButton, setWalletButton] = useState(true);
