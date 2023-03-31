@@ -27,6 +27,7 @@ const Pay = () => {
             className={` col-md-6 ${submitStyles.createCollectionContainer}`}
             onSubmit={(e) => e.preventDefault()}
           >
+            <h1 className={submitStyles.nftTitle}>Buy NFT</h1>
             <div className="relative rounded border border-solid border-white mt-8">
               <input
                 type="text"
@@ -34,7 +35,7 @@ const Pay = () => {
                 onChange={(e) => handleFormData(e)}
                 name="proxyAddress"
                 className="block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
+                placeholder="Description"
               />
               <label
                 htmlFor="proxy_address"
@@ -51,7 +52,7 @@ const Pay = () => {
                 onChange={(e) => handleFormData(e)}
                 name="SingleTonId"
                 className="block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
+                placeholder="Description"
               />
               <label
                 htmlFor="single_ton_id"
@@ -69,7 +70,7 @@ const Pay = () => {
                 defaultValue={formValue?.collectionFeaturedImageUrl || ''}
                 name="NFTPrice"
                 className="block rounded  px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 bg-gray-700 border-0 border-b-2 border-gray-300 appearance-none text-white border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
+                placeholder="Description"
               />
               <label
                 htmlFor="NFT_price"
