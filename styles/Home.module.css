@@ -9,3 +9,12 @@
   height: max-content;
   width: auto;
 }
+
+.bodyContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.mainContent {
+  flex-grow: 1;
+}

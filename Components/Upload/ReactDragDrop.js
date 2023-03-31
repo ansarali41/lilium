@@ -40,26 +40,29 @@ const thumbInner = {
 //   height: '100%',
 // };
 
-
 const Previews = (props) => {
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': [],
     },
-    onDrop: acceptedFiles => {
-      setFiles(acceptedFiles.map(file => Object.assign(file, {
-        preview: URL.createObjectURL(file),
-      })));
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          }),
+        ),
+      );
     },
   });
 
-  const thumbs = files.map(file => (
+  const thumbs = files.map((file) => (
     <div style={thumb} key={file.name}>
       <div style={thumbInner}>
         <Image
           src={file.preview}
-          alt='uploaded file'
+          alt="uploaded file"
           width={300}
           height={200}
           // Revoke data uri after image is loaded
@@ -73,63 +76,66 @@ const Previews = (props) => {
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => files.forEach(file => URL.revokeObjectURL(file.preview));
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
   }, []);
   console.log('uploaded file:', thumbs);
   return (
     <div>
       <section className={`${uploadStyles.uploadContainer}`}>
         <h1 className={submitStyles.title}>UPLOAD FILE</h1>
-        <hr style={{
-          marginTop: 30, color: '#E0E0E0',
-        }} />
-        <p style={{
-          fontFamily: 'Inter',
-          fontWeight: 600,
-          fontSize: 16,
-          marginTop: 53,
-          marginBottom: 61,
-        }}>Upload the metadata file containing the standard specified <a href='#'>here</a>
+        <hr
+          style={{
+            marginTop: 30,
+            color: '#E0E0E0',
+          }}
+        />
+        <p
+          style={{
+            fontFamily: 'Inter',
+            fontWeight: 600,
+            fontSize: 16,
+            marginTop: 53,
+            marginBottom: 61,
+          }}
+        >
+          Upload the metadata file containing the standard specified
+          <a href="#">here</a>
         </p>
         <div {...getRootProps({ className: 'dropzone' })}>
           <input {...getInputProps()} />
 
-          {thumbs.length ?
+          {thumbs.length ? (
             <div className={`${uploadStyles.previewFileBox}`}>
-              <aside style={thumbsContainer}>
-                {thumbs}
-              </aside>
+              <aside style={thumbsContainer}>{thumbs}</aside>
             </div>
-            :
+          ) : (
             <div className={`${uploadStyles.addFileBox}`}>
-
-
-              <div className='flex flex-col items-center justify-center  '>
-                <Image src={uploadCloud} alt='u' />
+              <div className="flex flex-col items-center justify-center  ">
+                <Image src={uploadCloud} alt="u" />
               </div>
-              <p className='text-center text-warning '>Drag and drop any files <br /> here, or click below
-                to <br /> browse.
+              <p className="text-center text-warning ">
+                Drag and drop any files <br /> here, or click below to <br />{' '}
+                browse.
               </p>
-              <button
-                className='bg-white hover:bg-white-700 text-black font-bold py-2 px-4 rounded-2xl'>
+              <button className="bg-white hover:bg-white-700 text-black font-bold py-2 px-4 rounded-2xl">
                 Add files
               </button>
-
-            </div>}
+            </div>
+          )}
         </div>
 
         <p className={submitStyles.fileType}>File type: Json</p>
       </section>
       <div className={`d-flex justify-content-center`}>
         <div className={` d-flex justify-content-center`}>
-          <Link href='/payment' className={navStyle.navLinks}>
-            <button type='submit' className={submitStyles.nextButton}>NEXT</button>
+          <Link href="/payment" className={navStyle.navLinks}>
+            <button type="submit" className={submitStyles.nextButton}>
+              NEXT
+            </button>
           </Link>
         </div>
       </div>
     </div>
-
   );
 };
 export default Previews;
-

@@ -10,15 +10,19 @@ import HomeTeam from '../Components/Home/HomeTeam';
 
 export default function Home() {
   return (
-    <div className={styles.body}>
-      <NavContainer />
-      <Banner />
-      <SellBanner />
-      <HomeWork />
-      <HomeCarousel />
-      <HomeTeam />
-      <HomeCollection />
-      <HomeFooter />
+    <div className={`${styles.body} ${styles.bodyContainer}`}>
+      <div className={styles.mainContent}>
+        <NavContainer />
+        <Banner />
+        <SellBanner />
+        <HomeWork />
+        <HomeCarousel />
+        <HomeTeam />
+        <HomeCollection />
+      </div>
+      <div className="mt-auto">
+        <HomeFooter />
+      </div>
     </div>
   );
 }

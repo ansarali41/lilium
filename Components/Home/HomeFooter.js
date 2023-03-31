@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 const HomeFooter = () => {
   return (
-    <div className={`${styles.homeFooter}`}>
+    <div className={`${styles.homeFooter} `}>
       <div className="text-center pt-5">
         <div className="d-flex justify-content-center">
           <Image
